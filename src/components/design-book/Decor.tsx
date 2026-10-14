@@ -94,16 +94,18 @@ export function RansomTitle({
   className = "",
   style,
   delay = 0.45,
+  as: Tag = "p",
 }: {
   text: string;
   big?: boolean;
   className?: string;
   style?: CSSProperties;
   delay?: number;
+  as?: "p" | "span";
 }) {
   let n = 0;
   return (
-    <p aria-hidden="true" className={`${styles.ransom} ${big ? styles.ransomBig : ""} ${className}`} style={style}>
+    <Tag aria-hidden="true" className={`${styles.ransom} ${big ? styles.ransomBig : ""} ${className}`} style={style}>
       {text.split(" ").map((word, w) => (
         <span key={w} className={styles.ransomWord}>
           {[...word].map((ch, i) => {
@@ -129,6 +131,6 @@ export function RansomTitle({
           })}
         </span>
       ))}
-    </p>
+    </Tag>
   );
 }

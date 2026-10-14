@@ -5,9 +5,9 @@ import styles from "./DesignBook.module.css";
 
 /** Card rows in stage units; delays match the cursor's clicks (see cursorPath). */
 const CARDS = [
-  { y: 18, d: 0.9, kind: "profile" },
-  { y: 32, d: 1.5, kind: "media" },
-  { y: 46, d: 2.1, kind: "button" },
+  { y: 19, d: 0.9, kind: "profile" },
+  { y: 30, d: 1.5, kind: "media" },
+  { y: 41, d: 2.1, kind: "button" },
 ] as const;
 
 export function PageDesign() {
@@ -21,7 +21,7 @@ export function PageDesign() {
       </div>
       <div className={`${styles.abs} ${styles.phone}`}>
         {CARDS.map((c) => (
-          <span key={c.kind} className={styles.phoneSlot} style={{ top: `${c.y - 8.8}cqw` }} />
+          <span key={c.kind} className={styles.phoneSlot} style={{ top: `${c.y - 12.6}cqw` }} />
         ))}
       </div>
       {CARDS.map((c) => (

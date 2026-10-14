@@ -9,6 +9,7 @@ import { PageSketch } from "./PageSketch";
 import { PageDesign } from "./PageDesign";
 import { PageBuild } from "./PageBuild";
 import { PageLaunch } from "./PageLaunch";
+import { RansomTitle } from "./Decor";
 import styles from "./DesignBook.module.css";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["700"], variable: "--font-caveat", display: "swap" });
@@ -61,6 +62,8 @@ export function DesignBook() {
   const [take, setTake] = useState(0);
   const [inView, setInView] = useState(false);
   const [tabVisible, setTabVisible] = useState(true);
+  const [cover, setCover] = useState<"closed" | "opening" | "open">("closed");
+  const opened = reduced || cover === "open";
 
   // Scenes wait (paused on their first frame) until the book is on screen.
   useEffect(() => {
@@ -76,7 +79,24 @@ export function DesignBook() {
     };
   }, []);
 
+  // The closed diary opens by itself shortly after it scrolls into view (once).
+  const open = (focusBook = false) => {
+    if (cover !== "closed") return;
+    setCover("opening");
+    window.setTimeout(() => {
+      setCover("open");
+      setTake((t) => t + 1);
+      if (focusBook) ref.current?.focus();
+    }, 900);
+  };
+  useEffect(() => {
+    if (reduced || cover !== "closed" || !inView) return;
+    const id = window.setTimeout(() => open(), 600);
+    return () => window.clearTimeout(id);
+  });
+
   const go = (to: number) => {
+    if (!opened) return;
     if (to < 0 || to >= PAGES.length || to === page) return;
     setDir(to > page ? "next" : "prev");
     setPage(to);
@@ -105,7 +125,8 @@ export function DesignBook() {
 
   const { Scene, title, text, tint } = PAGES[page];
   const turn = dir === "next" ? styles.turnNext : dir === "prev" ? styles.turnPrev : "";
-  const motion = reduced ? styles.still : !inView || !tabVisible ? styles.paused : "";
+  const motion = reduced ? styles.still : !opened || !inView || !tabVisible ? styles.paused : "";
+  const state = opened ? "" : cover === "opening" ? styles.opening : styles.closed;
 
   return (
     <div
@@ -114,9 +135,10 @@ export function DesignBook() {
       aria-roledescription="flipbook"
       aria-label="The Design Book, how I work"
       tabIndex={0}
-      className={`${styles.book} ${caveat.variable} ${motion}`}
+      className={`${styles.book} ${caveat.variable} ${motion} ${state}`}
       onKeyDown={onKeyDown}
     >
+      <div className={styles.bookBox}>
       <div className={styles.stage} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div key={`${page}-${take}`} className={`${styles.sheet} ${tint} ${turn}`}>
           <p className="visually-hidden">{text}</p>
@@ -126,6 +148,15 @@ export function DesignBook() {
           <span className={styles.spine} aria-hidden="true" />
         </div>
         <span className={styles.ribbon} aria-hidden="true" />
+      </div>
+      {!opened && (
+        <button type="button" className={styles.closedCover} aria-label="Open the Design Book" onClick={() => open(true)}>
+          <span className={styles.coverContent} aria-hidden="true">
+            <RansomTitle as="span" text="The Design Book" delay={0} />
+            <span className={`${styles.hand} ${styles.tapHint}`}>tap to open ♡</span>
+          </span>
+        </button>
+      )}
       </div>
 
       <p className="visually-hidden" aria-live="polite">
