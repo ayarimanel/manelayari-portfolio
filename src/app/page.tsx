@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import portrait from "@media/about/manel-cartoon.png";
 import { openTo, site, summary, tools } from "@/content/site";
 import { projects } from "@/content/projects";
 import { otherWork } from "@/content/otherWork";
@@ -11,6 +9,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Marquee } from "@/components/Marquee";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Reveal } from "@/components/Reveal";
+import { HeroAvatar } from "@/components/HeroAvatar";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -97,18 +96,7 @@ export default function Home() {
           </svg>
           <Doodle name="star" color="var(--ink)" fill="var(--blue)" className={styles.heroStar} />
           <Doodle name="squiggle" className={`doodle-desktop ${styles.heroSquiggle}`} />
-          {/* Two wrappers: one lands on load, the other tilts and lifts on hover. */}
-          <div className={styles.portraitLand}>
-            <div className={styles.portraitTilt}>
-              <Image
-                src={portrait}
-                alt="Illustrated portrait of Manel"
-                sizes="(max-width: 767px) 220px, (max-width: 1023px) 280px, 350px"
-                preload
-                className={styles.portrait}
-              />
-            </div>
-          </div>
+          <HeroAvatar />
         </div>
       </section>
 

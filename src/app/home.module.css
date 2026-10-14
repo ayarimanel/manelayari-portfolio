@@ -43,8 +43,8 @@
 .heroStickers li {
   animation: land var(--dur-slow) var(--ease-overshoot) both;
 }
-/* Portrait on a blob. --p is the portrait width, --b the blob width; the
-   portrait is 695×845, so its height is --p × 1.216. */
+/* Portrait on a blob (drawn by HeroAvatar). --p is the portrait box width, --b the blob width; the
+   box keeps a 695×845 ratio, so its height is --p × 1.216. */
 .heroArt {
   --p: 220px;
   --b: 280px;
@@ -93,38 +93,6 @@
   left: -56px;
   bottom: -18px;
   width: 140px;
-}
-.portraitLand {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(var(--ph) * 0.05);
-  width: var(--p);
-  margin-inline: auto;
-  animation: pop var(--dur-slow) var(--ease-overshoot) 520ms both;
-}
-.portraitTilt {
-  transform: rotate(-3deg);
-  transition: transform var(--dur) var(--ease);
-}
-.portraitTilt:hover {
-  transform: translateY(-2px) rotate(0deg);
-}
-.portrait {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .portraitLand {
-    animation: none;
-  }
 }
 @keyframes rise {
   from {

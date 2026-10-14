@@ -1,0 +1,284 @@
+/* Lives inside .heroArt, which sets --p (portrait width), --ph (its height) and --b (blob width). */
+.stage {
+  --h: calc(var(--ph) * 1.05);
+  --tool: 44px;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .stage {
+    --tool: 64px;
+  }
+}
+.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ---------- Portrait sticker ---------- */
+.sticker {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--ph) * 0.05);
+  width: var(--p);
+  height: var(--ph);
+  margin-inline: auto;
+}
+.tilt {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-3deg);
+  transition: transform var(--dur) var(--ease);
+}
+.sticker:hover .tilt {
+  transform: translateY(-2px) rotate(0deg);
+}
+/* The PNGs are 1024² with the figure in the middle, so the square is drawn
+   1.5× the portrait width and pulled up until the figure fills the old box. */
+.pose {
+  position: absolute;
+  left: -25%;
+  top: calc(var(--p) * -0.155);
+  width: 150%;
+  aspect-ratio: 1;
+}
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--dur-fast) linear;
+}
+.ideaImg {
+  opacity: 0;
+}
+[data-swapped="true"] .thinkImg {
+  opacity: 0;
+}
+[data-swapped="true"] .ideaImg {
+  opacity: 1;
+}
+[data-phase="shaking"] .pose {
+  animation: peel 450ms ease-in-out both;
+}
+[data-swapped="true"] .pose {
+  animation: swapPop 300ms var(--ease) both;
+}
+.replay {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.replay:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* "?" and thought dots above the head, bobbing until the idea lands. */
+.thought {
+  position: absolute;
+  z-index: 1;
+  left: 68%;
+  top: -2%;
+  width: 26%;
+  overflow: visible;
+  animation: bob 1.6s ease-in-out infinite;
+}
+[data-swapped="true"] .thought {
+  animation: thoughtOut 220ms var(--ease) both;
+}
+
+/* Tomato burst behind the head, once per swap. */
+.spark {
+  position: absolute;
+  left: 50%;
+  top: 29%;
+  width: 62%;
+  translate: -50% -50%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--tomato);
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0;
+}
+[data-swapped="true"] .spark {
+  animation: burst 550ms var(--ease) both;
+}
+
+/* ---------- Tool stickers ---------- */
+.tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tool {
+  /* Offset from the resting spot back to behind the head, where each flight starts. */
+  --ox: calc((50 - var(--x)) * var(--b) / 100);
+  --oy: calc((30 - var(--y)) * var(--h) / 100);
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: var(--tool);
+  height: var(--tool);
+  margin: calc(var(--tool) / -2) 0 0 calc(var(--tool) / -2);
+  opacity: 0;
+  transform: translate(var(--ox), var(--oy)) scale(0.3);
+  transition: opacity var(--dur-fast) linear;
+}
+.desktopOnly {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktopOnly {
+    display: block;
+  }
+}
+[data-phase="tools"] .tool {
+  animation: fly 300ms ease-out calc(var(--i) * 70ms) both;
+}
+[data-phase="idle"] .tool {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  animation: float var(--fd) ease-in-out var(--fdl) infinite;
+}
+[data-paused="true"] .tool {
+  animation-play-state: paused;
+}
+.toolTilt {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(var(--r));
+  transition: transform var(--dur) var(--ease);
+}
+.tool:hover .toolTilt {
+  transform: translateY(-2px) rotate(0deg);
+}
+.toolTilt svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes peel {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: rotate(-4deg) scale(1.02);
+  }
+  40% {
+    transform: rotate(4deg) scale(1.02);
+  }
+  60% {
+    transform: rotate(-3deg) scale(1.02);
+  }
+  80% {
+    transform: rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes swapPop {
+  50% {
+    transform: scale(1.06);
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes thoughtOut {
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+@keyframes burst {
+  0% {
+    opacity: 1;
+    scale: 0.5;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.15;
+  }
+}
+@keyframes fly {
+  0% {
+    opacity: 0;
+    transform: translate(var(--ox), var(--oy)) scale(0.3);
+  }
+  25% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    transform: translate(calc(var(--ox) * -0.12), calc(var(--oy) * -0.12)) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-4px);
+  }
+  75% {
+    transform: translateY(4px);
+  }
+}
+
+/* Reduced motion: final state straight away (the component also skips its timeline). */
+@media (prefers-reduced-motion: reduce) {
+  .thinkImg,
+  .thought,
+  .spark {
+    display: none;
+  }
+  .ideaImg {
+    opacity: 1;
+  }
+  .pose,
+  .tool {
+    animation: none !important;
+  }
+  .tool {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .tilt,
+  .toolTilt {
+    transition: none;
+  }
+}
