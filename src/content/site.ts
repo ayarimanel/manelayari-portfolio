@@ -19,12 +19,12 @@ export type Site = {
 export const site: Site = {
   name: "Manel Ayari",
   role: "UX/UI Designer & Full-Stack Developer",
-  roleLine: "UX/UI Designer & Full-Stack Developer. I design mockups and prototypes, and building them is my bonus.",
+  roleLine: "UX/UI Designer & Full-Stack Developer. Designs that are ready to build.",
   email: "manelayari04@gmail.com",
   location: "Bardo, Tunis",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://manelayari.vercel.app",
   description:
-    "UX/UI Designer & Full-Stack Developer based in Tunis. I design mockups and clickable prototypes in Figma for websites and apps. My bonus: I can also build them with React Native, Next.js and Node.js. Case studies: Glutenia, L'Africaine de Prod Artistique and Value.",
+    "UX/UI Designer & Full-Stack Developer based in Tunis. I design mockups and clickable prototypes in Figma for websites and apps, and because I also code (React Native, Next.js, Node.js), my designs are ready to build. Case studies: Glutenia, L'Africaine de Prod Artistique and Value.",
   linkedin: undefined,
   cvUrl: "/manel-ayari-cv.pdf",
   photo: undefined,
@@ -60,7 +60,7 @@ export const keywords = [
 
 /** Career summary, adapted from the CV. */
 export const summary =
-  "Computer Science graduate. I map users and flows and design high-fidelity mockups and interactive prototypes in Figma. My bonus: I can also build them with React Native and Next.js on a Node.js, Express and MongoDB back end.";
+  "Computer Science graduate. I map users and flows and design high-fidelity mockups and interactive prototypes in Figma. Because I also code with React Native and Next.js on a Node.js, Express and MongoDB back end, my designs are ready to build.";
 
 export const openTo = "Open to UX/UI, Product Designer and Full-Stack Developer roles.";
 

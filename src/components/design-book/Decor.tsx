@@ -43,7 +43,7 @@ export function Sparkle({ size = 4, color = "#fff", ...pos }: Pos & { size?: num
   );
 }
 
-export function Heart({ size = 4, color = "#7b4320", className = styles.pop, ...pos }: Pos & {
+export function Heart({ size = 4, color = "#7a200a", className = styles.pop, ...pos }: Pos & {
   size?: number;
   color?: string;
   className?: string;
@@ -78,11 +78,11 @@ const FONTS = [
 const PAPERS: [string, string][] = [
   ["#fff", "#2B211C"],
   ["#2B211C", "#fff"],
-  ["#dfbf9c", "#2B211C"],
-  ["#FFF1E2", "#7b4320"],
-  ["#7b4320", "#fff"],
+  ["#ffb894", "#2B211C"],
+  ["#FFF1E2", "#7a200a"],
+  ["#7a200a", "#fff"],
   ["#FFE45C", "#2B211C"],
-  ["#fff", "#7b4320"],
+  ["#fff", "#7a200a"],
 ];
 const TILTS = [-6, 4, -3, 7, -5, 2, 5, -2, 3];
 const STYLES = ["normal", "italic"];

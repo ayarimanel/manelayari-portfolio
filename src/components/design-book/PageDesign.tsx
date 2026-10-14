@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cursor from "@media/design-book/cursor-brown.png";
+import cursor from "@media/design-book/cursor-orange.png";
 import { Heart, RansomTitle, Sparkle } from "./Decor";
 import styles from "./DesignBook.module.css";
 

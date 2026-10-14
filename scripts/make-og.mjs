@@ -46,8 +46,8 @@ const pages = {
   home: async () => `
     <div class="wrap"><div class="text">
       <div class="kicker">Manel Ayari · UX/UI Designer &amp; Full-Stack Developer</div>
-      <h1 style="font-size:88px">I design <span style="color:#F2542D">mockups &amp; prototypes.</span></h1>
-      <p class="line">Building them is my bonus.</p>
+      <h1 style="font-size:88px">Designs that are <span style="color:#F2542D">ready to build.</span></h1>
+      <p class="line">Figma mockups and prototypes, from a designer who also codes.</p>
       <span class="sticker" style="background:#1F1B16;color:#FFF1E2;transform:rotate(-3deg)">Figma</span>
       <span class="sticker" style="background:#2F6BFF;color:#fff;transform:rotate(2deg)">React Native</span>
     </div>${phone(await dataUri(media("glutenia/app/home.png"), 460))}</div>`,

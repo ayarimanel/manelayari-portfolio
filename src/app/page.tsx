@@ -61,11 +61,11 @@ export default function Home() {
             <span className={styles.heroHi}>Hi, I&rsquo;m Manel</span> · {site.role} · Tunis
           </p>
           <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
-            I design <em>mockups &amp; prototypes</em>.
+            Designs that are <em>ready to build</em>.
           </h1>
           <p className={styles.heroLine}>
-            Designing is my favourite part: user flows, Figma screens and clickable prototypes for websites and apps.
-            My bonus: I can build them too.
+            I design mockups and clickable prototypes in Figma for websites and apps. Because I also code, I know what
+            developers need.
           </p>
           <div className={styles.heroCtas}>
             <a className={`btn ${styles.ctaPrimary}`} href="#work">

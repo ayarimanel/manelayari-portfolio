@@ -54,8 +54,9 @@ export default function About() {
           </p>
           <p>
             Designing is my favourite part: I map users and flows, then design high-fidelity mockups and interactive
-            prototypes in Figma, in Scrum teams and on client projects. My bonus: I can also build them, with React
-            Native and Next.js on a Node.js, Express and MongoDB back end. {openTo}
+            prototypes in Figma, in Scrum teams and on client projects. Because I also code (React Native and Next.js
+            on a Node.js, Express and MongoDB back end), I know what developers need, so my designs are ready to build.{" "}
+            {openTo}
           </p>
           {site.cvUrl && (
             <p className={styles.cv}>
