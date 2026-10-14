@@ -3,6 +3,7 @@ import Image from "next/image";
 import { openTo, site, skillGroups } from "@/content/site";
 import { Doodle } from "@/components/Doodle";
 import { ContactBlock } from "@/components/ContactBlock";
+import { DesignBookLazy } from "@/components/design-book/DesignBookLazy";
 import styles from "./about.module.css";
 
 const description =
@@ -106,6 +107,8 @@ export default function About() {
       </section>
 
       <ContactBlock />
+
+      <DesignBookLazy />
     </>
   );
 }

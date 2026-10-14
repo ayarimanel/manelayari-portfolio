@@ -1,0 +1,177 @@
+"use client";
+
+import { Caveat } from "next/font/google";
+import { useEffect, useRef, useState, type ComponentType, type KeyboardEvent, type TouchEvent } from "react";
+import { usePrefersReducedMotion } from "@/lib/reducedMotion";
+import { PageCover } from "./PageCover";
+import { PageProblem } from "./PageProblem";
+import { PageSketch } from "./PageSketch";
+import { PageDesign } from "./PageDesign";
+import { PageBuild } from "./PageBuild";
+import { PageLaunch } from "./PageLaunch";
+import styles from "./DesignBook.module.css";
+
+const caveat = Caveat({ subsets: ["latin"], weight: ["700"], variable: "--font-caveat", display: "swap" });
+
+const PAGES: { title: string; text: string; tint: string; Scene: ComponentType }[] = [
+  {
+    title: "The Design Book",
+    text: "The cover of my design book opens on how I work, in five steps.",
+    tint: styles.tintDeep,
+    Scene: PageCover,
+  },
+  {
+    title: "The problem",
+    text: "First I look for what confuses people: here, two users stare at their phones, full of questions.",
+    tint: "",
+    Scene: PageProblem,
+  },
+  {
+    title: "Sketch",
+    text: "Then I sketch the user flow on grid paper: three screens linked by arrows, pinned to the page.",
+    tint: styles.tintCream,
+    Scene: PageSketch,
+  },
+  {
+    title: "Design",
+    text: "Next I design the screens: UI cards are dragged into a phone wireframe and snap into place.",
+    tint: styles.tintLight,
+    Scene: PageDesign,
+  },
+  {
+    title: "Build",
+    text: "Then I build it: hands type on a pink laptop while code snippets fly out.",
+    tint: "",
+    Scene: PageBuild,
+  },
+  {
+    title: "Launch",
+    text: "Finally it ships: the L'Africaine homepage mockup unrolls out of a laptop screen and scrolls.",
+    tint: styles.tintCream,
+    Scene: PageLaunch,
+  },
+];
+
+export function DesignBook() {
+  const reduced = usePrefersReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const touchX = useRef<number | null>(null);
+  const [page, setPage] = useState(0);
+  const [dir, setDir] = useState<"next" | "prev" | null>(null);
+  const [take, setTake] = useState(0);
+  const [inView, setInView] = useState(false);
+  const [tabVisible, setTabVisible] = useState(true);
+
+  // Scenes wait (paused on their first frame) until the book is on screen.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.35 });
+    observer.observe(el);
+    const onVisibility = () => setTabVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
+
+  const go = (to: number) => {
+    if (to < 0 || to >= PAGES.length || to === page) return;
+    setDir(to > page ? "next" : "prev");
+    setPage(to);
+    setTake((t) => t + 1);
+  };
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      go(page + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      go(page - 1);
+    }
+  };
+
+  const onTouchStart = (e: TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: TouchEvent) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 50) go(page + (dx < 0 ? 1 : -1));
+  };
+
+  const { Scene, title, text, tint } = PAGES[page];
+  const turn = dir === "next" ? styles.turnNext : dir === "prev" ? styles.turnPrev : "";
+  const motion = reduced ? styles.still : !inView || !tabVisible ? styles.paused : "";
+
+  return (
+    <div
+      ref={ref}
+      role="region"
+      aria-roledescription="flipbook"
+      aria-label="The Design Book, how I work"
+      tabIndex={0}
+      className={`${styles.book} ${caveat.variable} ${motion}`}
+      onKeyDown={onKeyDown}
+    >
+      <div className={styles.stage} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div key={`${page}-${take}`} className={`${styles.sheet} ${tint} ${turn}`}>
+          <p className="visually-hidden">{text}</p>
+          <Scene />
+        </div>
+      </div>
+
+      <p className="visually-hidden" aria-live="polite">
+        Page {page + 1} of {PAGES.length}: {title}
+      </p>
+
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles.navBtn}
+          aria-label="Previous page"
+          disabled={page === 0}
+          onClick={() => go(page - 1)}
+        >
+          ←
+        </button>
+        <ol className={styles.dots}>
+          {PAGES.map((p, i) => (
+            <li key={p.title}>
+              <button
+                type="button"
+                className={styles.dot}
+                aria-label={`Page ${i + 1}: ${p.title}`}
+                aria-current={i === page}
+                onClick={() => go(i)}
+              />
+            </li>
+          ))}
+        </ol>
+        <button
+          type="button"
+          className={styles.navBtn}
+          aria-label="Next page"
+          disabled={page === PAGES.length - 1}
+          onClick={() => go(page + 1)}
+        >
+          →
+        </button>
+        <button
+          type="button"
+          className={styles.replayBtn}
+          aria-label="Replay"
+          onClick={() => {
+            setDir(null);
+            setTake((t) => t + 1);
+          }}
+        >
+          ↻ Replay
+        </button>
+      </div>
+    </div>
+  );
+}
