@@ -11,14 +11,14 @@ import styles from "./HeroAvatar.module.css";
  * Home hero portrait: Manel thinks, the sticker shakes like it's being peeled,
  * she gets the idea and her tools fly out around the frame.
  * thinking → shaking → idea → tools → idle. CSS does the motion; this only
- * flips data-phase on a timeline. She thinks for 1.2 s; the whole intro lands in about 2.3 s.
+ * flips data-phase on a timeline. She thinks for 1.6 s; the whole intro lands in about 2.7 s.
  */
 type Phase = "thinking" | "shaking" | "idea" | "tools" | "idle";
 
-const SHAKE_AT = 1200;
-const SWAP_AT = 1650; // the shake runs 450 ms
-const TOOLS_AT = 1670; // 70 ms stagger, 300 ms flight: the 5th tool lands at 2250 ms
-const IDLE_AT = 2270;
+const SHAKE_AT = 1600;
+const SWAP_AT = 2050; // the shake runs 450 ms
+const TOOLS_AT = 2070; // 70 ms stagger, 300 ms flight: the 5th tool lands at 2650 ms
+const IDLE_AT = 2670;
 
 /* Colours sampled from the cartoon, plus the site's cream and Glutenia green. */
 const C = {
