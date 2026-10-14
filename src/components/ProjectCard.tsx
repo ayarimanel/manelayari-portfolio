@@ -12,12 +12,13 @@ const phoneTilts = [-8, 1, 8];
  * Home project as a paper folder: a tab on the back flap, the real work
  * sticking out of the top, and a front flap with a stamp label and a sticky
  * note. One transparent link covers the whole folder; hovering it pulls the
- * papers further out.
+ * papers further out. `compact` is the small version that ends each case
+ * study: label and link only, no summary, tags or note.
  */
-export function ProjectCard({ project, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index, compact = false }: { project: Project; index: number; compact?: boolean }) {
   const visual = project.cardVisual;
   const headingId = `card-${project.slug}`;
-  const layout = styles[`layout${index % 3}`];
+  const layout = compact ? styles.compact : styles[`layout${index % 3}`];
 
   return (
     <article className={`theme-${project.theme} ${styles.folder} ${layout}`} aria-labelledby={headingId}>
@@ -62,12 +63,12 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         )}
       </div>
 
-      {visual.kind === "phones" && visual.mascot && (
+      {visual.kind === "phones" && visual.mascot && !compact && (
         <Image src={visual.mascot.image} alt={visual.mascot.alt} sizes="140px" className={styles.mascot} />
       )}
 
       <div className={styles.front}>
-        <div>
+        <div className={styles.text}>
           <div className={`stamp-edge ${styles.label}`}>
             <div>
               <h3 id={headingId} className={styles.title}>
@@ -76,17 +77,21 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
               <p className={styles.meta}>{project.cardLabel}</p>
             </div>
           </div>
-          <p className={styles.summary}>{project.summary}</p>
-          <ul className={styles.tags} aria-label="Highlights">
-            {project.cardStickers.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
+          {!compact && (
+            <>
+              <p className={styles.summary}>{project.summary}</p>
+              <ul className={styles.tags} aria-label="Highlights">
+                {project.cardStickers.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </>
+          )}
           <p className={styles.cta} aria-hidden="true">
             Open the folder <span className={styles.arrow}>→</span>
           </p>
         </div>
-        <p className={styles.note}>{project.cardNote}</p>
+        {!compact && <p className={styles.note}>{project.cardNote}</p>}
       </div>
 
       <Link href={`/work/${project.slug}`} className={styles.cover}>

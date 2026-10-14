@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { FactsRow } from "@/components/FactsRow";
 import { CaseSection } from "@/components/CaseSection";
 import { CaseBlock } from "@/components/case/CaseBlock";
-import { NextProject } from "@/components/NextProject";
+import { MoreWork } from "@/components/MoreWork";
 import styles from "./case.module.css";
 
 export const dynamicParams = false;
@@ -36,7 +36,6 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-  const next = getProject(project.next);
 
   return (
     <article className={`theme-${project.theme}`}>
@@ -71,7 +70,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </div>
       </footer>
 
-      {next && <NextProject project={next} />}
+      <MoreWork current={project} />
     </article>
   );
 }

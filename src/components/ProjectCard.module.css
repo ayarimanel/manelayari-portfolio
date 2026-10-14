@@ -361,3 +361,92 @@
   outline-offset: 4px;
   box-shadow: none;
 }
+
+/* ---------- Compact: the two small folders at the end of a case study ---------- */
+/* Side by side they share a row height, so the front flap grows to fill it. */
+.compact {
+  --top: 140px;
+  --back-top: 92px;
+  display: flex;
+  flex-direction: column;
+}
+.compact .front {
+  flex: 1;
+}
+.compact .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.compact .front {
+  grid-template-columns: 1fr;
+  padding: 26px 24px 24px;
+}
+.compact .label {
+  margin-bottom: var(--s-3);
+}
+.compact .title {
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+}
+.compact .cta {
+  margin-top: var(--s-3);
+  font-size: 1.0625rem;
+}
+@media (min-width: 768px) {
+  .compact {
+    --top: 170px;
+    --back-top: 108px;
+    --tab-h: 48px;
+  }
+  .compact .tab {
+    z-index: 4;
+    left: 24px;
+    min-width: 0;
+    font-size: 1rem;
+  }
+  .compact .papers {
+    left: auto;
+    right: 16px;
+    width: 330px;
+    height: 300px;
+  }
+  .compact .phone {
+    width: 104px;
+  }
+  .compact .phone0 {
+    left: 0;
+    top: 34px;
+  }
+  .compact .phone1 {
+    left: 110px;
+    top: 6px;
+  }
+  .compact .phone2 {
+    left: 220px;
+    top: 32px;
+  }
+  .compact .sheetBack {
+    width: 270px;
+    left: 50px;
+    top: 16px;
+  }
+  .compact .sheetFront {
+    width: 300px;
+    left: 14px;
+    top: 40px;
+  }
+  .compact .clip {
+    width: 22px;
+  }
+  .compact .clipPhones {
+    left: 150px;
+    top: -14px;
+  }
+  .compact .clipSheets {
+    left: 50px;
+    top: 30px;
+  }
+  .compact .front {
+    padding: 30px 32px 28px;
+  }
+}
