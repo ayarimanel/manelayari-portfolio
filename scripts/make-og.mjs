@@ -39,8 +39,8 @@ p.line{font-size:30px;line-height:1.35;margin-top:22px;max-width:620px}
 `;
 
 const phone = (src) => `<div class="phone"><div class="scr"><img src="${src}"></div></div>`;
-const browser = (src) =>
-  `<div class="browser"><div class="bar"><i></i><i></i><i></i><span>editionapa.tn</span></div><img src="${src}"></div>`;
+const browser = (src, domain = "editionapa.tn") =>
+  `<div class="browser"><div class="bar"><i></i><i></i><i></i><span>${domain}</span></div><img src="${src}"></div>`;
 
 const pages = {
   home: async () => `
@@ -70,6 +70,13 @@ const pages = {
       <h1 style="font-size:76px">L'Africaine de Prod Artistique</h1>
       <p class="line" style="font-size:26px">Website, shop and admin back-office for a children's book publisher.</p>
     </div>${browser(await dataUri(media("lafricaine/live-home.png"), 1040))}
+    <div class="name">Manel Ayari</div></div>`,
+  value: async () => `
+    <div class="wrap" style="background:#DCEDF1"><div class="text">
+      <p class="kicker" style="color:#275B6A">Case study · Website redesign · Project lead</p>
+      <h1 style="font-size:120px">Value</h1>
+      <p class="line" style="font-size:26px">Redesign mockups for a Tunisian consulting, AI and data company.</p>
+    </div>${browser(await dataUri(media("value/home-top.jpg"), 1040), "value.com.tn")}
     <div class="name">Manel Ayari</div></div>`,
 };
 

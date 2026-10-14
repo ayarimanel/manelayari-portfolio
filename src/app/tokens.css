@@ -14,6 +14,9 @@
   --glutenia-panel: #e7f3d9;
   --apa-purple: #4b1d7a; /* L'Africaine stickers (white text) */
   --apa-panel: #e9ddf7;
+  --value-teal: #327183; /* Value stickers (white text, 5.4:1) */
+  --value-ink: #275b6a; /* Value small text on cream/panel */
+  --value-panel: #dcedf1;
   --sticker-shadow: 3px 3px 0 var(--ink);
   --sticker-shadow-lift: 4px 4px 0 var(--ink);
 

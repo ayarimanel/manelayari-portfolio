@@ -62,9 +62,9 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
               <li key={c}>{c}</li>
             ))}
           </ul>
-          {project.slug === "lafricaine" && (
-            <a className="btn" href="https://editionapa.tn" target="_blank" rel="noopener">
-              Visit the live site <span aria-hidden="true">↗</span>
+          {project.live && (
+            <a className="btn" href={project.live.href} target="_blank" rel="noopener">
+              {project.live.label} <span aria-hidden="true">↗</span>
               <span className="visually-hidden">(opens in a new tab)</span>
             </a>
           )}

@@ -1,7 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-const pages = ["/", "/about", "/work/glutenia", "/work/lafricaine"];
+const pages = ["/", "/about", "/work/glutenia", "/work/lafricaine", "/work/value"];
 
 /** Scrolls the whole page so lazy images load and reveals fire. */
 async function scrollThrough(page: Page) {
@@ -62,7 +62,7 @@ test.describe("links", () => {
         // Gmail compose link: check the recipient, don't fetch (it redirects to a login page).
         expect(new URL(href).searchParams.get("to")).toBe("manelayari04@gmail.com");
       } else {
-        expect(href).toMatch(/^https:\/\/editionapa\.tn/);
+        expect(href).toMatch(/^https:\/\/(editionapa\.tn|value\.com\.tn)/);
         const res = await request.get(href, { timeout: 30_000 });
         expect(res.status(), href).toBeLessThan(400);
       }
@@ -173,7 +173,7 @@ test.describe("interactions", () => {
     const button = page.getByRole("button", { name: /video: Scanning a product barcode/ });
     await button.scrollIntoViewIfNeeded();
     const video = page.locator('video[aria-label="Scanning a product barcode in Glutenia"]');
-    // Autoplays once in view…
+    // Autoplays once in viewâ€¦
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused), { timeout: 15_000 }).toBe(true);
     await expect(button).toHaveAccessibleName(/^Pause video/);
     // Use the keyboard: a mouse click retried during the button's hover animation

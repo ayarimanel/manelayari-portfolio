@@ -268,6 +268,7 @@ export const lafricaine: Project = {
     "UX/UI design and Figma mockups by Manel Ayari.",
     "Site developed by a teammate at Optima Junior Entreprise.",
   ],
-  next: "glutenia",
+  live: { href: "https://editionapa.tn", label: "Visit the live site" },
+  next: "value",
   ogImage: "/og/lafricaine.png",
 };

@@ -267,3 +267,9 @@ h3 {
   --project-ink: var(--apa-purple);
   --project-panel: var(--apa-panel);
 }
+.theme-value {
+  --project: var(--value-teal);
+  --project-on: var(--white);
+  --project-ink: var(--value-ink);
+  --project-panel: var(--value-panel);
+}

@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "playwright test",
-    "assets": "node scripts/prepare-assets.mjs && node scripts/map-frame.mjs && node scripts/capture-live.mjs && node scripts/make-og.mjs",
+    "assets": "node scripts/prepare-assets.mjs && node scripts/prepare-value.mjs && node scripts/map-frame.mjs && node scripts/capture-live.mjs && node scripts/make-og.mjs",
     "qa:screenshots": "node scripts/qa-screenshots.mjs"
   },
   "dependencies": {

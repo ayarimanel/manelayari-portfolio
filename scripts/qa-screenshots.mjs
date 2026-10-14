@@ -35,6 +35,7 @@ const pages = [
   ["about", "/about"],
   ["glutenia", "/work/glutenia"],
   ["lafricaine", "/work/lafricaine"],
+  ["value", "/work/value"],
   ["404", "/this-page-does-not-exist"],
 ];
 const viewports = [

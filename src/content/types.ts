@@ -8,7 +8,7 @@ export type VideoSource = {
   height: number;
 };
 
-export type Theme = "glutenia" | "lafricaine";
+export type Theme = "glutenia" | "lafricaine" | "value";
 
 /** One screen shown in a phone: a still image or a looping clip. */
 export type Screen =
@@ -94,7 +94,8 @@ export type CardVisual =
       right: { image: StaticImageData; alt: string };
       mascot?: { image: StaticImageData; alt: string };
     }
-  | { kind: "browser"; video: VideoSource; label: string; domain: string; note?: string };
+  | { kind: "browser"; video: VideoSource; label: string; domain: string; note?: string }
+  | { kind: "browserImage"; image: StaticImageData; alt: string; domain: string; note?: string };
 
 export type Project = {
   slug: string;
@@ -114,6 +115,8 @@ export type Project = {
   facts: Fact[];
   sections: CaseSection[];
   credits: string[];
+  /** Live site linked after the credits. */
+  live?: { href: string; label: string };
   next: string;
   ogImage: string;
 };

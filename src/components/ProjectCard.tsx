@@ -59,7 +59,16 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         ) : (
           <figure className={styles.browser}>
             <BrowserFrame domain={visual.domain} aspect="16 / 10">
-              <VideoLoop video={visual.video} label={visual.label} priority={index === 0} />
+              {visual.kind === "browser" ? (
+                <VideoLoop video={visual.video} label={visual.label} priority={index === 0} />
+              ) : (
+                <Image
+                  src={visual.image}
+                  alt={visual.alt}
+                  sizes="(max-width: 1023px) 100vw, 640px"
+                  className={styles.browserImage}
+                />
+              )}
             </BrowserFrame>
             {visual.note && <figcaption className={styles.note}>{visual.note}</figcaption>}
           </figure>
