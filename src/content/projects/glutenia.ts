@@ -77,14 +77,6 @@ export const glutenia: Project = {
       blocks: [{ kind: "custom", name: "roleCards" }],
     },
     {
-      id: "existing",
-      heading: "What already exists",
-      body: [
-        "Useful apps exist, but each covers one part of the journey, and none of the four reviewed reads a photo of an ingredient label with AI.",
-      ],
-      blocks: [{ kind: "custom", name: "competitorTable" }],
-    },
-    {
       id: "process",
       heading: "My role and process",
       body: [
@@ -286,36 +278,6 @@ export const glutenia: Project = {
             },
           ],
         },
-        {
-          kind: "table",
-          caption: "Changes from Figma to the built app, and why",
-          columns: ["Screen", "Change", "Why"],
-          rows: [
-            [
-              "Home",
-              "Added “Recently scanned” with a red mark on unsafe items",
-              "Re-check a product without scanning again; spot unsafe items at a glance",
-            ],
-            ["Home", "Added an XP level bar", "Makes progress visible and gives a reason to come back"],
-            ["Header", "Added a cart icon", "The shop is reachable from every screen"],
-            [
-              "Products",
-              "Search bar and food-type categories (bread, flour, pasta, snacks, sweets)",
-              "People shop by what they want to eat; search is faster for a known product",
-            ],
-            ["Products", "Quick “+” button on each card", "Add to cart without opening the product page"],
-            [
-              "Map",
-              "Filter chips, favourites and a certified badge",
-              "Find the right kind of place fast and trust it before going",
-            ],
-            [
-              "Language",
-              "Mostly French became English with translation support",
-              "Labels in Tunisia mix languages, so the app is ready to switch",
-            ],
-          ],
-        },
       ],
     },
     {
@@ -345,11 +307,6 @@ export const glutenia: Project = {
         },
         { kind: "custom", name: "architecture" },
       ],
-    },
-    {
-      id: "next",
-      heading: "What's next",
-      body: ["Verified places, an iPhone version, and infrastructure ready to scale."],
     },
   ],
   credits: ["Designed and built by Manel Ayari.", "Character concept, name and story by Manel."],
