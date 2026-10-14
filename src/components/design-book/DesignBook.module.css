@@ -882,14 +882,23 @@
 .laptopTyping > div {
   animation:
     typing 0.34s steps(1, end) 1.2s infinite alternate both,
-    sway 2.4s steps(14, end) 1.2s infinite alternate both;
+    sway 1.4s steps(1, end) 1.2s infinite both;
 }
+/* Stop-motion shake: once to the left, once to the right, then a beat of rest. */
 @keyframes sway {
-  from {
-    translate: -2.5cqw 0;
+  0%,
+  45%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
   }
-  to {
-    translate: 2.5cqw 0;
+  15% {
+    translate: -2cqw 0;
+    rotate: -4deg;
+  }
+  30% {
+    translate: 2cqw 0;
+    rotate: 4deg;
   }
 }
 @keyframes fromBottom {
