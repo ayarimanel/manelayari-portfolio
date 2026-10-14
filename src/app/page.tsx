@@ -64,8 +64,8 @@ export default function Home() {
             I design <em>mockups &amp; prototypes</em>.
           </h1>
           <p className={styles.heroLine}>
-            And I can build them too. Designing is my favourite part: user flows, Figma screens and clickable
-            prototypes for websites and apps.
+            Designing is my favourite part: user flows, Figma screens and clickable prototypes for websites and apps.
+            My bonus: I can build them too.
           </p>
           <div className={styles.heroCtas}>
             <a className={`btn ${styles.ctaPrimary}`} href="#work">

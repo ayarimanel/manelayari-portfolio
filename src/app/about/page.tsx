@@ -53,9 +53,9 @@ export default function About() {
             UX/UI designer and full-stack developer. I turn stressful everyday tasks into clear, friendly interfaces.
           </p>
           <p>
-            I map users and flows, design high-fidelity screens and interactive prototypes in Figma, then build them
-            with React Native and Next.js on a Node.js, Express and MongoDB back end, in Scrum teams and on client
-            projects. {openTo}
+            Designing is my favourite part: I map users and flows, then design high-fidelity mockups and interactive
+            prototypes in Figma, in Scrum teams and on client projects. My bonus: I can also build them, with React
+            Native and Next.js on a Node.js, Express and MongoDB back end. {openTo}
           </p>
           {site.cvUrl && (
             <p className={styles.cv}>
