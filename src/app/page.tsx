@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import portrait from "@media/about/manel-cartoon.png";
 import { site, tools } from "@/content/site";
 import { projects } from "@/content/projects";
 import { Sticker } from "@/components/Sticker";
@@ -59,21 +61,44 @@ export default function Home() {
 
       {/* 1. Hero */}
       <section className={`container ${styles.hero}`} aria-labelledby="hero-heading">
-        <Doodle name="star" color="var(--ink)" fill="var(--blue)" className={styles.heroStar} />
-        <Doodle name="squiggle" className={`doodle-desktop ${styles.heroSquiggle}`} />
-        <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
-          Hi, I&rsquo;m Manel.
-        </h1>
-        <p className={`lead ${styles.heroLine}`}>{site.roleLine}</p>
-        <ul className={styles.heroStickers} aria-label="Skills and status">
-          {heroStickers.map((s, i) => (
-            <li key={s.text} style={{ animationDelay: `${300 + i * 60}ms` }}>
-              <Sticker variant={s.variant} rotate={s.rotate} size="lg">
-                {s.text}
-              </Sticker>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.heroText}>
+          <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
+            Hi, I&rsquo;m Manel.
+          </h1>
+          <p className={`lead ${styles.heroLine}`}>{site.roleLine}</p>
+          <ul className={styles.heroStickers} aria-label="Skills and status">
+            {heroStickers.map((s, i) => (
+              <li key={s.text} style={{ animationDelay: `${300 + i * 60}ms` }}>
+                <Sticker variant={s.variant} rotate={s.rotate} size="lg">
+                  {s.text}
+                </Sticker>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.heroArt}>
+          <svg className={styles.blob} viewBox="0 0 440 380" preserveAspectRatio="none" aria-hidden="true">
+            <path
+              d="M60 30C140 2 300 0 386 30c46 18 52 110 42 192-10 78-54 148-160 152-100 4-202-4-242-72C2 250 8 64 60 30z"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          <Doodle name="star" color="var(--ink)" fill="var(--blue)" className={styles.heroStar} />
+          <Doodle name="squiggle" className={`doodle-desktop ${styles.heroSquiggle}`} />
+          {/* Two wrappers: one lands on load, the other tilts and lifts on hover. */}
+          <div className={styles.portraitLand}>
+            <div className={styles.portraitTilt}>
+              <Image
+                src={portrait}
+                alt="Illustrated portrait of Manel"
+                sizes="(max-width: 767px) 220px, (max-width: 1023px) 280px, 350px"
+                preload
+                className={styles.portrait}
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 2. Selected work */}
