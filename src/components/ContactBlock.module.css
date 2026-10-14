@@ -1,0 +1,25 @@
+.section {
+  margin-block: var(--section-gap);
+}
+.panel {
+  position: relative;
+  display: grid;
+  gap: var(--s-6);
+  padding: clamp(32px, 6vw, 80px);
+  background: var(--tomato);
+  color: var(--ink);
+  border: var(--border);
+  border-radius: var(--r-card);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.panel h2 {
+  max-width: 11ch;
+  font-size: clamp(2.75rem, 1.8rem + 4.5vw, 6rem);
+}
+.star {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  width: 64px;
+  transform: rotate(12deg);
+}

@@ -1,0 +1,85 @@
+:root {
+  /* Colour — "Sticker Studio" */
+  --cream: #fff1e2; /* page background */
+  --cream-deep: #ffe3c7; /* alternate bands, sticker paper */
+  --ink: #1f1b16; /* text, borders, dark stickers (15.4:1 on cream) */
+  --ink-soft: #5e554b; /* secondary text (6.6:1 on cream) */
+  --tomato: #f2542d; /* display ≥24px bold, doodles, CTA fill (ink text on it) */
+  --tomato-ink: #c2380f; /* small links / inline emphasis (4.9:1 on cream) */
+  --blue: #2f6bff; /* stars and doodles */
+  --blue-sticker: #2559e8; /* blue sticker fill: white text on it passes 5.7:1 (#2F6BFF is only 4.5:1) */
+  --white: #ffffff;
+  --glutenia-green: #8bc34a; /* Glutenia stickers/accents (ink text on it) */
+  --glutenia-ink: #3f6e14; /* Glutenia small text on cream/panel (5.3:1) */
+  --glutenia-panel: #e7f3d9;
+  --apa-purple: #4b1d7a; /* L'Africaine stickers (white text) */
+  --apa-panel: #e9ddf7;
+  --sticker-shadow: 3px 3px 0 var(--ink);
+  --sticker-shadow-lift: 4px 4px 0 var(--ink);
+
+  /* Project theme (overridden per case study / card) */
+  --project: var(--tomato);
+  --project-on: var(--ink);
+  --project-ink: var(--tomato-ink);
+  --project-panel: var(--cream-deep);
+
+  /* Type */
+  --font-display: var(--font-bricolage), "Arial Black", system-ui, sans-serif;
+  --font-body: var(--font-instrument), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Fluid sizes, 375 → 1440 px */
+  --fs-display: clamp(3.5rem, 2.092rem + 6.009vw, 7.5rem);
+  --fs-h1: clamp(2.5rem, 1.796rem + 3.005vw, 4.5rem);
+  --fs-h2: clamp(1.75rem, 1.398rem + 1.502vw, 2.75rem);
+  --fs-h3: clamp(1.25rem, 1.162rem + 0.376vw, 1.5rem);
+  --fs-body: clamp(1.0625rem, 1.0405rem + 0.094vw, 1.125rem);
+  --fs-small: clamp(0.875rem, 0.853rem + 0.094vw, 0.9375rem);
+  --fs-sticker: clamp(0.8125rem, 0.79rem + 0.094vw, 0.875rem);
+
+  /* Space */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --section-gap: var(--s-8);
+  --gutter: 16px;
+  --pad-x: 16px;
+  --content-max: 1240px;
+  --reading-max: 720px;
+
+  /* Shape */
+  --r-card: 12px;
+  --r-pill: 999px;
+  --r-phone: 36px;
+  --r-browser: 12px;
+  --border: 1.5px solid var(--ink);
+  --rule: 1px solid var(--ink-soft);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 150ms;
+  --dur: 250ms;
+  --dur-slow: 400ms;
+
+  --header-h: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 24px;
+    --gutter: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --pad-x: 40px;
+    --section-gap: var(--s-9);
+    --header-h: 72px;
+  }
+}

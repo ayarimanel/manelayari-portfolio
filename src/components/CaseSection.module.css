@@ -1,0 +1,80 @@
+.section {
+  padding-block: calc(var(--section-gap) / 2);
+}
+.band {
+  margin-block: calc(var(--section-gap) / 2);
+  padding-block: var(--section-gap);
+  background: var(--project-panel);
+  border-block: var(--border);
+}
+.header {
+  max-width: var(--reading-max);
+  margin-bottom: var(--s-6);
+}
+.number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  color: var(--project-ink);
+  margin-bottom: var(--s-2);
+  font-variant-numeric: tabular-nums;
+}
+.body {
+  margin-top: var(--s-4);
+  max-width: 68ch;
+}
+.blocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-7);
+  min-width: 0;
+}
+.notes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-4);
+  align-content: start;
+}
+.blocks > .notes {
+  margin-top: calc(var(--s-7) * -0.5);
+}
+@media (min-width: 768px) {
+  .blocks > .notes {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+.withNotes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: start;
+}
+.main {
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .withNotes {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--s-7);
+    align-items: center;
+  }
+}
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-7);
+  align-items: start;
+}
+.pairMain,
+.pairSide {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+}
+@media (min-width: 1024px) {
+  .pair {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    align-items: center;
+  }
+}

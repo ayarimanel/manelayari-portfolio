@@ -1,0 +1,35 @@
+.phone {
+  position: relative;
+  width: 100%;
+  padding: 7px;
+  background: var(--ink);
+  border-radius: var(--r-phone);
+  box-shadow: 4px 4px 0 rgb(31 27 22 / 0.18);
+  transform: rotate(var(--tilt, 0deg));
+}
+.screen {
+  position: relative;
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+  border-radius: calc(var(--r-phone) - 7px);
+  background: var(--white);
+  isolation: isolate;
+}
+.screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.notch {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 26%;
+  height: 14px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  border-radius: var(--r-pill);
+  z-index: 3;
+  pointer-events: none;
+}

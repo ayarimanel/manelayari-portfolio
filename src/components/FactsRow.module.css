@@ -1,0 +1,28 @@
+.facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5) var(--gutter);
+  padding-top: var(--s-5);
+  border-top: var(--border);
+}
+@media (min-width: 768px) {
+  .facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.fact dt {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--project-ink);
+  margin-bottom: var(--s-1);
+}
+.fact dd {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}

@@ -1,0 +1,43 @@
+.film {
+  position: relative;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: 20px;
+  background: var(--cream-deep);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.controls {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 10px;
+}
+.round,
+.sound {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  height: 44px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.sound {
+  padding: 0 16px;
+  background: var(--project, var(--tomato));
+  color: var(--project-on, var(--ink));
+}

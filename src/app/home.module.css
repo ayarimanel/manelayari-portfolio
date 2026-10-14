@@ -1,0 +1,111 @@
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding-block: clamp(56px, 10vw, 136px) clamp(48px, 8vw, 112px);
+}
+.heroTitle {
+  color: var(--tomato);
+  max-width: 10ch;
+  animation: rise var(--dur-slow) var(--ease) both;
+}
+.heroLine {
+  margin-top: var(--s-5);
+  max-width: 34ch;
+  animation: rise var(--dur-slow) var(--ease) 120ms both;
+}
+.heroStickers {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-4);
+  margin-top: var(--s-6);
+}
+.heroStickers li {
+  animation: land var(--dur-slow) var(--ease-overshoot) both;
+}
+.heroStar {
+  position: absolute;
+  top: clamp(24px, 6vw, 72px);
+  right: var(--pad-x);
+  width: clamp(44px, 7vw, 88px);
+  transform: rotate(14deg);
+}
+.heroSquiggle {
+  position: absolute;
+  right: clamp(60px, 14vw, 220px);
+  bottom: clamp(40px, 6vw, 96px);
+  width: clamp(100px, 13vw, 170px);
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes land {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(1.12);
+  }
+}
+@media (max-width: 1023px) {
+  .heroSquiggle {
+    bottom: 12px;
+  }
+}
+
+/* ---------- Work ---------- */
+.work {
+  padding-block: calc(var(--section-gap) / 2);
+}
+.cards {
+  display: grid;
+  gap: var(--s-7);
+  margin-top: var(--s-6);
+}
+
+/* ---------- What I do ---------- */
+.skillsSection {
+  padding-block: var(--section-gap) calc(var(--section-gap) / 2);
+}
+.skills {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-6) var(--gutter);
+  margin: var(--s-6) 0 var(--s-7);
+}
+@media (min-width: 768px) {
+  .skills {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.skills li {
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+}
+.skills p {
+  color: var(--ink-soft);
+  max-width: 32ch;
+}
+.skillIcon {
+  width: 52px;
+  margin-bottom: var(--s-2);
+}
+
+/* ---------- About teaser ---------- */
+.about {
+  padding-block: calc(var(--section-gap) / 2);
+}
+.aboutInner {
+  display: grid;
+  gap: var(--s-4);
+  justify-items: start;
+  max-width: var(--reading-max);
+}
+.aboutText {
+  font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
+  line-height: 1.5;
+}

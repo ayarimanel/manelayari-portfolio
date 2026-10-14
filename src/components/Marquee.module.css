@@ -1,0 +1,61 @@
+.marquee {
+  display: grid;
+  gap: var(--s-3);
+}
+.viewport {
+  overflow: hidden;
+  padding-block: 10px;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+.marquee[data-paused="true"] .track {
+  animation-play-state: paused;
+}
+.row {
+  list-style: none;
+  padding: 0 var(--s-3) 0 0;
+  display: flex;
+  gap: var(--s-3);
+}
+.toggle {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Static, wrapped stickers on mobile and under reduced motion. */
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .viewport {
+    mask-image: none;
+    overflow: visible;
+  }
+  .track {
+    animation: none;
+    width: auto;
+  }
+  .row {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .row[aria-hidden] {
+    display: none;
+  }
+  .toggle {
+    display: none;
+  }
+}

@@ -1,49 +1,269 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "./tokens.css";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
+}
+* {
   margin: 0;
 }
-
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+img,
+video {
+  height: auto;
+}
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
 a {
   color: inherit;
-  text-decoration: none;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+::selection {
+  background: var(--tomato);
+  color: var(--ink);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--cream);
+  border-radius: 4px;
+}
+
+/* ---------- Type helpers ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+.small {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+.muted {
+  color: var(--ink-soft);
+}
+.prose {
+  max-width: 68ch;
+}
+.prose > * + * {
+  margin-top: 1em;
+}
+.lead {
+  font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
+  line-height: 1.5;
+  max-width: 40ch;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-max) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+.reading {
+  max-width: var(--reading-max);
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Hand-drawn link underline ---------- */
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.2C18 3.1 31 6.4 47 4.6s29-2.6 44-.9c10 1.1 18 .6 27.5-.8' fill='none' stroke='%23F2542D' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 0.4em;
+  padding-bottom: 0.15em;
+  transition:
+    background-size var(--dur-slow) var(--ease),
+    text-decoration-color var(--dur) var(--ease);
+}
+.link:hover,
+.link:focus-visible {
+  background-size: 100% 0.4em;
+  text-decoration-color: transparent;
+}
+.link-ink {
+  color: var(--tomato-ink);
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 10px 22px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: var(--sticker-shadow);
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translate(-1px, -2px);
+  box-shadow: var(--sticker-shadow-lift);
+}
+.btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.btn-ink {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* ---------- Scroll reveals ---------- */
+/* Hidden only when JS is running, so content is never lost without it. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+.js [data-reveal][data-inview="true"],
+.js [data-reveal][data-seen] {
+  opacity: 1;
+  transform: none;
+}
+/* Already on screen at load (marked by the inline script in layout.tsx): no fade, no wait for JS. */
+.js [data-reveal][data-seen] {
+  transition: none;
+}
+
+/* ---------- Doodle visibility budget ---------- */
+.doodle-desktop {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .doodle-desktop {
+    display: block;
   }
+}
+.doodle-tablet {
+  display: none;
+}
+@media (min-width: 768px) {
+  .doodle-tablet {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Project themes ---------- */
+.theme-glutenia {
+  --project: var(--glutenia-green);
+  --project-on: var(--ink);
+  --project-ink: var(--glutenia-ink);
+  --project-panel: var(--glutenia-panel);
+}
+.theme-lafricaine {
+  --project: var(--apa-purple);
+  --project-on: var(--white);
+  --project-ink: var(--apa-purple);
+  --project-panel: var(--apa-panel);
 }

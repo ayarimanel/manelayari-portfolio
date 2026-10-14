@@ -1,0 +1,56 @@
+.browser {
+  width: 100%;
+  overflow: hidden;
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-browser);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--cream-deep);
+  border-bottom: var(--border);
+}
+.dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--cream);
+}
+.dots i:first-child {
+  background: var(--tomato);
+}
+.address {
+  flex: 1;
+  min-width: 0;
+  max-width: 360px;
+  margin-inline: auto;
+  padding: 3px 12px;
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  border: 1px solid var(--ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.viewport {
+  position: relative;
+  overflow: hidden;
+}
+.viewport > img {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,26 @@
+.footer {
+  border-top: 1px solid var(--ink);
+  margin-top: var(--section-gap);
+}
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-6);
+  padding-block: var(--s-6);
+  font-size: var(--fs-small);
+}
+.inner a {
+  display: inline-block;
+  padding-block: 10px;
+}
+.copy {
+  margin-left: auto;
+  color: var(--ink-soft);
+}
+@media (max-width: 479px) {
+  .copy {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

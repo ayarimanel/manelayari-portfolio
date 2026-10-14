@@ -1,0 +1,27 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+}
+.copy {
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+.email {
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.hint {
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: var(--fs-sticker);
+}
+.status {
+  flex-basis: 100%;
+  min-height: 1.5em;
+  font-weight: 600;
+  font-size: var(--fs-small);
+}

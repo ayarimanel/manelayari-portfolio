@@ -1,0 +1,56 @@
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 7px 14px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sticker);
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: var(--sticker-shadow);
+  transform: rotate(var(--rot, 0deg));
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.sticker:hover,
+:focus-visible > .sticker,
+a:hover .sticker {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: var(--sticker-shadow-lift);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--cream);
+}
+.tomato {
+  background: var(--tomato);
+  color: var(--ink);
+}
+.blue {
+  background: var(--blue-sticker);
+  color: var(--white);
+}
+.cream {
+  background: var(--cream);
+  color: var(--ink);
+}
+.project {
+  background: var(--project);
+  color: var(--project-on);
+}
+
+.sm {
+  min-height: 28px;
+  padding: 5px 11px;
+}
+.lg {
+  min-height: 40px;
+  padding: 10px 18px;
+  font-size: var(--fs-small);
+}
