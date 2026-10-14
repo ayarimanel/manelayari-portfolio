@@ -11,7 +11,13 @@ export function ContactBlock() {
         <h2 id="contact-heading" className="display">
           Let&rsquo;s work together.
         </h2>
-        <CopyEmailButton email={site.email} />
+        <CopyEmailButton email={site.email}>
+          {site.cvUrl && (
+            <a className="btn" href={site.cvUrl} download>
+              Download CV <span className="visually-hidden">(PDF)</span>
+            </a>
+          )}
+        </CopyEmailButton>
       </div>
     </section>
   );

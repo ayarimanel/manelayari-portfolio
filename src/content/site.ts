@@ -22,11 +22,11 @@ export const site: Site = {
   roleLine: "UX/UI designer. I design friendly apps and websites, then build them.",
   email: "manelayari04@gmail.com",
   location: "Bardo, Tunis",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://manel-ayari.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://manelayari.vercel.app",
   description:
     "UX/UI designer based in Tunis. I design friendly apps and websites in Figma, then build them. Case studies: Glutenia and L'Africaine de Prod Artistique.",
   linkedin: undefined,
-  cvUrl: undefined,
+  cvUrl: "/manel-ayari-cv.pdf",
   photo: undefined,
 };
 

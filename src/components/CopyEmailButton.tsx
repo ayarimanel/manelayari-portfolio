@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "./CopyEmailButton.module.css";
 
-type Props = { email: string };
+type Props = {
+  email: string;
+  /** Extra actions shown after the mailto link, e.g. "Download CV". */
+  children?: ReactNode;
+};
 
 /** Shows the email; clicking copies it and announces the result. A separate mailto link sits next to it. */
-export function CopyEmailButton({ email }: Props) {
+export function CopyEmailButton({ email, children }: Props) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<number | undefined>(undefined);
 
@@ -35,6 +39,7 @@ export function CopyEmailButton({ email }: Props) {
       <a className="btn" href={`mailto:${email}`}>
         Send an email
       </a>
+      {children}
       <p className={styles.status} aria-live="polite" role="status">
         {status === "copied" && "Email copied"}
         {status === "failed" && "Couldn't copy — select the address to copy it."}

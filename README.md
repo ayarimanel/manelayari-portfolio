@@ -74,4 +74,4 @@ If the on-screen text changes, update the captions in `public/media/glutenia/vid
 
 ## Deploy
 
-The site is hosted on Vercel (Hobby plan, free). Once the GitHub repo is connected, every push to `main` redeploys automatically. If the final address is not `https://manel-ayari.vercel.app`, set `NEXT_PUBLIC_SITE_URL` in Vercel so canonical links and share images use the right domain.
+The site is hosted on Vercel (Hobby plan, free). Once the GitHub repo is connected, every push to `main` redeploys automatically. If the final address is not `https://manelayari.vercel.app`, set `NEXT_PUBLIC_SITE_URL` in Vercel so canonical links and share images use the right domain.
