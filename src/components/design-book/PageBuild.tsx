@@ -7,7 +7,7 @@ import styles from "./DesignBook.module.css";
 const CHIPS = [
   { text: "</>", x: 10, y: 30, r: -8, d: 1.3 },
   { text: "{ }", x: 82, y: 22, r: 7, d: 1.4 },
-  { text: "npm run build", x: 62, y: 8, r: -4, d: 1.5 },
+  { text: "npm run build", x: 38, y: 25, r: -4, d: 1.5 },
   { text: "{ }", x: 12, y: 50, r: 5, d: 1.6 },
   { text: "</>", x: 84, y: 46, r: -6, d: 1.7 },
 ];
