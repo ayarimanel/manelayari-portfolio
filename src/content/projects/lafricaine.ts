@@ -31,12 +31,13 @@ export const lafricaine: Project = {
     "Case study: the website, shop and admin back-office Manel Ayari designed in Figma for L'Africaine de Prod Artistique, a Tunisian children's book publisher. Now live at editionapa.tn.",
   readingTime: "3 min read",
   cardStickers: ["Figma", "UX/UI design", "Live site"],
+  cardTab: { title: "L'Africaine", kind: "website" },
+  cardNote: "Figma → live site (developed by a teammate)",
   cardVisual: {
-    kind: "browser",
-    video: v("01-home-scroll"),
-    label: "Scrolling through the L'Africaine homepage design in Figma",
+    kind: "sheets",
+    front: { image: liveHome, alt: "The live editionapa.tn homepage hero, built from the design" },
+    back: { image: figmaHomeTop, alt: "" },
     domain: DOMAIN,
-    note: "Mockup with placeholder content",
   },
   hero: {
     kind: "browser",

@@ -1,7 +1,7 @@
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  padding-block: clamp(56px, 10vw, 136px) clamp(48px, 8vw, 112px);
+  padding-block: clamp(32px, 5vw, 64px) clamp(16px, 2vw, 32px);
   display: grid;
   gap: var(--s-7);
   align-items: center;
@@ -12,42 +12,83 @@
     gap: var(--gutter);
   }
 }
-.heroTitle {
-  color: var(--tomato);
-  max-width: 10ch;
+.heroHello {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-bottom: var(--s-4);
+  color: var(--ink-soft);
+  font-size: var(--fs-small);
   animation: rise var(--dur-slow) var(--ease) both;
+}
+.heroHi {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1;
+  color: var(--tomato-ink);
+}
+.heroTitle {
+  max-width: 13ch;
+  font-size: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  animation: rise var(--dur-slow) var(--ease) 80ms both;
+}
+.heroTitle em {
+  font-style: normal;
+  color: var(--tomato);
 }
 .heroLine {
   margin-top: var(--s-5);
-  max-width: 34ch;
-  animation: rise var(--dur-slow) var(--ease) 120ms both;
-}
-.heroIntro {
-  margin-top: var(--s-4);
-  max-width: 52ch;
+  max-width: 50ch;
   color: var(--ink-soft);
-  animation: rise var(--dur-slow) var(--ease) 180ms both;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.5;
+  animation: rise var(--dur-slow) var(--ease) 140ms both;
 }
-.heroCv {
-  margin-top: var(--s-5);
-  font-weight: 600;
-}
-.heroStickers {
-  list-style: none;
-  padding: 0;
+.heroCtas {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-3) var(--s-4);
   margin-top: var(--s-6);
+  animation: rise var(--dur-slow) var(--ease) 200ms both;
 }
-.heroStickers li {
-  animation: land var(--dur-slow) var(--ease-overshoot) both;
+.heroCtas :global(.btn) {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
-/* Portrait on a blob (drawn by HeroAvatar). --p is the portrait box width, --b the blob width; the
-   box keeps a 695×845 ratio, so its height is --p × 1.216. */
+.ctaPrimary {
+  background: var(--tomato);
+}
+/* Plain facts, deliberately flat so they don't look clickable. */
+.heroClaims {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-5);
+  animation: rise var(--dur-slow) var(--ease) 260ms both;
+}
+.heroClaims li {
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgb(110 75 54 / 0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.heroClaims span {
+  color: var(--tomato-ink);
+}
+
+/* Portrait on a stamp-edged polaroid (the portrait and tools are drawn by
+   HeroAvatar). --p is the portrait box width, --b the frame width; the box
+   keeps a 695×845 ratio, so its height is --p × 1.216. */
 .heroArt {
-  --p: 220px;
-  --b: 280px;
+  --p: 180px;
+  --b: 236px;
   --ph: calc(var(--p) * 1.216);
   position: relative;
   justify-self: center;
@@ -56,43 +97,43 @@
 }
 @media (min-width: 768px) {
   .heroArt {
-    --p: 280px;
-    --b: 352px;
+    --p: 260px;
+    --b: 330px;
     justify-self: end;
   }
 }
 @media (min-width: 1024px) {
   .heroArt {
-    --p: 350px;
-    --b: 440px;
+    --p: 330px;
+    --b: 410px;
   }
 }
-/* The blob starts a fifth of the way down, so the head and shoulders break out of its top edge. */
-.blob {
+/* The polaroid starts a seventh of the way down, so the head breaks out of its top edge. */
+.polaroid {
   position: absolute;
-  inset: calc(var(--ph) * 0.2) 0 0;
-  width: 100%;
-  height: calc(100% - var(--ph) * 0.2);
-  overflow: visible;
-  fill: var(--cream-deep);
-  stroke: var(--ink);
-  stroke-width: 1.5px;
-  filter: drop-shadow(var(--sticker-shadow));
+  inset: calc(var(--ph) * 0.14) 0 0;
+  transform: rotate(3deg);
+}
+.polaroid > div {
+  height: 100%;
+  border: 12px solid var(--paper);
+  background: var(--cream-deep);
+}
+.heroClip {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--ph) * 0.14 - 34px);
+  left: 18%;
+  width: 26px;
+  transform: rotate(-8deg);
 }
 .heroStar {
   position: absolute;
   z-index: 1;
-  top: calc(var(--ph) * 0.2 - 22px);
-  right: -6px;
-  width: clamp(44px, 6vw, 72px);
+  top: calc(var(--ph) * 0.14 - 22px);
+  right: -10px;
+  width: clamp(40px, 5vw, 64px);
   transform: rotate(14deg);
-}
-.heroSquiggle {
-  position: absolute;
-  z-index: 1;
-  left: -56px;
-  bottom: -18px;
-  width: 140px;
 }
 @keyframes rise {
   from {
@@ -100,21 +141,28 @@
     transform: translateY(16px);
   }
 }
-@keyframes land {
-  from {
-    opacity: 0;
-    transform: translateY(-14px) scale(1.12);
-  }
-}
 
 /* ---------- Work ---------- */
 .work {
-  padding-block: calc(var(--section-gap) / 2);
+  padding-block: var(--s-6) calc(var(--section-gap) / 2);
+}
+.workHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px var(--s-4);
+}
+.workHint {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 1.625rem;
+  letter-spacing: 0;
+  color: var(--ink-soft);
 }
 .cards {
   display: grid;
-  gap: var(--s-7);
-  margin-top: var(--s-6);
+  gap: var(--s-6);
+  margin-top: var(--s-2);
 }
 
 /* ---------- What I do ---------- */

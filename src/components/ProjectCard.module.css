@@ -1,210 +1,363 @@
-.card {
+/* A paper folder. --top is how much room the papers get above the front
+   flap; the back flap (with its tab) starts --back-top from the top. */
+.folder {
+  --top: 170px;
+  --back-top: 118px;
+  --tab-h: 44px;
   position: relative;
-  display: grid;
-  gap: var(--s-6);
-  padding: clamp(24px, 4vw, 56px);
-  background: var(--project-panel);
-  border: var(--border);
-  border-radius: var(--r-card);
-  box-shadow: 6px 6px 0 var(--ink);
-  transition:
-    box-shadow var(--dur) var(--ease),
-    transform var(--dur) var(--ease);
+  padding-top: var(--top);
 }
-.card:hover,
-.card:focus-within {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--ink);
-}
-@media (max-width: 1023px) {
-  .card {
-    padding-top: 44px;
+@media (min-width: 768px) {
+  .folder {
+    --top: 230px;
+    --back-top: 150px;
+    --tab-h: 56px;
   }
 }
-@media (min-width: 1024px) {
-  .card {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    align-items: center;
-    gap: var(--s-7);
+
+/* ---------- Back flap and tab ---------- */
+.back {
+  position: absolute;
+  inset: var(--back-top) 0 0;
+  background: var(--folder-back);
+  border-radius: 10px 16px 14px 14px;
+}
+.tab {
+  position: absolute;
+  z-index: 4; /* on small screens the papers would cover it */
+  top: calc(var(--tab-h) * -1 + 10px);
+  left: 16px;
+  height: var(--tab-h);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  border-radius: 14px 14px 0 0;
+  background: var(--folder-back);
+  color: var(--folder-on);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.tab small {
+  display: none;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+@media (min-width: 768px) {
+  .tab {
+    z-index: auto;
+    min-width: 250px;
+    padding: 0 24px;
+    font-size: 1.1875rem;
+  }
+  .tab small {
+    display: inline;
+  }
+  .layout0 .tab {
+    left: 40px;
+  }
+  .layout1 .tab {
+    left: 250px;
+  }
+  .layout2 .tab {
+    left: auto;
+    right: 50px;
   }
 }
-.text {
-  order: 2;
-}
-.visual {
-  order: 1;
-  min-width: 0;
+
+/* ---------- Papers sticking out ---------- */
+.papers {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 4px;
+  width: 250px;
+  height: 320px;
   transition: transform var(--dur-slow) var(--ease);
 }
-@media (min-width: 1024px) {
-  .text {
-    order: 1;
+@media (min-width: 768px) {
+  .papers {
+    right: 70px;
+    width: 660px;
+    height: 440px;
   }
-  .visual {
-    order: 2;
+  .layout2 .papers {
+    right: auto;
+    left: 180px;
   }
 }
-.card:hover .visual {
-  transform: scale(1.02);
+.folder:hover .papers,
+.folder:focus-within .papers {
+  transform: translateY(-18px);
 }
-.label {
-  font-weight: 600;
-  font-size: 0.8125rem;
-  color: var(--project-ink);
-  margin-bottom: var(--s-3);
-}
-.title {
-  margin-bottom: var(--s-4);
-}
-.link {
-  text-decoration: none;
-}
-/* Stretch the single link over the whole card. */
-.link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  border-radius: var(--r-card);
-}
-.link:focus-visible {
-  outline: none;
-  box-shadow: none;
-}
-.link:focus-visible::after {
-  outline: 3px solid var(--ink);
-  outline-offset: 4px;
-}
-.summary {
-  max-width: 44ch;
-}
-.stickers {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-3);
-  margin-top: var(--s-5);
-}
-.cta {
-  margin-top: var(--s-6);
-  font-weight: 600;
-  display: inline-flex;
-  gap: 8px;
-  padding-bottom: 2px;
-  border-bottom: 2px solid var(--ink);
-}
-.arrow {
-  display: inline-block;
-  transition: transform var(--dur) var(--ease);
-}
-.card:hover .arrow,
-.card:focus-within .arrow {
-  transform: translateX(4px);
-}
-.index {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.9375rem;
-  color: var(--project-ink);
+@media (prefers-reduced-motion: reduce) {
+  .papers {
+    transition: none;
+  }
+  .folder:hover .papers,
+  .folder:focus-within .papers {
+    transform: none;
+  }
 }
 
-/* The visual sits above the stretched link but lets clicks fall through to
-   it — except the video's pause/play button, which stays usable. */
-.visual {
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-}
-.visual button {
-  pointer-events: auto;
-}
-
-/* ---------- Phone fan ---------- */
-.fan {
-  position: relative;
-  height: clamp(340px, 62vw, 520px);
-  max-width: 560px;
-  margin-inline: auto;
-}
 .phone {
   position: absolute;
-  top: 6%;
-  left: 50%;
-  width: clamp(130px, 25vw, 200px);
-  transition: transform 700ms var(--ease);
+  width: 104px;
+  box-shadow: 0 12px 24px rgb(40 20 10 / 0.3);
 }
-.phoneCenter {
-  z-index: 3;
-  top: 0;
-  width: clamp(150px, 28vw, 220px);
-  transform: translateX(-50%);
+.phone0 {
+  display: none;
 }
-.phoneLeft {
-  transform: translateX(-50%) rotate(-2deg);
+.phone1 {
+  z-index: 2;
+  left: 18px;
+  top: 16px;
 }
-.phoneRight {
-  transform: translateX(-50%) rotate(2deg);
+.phone2 {
+  left: 128px;
+  top: 46px;
 }
-.fan[data-inview="true"] .phoneLeft {
-  transform: translateX(-118%) rotate(-8deg);
-}
-.fan[data-inview="true"] .phoneRight {
-  transform: translateX(18%) rotate(8deg);
-}
-/* Mobile: two phones — the film and the badges screen. */
-@media (max-width: 767px) {
-  .phoneLeft {
-    display: none;
+@media (min-width: 768px) {
+  .phone {
+    width: 196px;
   }
-  .phoneCenter {
-    transform: translateX(-80%);
+  .phone0 {
+    display: block;
+    left: 40px;
+    top: 60px;
   }
-  .fan .phoneRight,
-  .fan[data-inview="true"] .phoneRight {
-    transform: translateX(-4%) rotate(6deg);
+  .phone1 {
+    left: 230px;
+    top: 10px;
   }
-}
-.mascot {
-  position: absolute;
-  z-index: 0;
-  left: -36px;
-  bottom: -28px;
-  width: clamp(80px, 14vw, 120px);
-  height: auto;
-  transform: rotate(-6deg);
-}
-/* On small screens there is no free edge beside the phones: leave him out. */
-@media (max-width: 767px) {
-  .mascot {
-    display: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
-  .fan .phoneLeft {
-    transform: translateX(-118%) rotate(-8deg);
-  }
-  .fan .phoneRight {
-    transform: translateX(18%) rotate(8deg);
+  .phone2 {
+    left: 420px;
+    top: 55px;
   }
 }
 
-/* ---------- Browser ---------- */
-.browser {
-  position: relative;
+.sheet {
+  position: absolute;
+  box-shadow: 0 12px 26px rgb(40 20 10 / 0.28);
 }
-.browserImage {
+.sheetImage {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
 }
-.note {
-  margin-top: var(--s-3);
+.sheetBack {
+  width: 220px;
+  left: 26px;
+  top: 14px;
+  transform: rotate(-4deg);
+}
+.sheetFront {
+  z-index: 2;
+  width: 240px;
+  left: 0;
+  top: 44px;
+  transform: rotate(2deg);
+}
+@media (min-width: 768px) {
+  .sheetBack {
+    width: 560px;
+    left: 90px;
+    top: 40px;
+  }
+  .sheetFront {
+    width: 600px;
+    left: 30px;
+    top: 70px;
+  }
+}
+
+.clip {
+  position: absolute;
+  z-index: 6;
+  width: 22px;
+}
+.clipPhones {
+  left: 66px;
+  top: -12px;
+}
+.clipSheets {
+  left: 40px;
+  top: 30px;
+  transform: rotate(-6deg);
+}
+@media (min-width: 768px) {
+  .clip {
+    width: 30px;
+  }
+  .clipPhones {
+    left: 318px;
+    top: -28px;
+  }
+  .clipSheets {
+    left: 120px;
+    top: 36px;
+  }
+}
+
+.mascot {
+  display: none;
+}
+@media (min-width: 768px) {
+  .mascot {
+    display: block;
+    position: absolute;
+    z-index: 4;
+    right: 30px;
+    top: 170px;
+    width: 140px;
+    height: auto;
+  }
+}
+
+/* ---------- Front flap ---------- */
+.front {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  gap: var(--s-5);
+  padding: 32px 22px 28px;
+  border-radius: 6px 6px 16px 16px;
+  background: var(--folder);
+  color: var(--folder-on);
+  box-shadow: 0 18px 30px -18px rgb(60 35 20 / 0.45);
+}
+/* A soft shadow line where the flap folds. */
+.front::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 12px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(rgb(0 0 0 / 0.1), transparent);
+}
+@media (min-width: 768px) {
+  .front {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--s-7);
+    padding: 44px 56px 40px;
+  }
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: var(--s-5);
+  transform: rotate(-1.5deg);
+  color: var(--ink);
+}
+.label > div {
+  padding: 12px 24px 10px;
+}
+@media (min-width: 768px) {
+  .label > div {
+    padding: 14px 30px 12px;
+  }
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.meta {
+  margin-top: 6px;
   font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink-soft);
+}
+.summary {
+  max-width: 46ch;
+}
+.tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+.tags li {
+  padding: 4px 11px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--folder-on) 14%, transparent);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+.cta {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: var(--s-5);
+  padding-bottom: 2px;
+  border-bottom: 2px solid currentColor;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1875rem;
+}
+.arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease);
+}
+.folder:hover .arrow,
+.folder:focus-within .arrow {
+  transform: translateX(4px);
+}
+
+/* Sticky note with a strip of tape. */
+.note {
+  justify-self: start;
+  max-width: 240px;
+  margin-top: var(--s-3);
+  padding: 16px 20px;
+  background: var(--note-yellow);
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  transform: rotate(2deg);
+  box-shadow: 0 8px 14px rgb(60 35 20 / 0.22);
+}
+.note::before {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 18px;
+  margin: -28px auto 10px;
+  background: rgb(242 84 45 / 0.55);
+  transform: rotate(-4deg);
+}
+@media (min-width: 768px) {
+  .note {
+    align-self: end;
+    justify-self: end;
+    width: 230px;
+    margin-top: 0;
+    transform: rotate(3deg);
+  }
+}
+
+/* ---------- The one link, over the whole folder ---------- */
+.cover {
+  position: absolute;
+  z-index: 7;
+  inset: var(--back-top) 0 0;
+  border-radius: 14px;
+}
+.cover:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+  box-shadow: none;
 }

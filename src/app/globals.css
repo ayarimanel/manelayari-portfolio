@@ -21,7 +21,11 @@ html {
   }
 }
 body {
-  background: var(--cream);
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--fs-body);
@@ -254,22 +258,43 @@ h3 {
   }
 }
 
+/* ---------- Stamp-edged paper ----------
+   The padding band is punched with half-circles; put the content in a child
+   with a solid --paper background so only the edge is perforated. */
+.stamp-edge {
+  padding: 9px;
+  background: radial-gradient(circle, transparent 5px, var(--paper) 5.5px) -8px -8px / 16px 16px;
+  filter: drop-shadow(0 10px 18px rgb(60 35 20 / 0.18));
+}
+.stamp-edge > * {
+  background: var(--paper);
+}
+
 /* ---------- Project themes ---------- */
 .theme-glutenia {
   --project: var(--glutenia-green);
   --project-on: var(--ink);
   --project-ink: var(--glutenia-ink);
   --project-panel: var(--glutenia-panel);
+  --folder: var(--kraft);
+  --folder-back: var(--kraft-back);
+  --folder-on: var(--ink);
 }
 .theme-lafricaine {
   --project: var(--apa-purple);
   --project-on: var(--white);
   --project-ink: var(--apa-purple);
   --project-panel: var(--apa-panel);
+  --folder: var(--terracotta);
+  --folder-back: var(--terracotta-back);
+  --folder-on: var(--folder-cream);
 }
 .theme-value {
   --project: var(--value-teal);
   --project-on: var(--white);
   --project-ink: var(--value-ink);
   --project-panel: var(--value-panel);
+  --folder: var(--walnut);
+  --folder-back: var(--walnut-back);
+  --folder-on: var(--folder-cream);
 }

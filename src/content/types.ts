@@ -86,16 +86,12 @@ export type CaseSection = {
 
 export type Fact = { label: string; value: string; href?: string; linkLabel?: string };
 
+type CardImage = { image: StaticImageData; alt: string };
+
+/** What sticks out of the top of the home folder. */
 export type CardVisual =
-  | {
-      kind: "fan";
-      left: { image: StaticImageData; alt: string };
-      center: { video: VideoSource; label: string };
-      right: { image: StaticImageData; alt: string };
-      mascot?: { image: StaticImageData; alt: string };
-    }
-  | { kind: "browser"; video: VideoSource; label: string; domain: string; note?: string }
-  | { kind: "browserImage"; image: StaticImageData; alt: string; domain: string; note?: string };
+  | { kind: "phones"; screens: [CardImage, CardImage, CardImage]; mascot?: CardImage }
+  | { kind: "sheets"; front: CardImage; back?: CardImage; domain: string };
 
 export type Project = {
   slug: string;
@@ -110,6 +106,10 @@ export type Project = {
   metaDescription: string;
   readingTime: string;
   cardStickers: string[];
+  /** Folder tab on the home page: a short name and what kind of work it is. */
+  cardTab: { title: string; kind: string };
+  /** Handwritten sticky note on the folder: the one thing to remember. */
+  cardNote: string;
   cardVisual: CardVisual;
   hero: Block;
   facts: Fact[];

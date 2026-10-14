@@ -19,6 +19,17 @@
   --value-panel: #dcedf1;
   --sticker-shadow: 3px 3px 0 var(--ink);
   --sticker-shadow-lift: 4px 4px 0 var(--ink);
+  /* Folders, paper and notes on the home page */
+  --paper: #fffaf3;
+  --note-yellow: #fff3b8;
+  --grid-line: rgb(110 75 54 / 0.09); /* faint graph-paper grid on the page */
+  --kraft: #d9a96f; /* Glutenia folder (ink text, 8:1) */
+  --kraft-back: #bf8d55;
+  --terracotta: #a9532f; /* L'Africaine folder (cream text, 4.9:1) */
+  --terracotta-back: #8a4024;
+  --walnut: #6e4b36; /* Value folder (cream text, 7.2:1) */
+  --walnut-back: #563826;
+  --folder-cream: #fff6ea;
 
   /* Project theme (overridden per case study / card) */
   --project: var(--tomato);
@@ -29,6 +40,7 @@
   /* Type */
   --font-display: var(--font-bricolage), "Arial Black", system-ui, sans-serif;
   --font-body: var(--font-instrument), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: var(--font-caveat), "Segoe Print", cursive;
   /* Fluid sizes, 375 → 1440 px */
   --fs-display: clamp(3.5rem, 2.092rem + 6.009vw, 7.5rem);
   --fs-h1: clamp(2.5rem, 1.796rem + 3.005vw, 4.5rem);

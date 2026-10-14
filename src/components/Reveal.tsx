@@ -25,6 +25,8 @@ export function Reveal({ as: Tag = "div", children, className, style, reveal = t
       style={style}
       data-reveal={reveal ? "" : undefined}
       data-inview={inView ? "true" : "false"}
+      // The layout's pre-paint script adds data-seen to blocks already on screen.
+      suppressHydrationWarning
     >
       {children}
     </Tag>

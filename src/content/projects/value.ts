@@ -28,12 +28,16 @@ export const value: Project = {
     "Case study: Manel Ayari led the redesign mockups for Value (value.com.tn) at Optima Junior Entreprise and designed its homepage and careers page.",
   readingTime: "3 min read",
   cardStickers: ["UX/UI design", "Mockups", "Team lead"],
+  cardTab: { title: "Value", kind: "redesign" },
+  cardNote: "Led the mockups, presented to the client",
   cardVisual: {
-    kind: "browserImage",
-    image: homeTop,
-    alt: "Value homepage mockup: “Committed Talents, Creating VALUE” over a dark network background, with two buttons",
+    kind: "sheets",
+    front: {
+      image: homeTop,
+      alt: "Value homepage mockup: “Committed Talents, Creating VALUE” over a dark network background, with two buttons",
+    },
+    back: { image: careersTop, alt: "" },
     domain: DOMAIN,
-    note: "My homepage mockup",
   },
   hero: {
     kind: "browser",

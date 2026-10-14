@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { openTo, site, summary, tools } from "@/content/site";
+import { site, tools } from "@/content/site";
 import { projects } from "@/content/projects";
-import { Sticker } from "@/components/Sticker";
 import { Doodle } from "@/components/Doodle";
+import { PaperClip } from "@/components/PaperClip";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Marquee } from "@/components/Marquee";
 import { ContactBlock } from "@/components/ContactBlock";
@@ -23,11 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-const heroStickers = [
-  { text: "Figma", variant: "ink", rotate: -3 },
-  { text: "React Native", variant: "blue", rotate: 2 },
-  { text: "Open to work", variant: "cream", rotate: -1 },
-] as const;
+const heroClaims = ["Glutenia: designed + built solo", "Figma → React Native", "Open to UX/UI, Product & Full-Stack roles"];
 
 const skills = [
   {
@@ -61,48 +57,52 @@ export default function Home() {
       {/* 1. Hero */}
       <section className={`container ${styles.hero}`} aria-labelledby="hero-heading">
         <div className={styles.heroText}>
-          <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
-            Hi, I&rsquo;m Manel.
-          </h1>
-          <p className={`lead ${styles.heroLine}`}>{site.roleLine}</p>
-          <p className={styles.heroIntro}>
-            {summary} {openTo}
+          <p className={styles.heroHello}>
+            <span className={styles.heroHi}>Hi, I&rsquo;m Manel</span> · {site.role} · Tunis
           </p>
-          <ul className={styles.heroStickers} aria-label="Skills and status">
-            {heroStickers.map((s, i) => (
-              <li key={s.text} style={{ animationDelay: `${300 + i * 60}ms` }}>
-                <Sticker variant={s.variant} rotate={s.rotate} size="lg">
-                  {s.text}
-                </Sticker>
+          <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
+            I design apps, then <em>build them</em> myself.
+          </h1>
+          <p className={styles.heroLine}>
+            From user flows and Figma prototypes to working React Native and Next.js apps. No hand-off needed.
+          </p>
+          <div className={styles.heroCtas}>
+            <a className={`btn ${styles.ctaPrimary}`} href="#work">
+              Open my work <span aria-hidden="true">↓</span>
+            </a>
+            {site.cvUrl && (
+              <a className="btn" href={site.cvUrl} download>
+                Download CV <span className="visually-hidden">(PDF)</span>
+              </a>
+            )}
+          </div>
+          <ul className={styles.heroClaims} aria-label="In short">
+            {heroClaims.map((c, i) => (
+              <li key={c}>
+                {i === 0 && <span aria-hidden="true">✶ </span>}
+                {c}
               </li>
             ))}
           </ul>
-          {site.cvUrl && (
-            <p className={styles.heroCv}>
-              <a className="link link-ink" href={site.cvUrl} download>
-                Download CV <span className="visually-hidden">(PDF)</span>
-              </a>
-            </p>
-          )}
         </div>
 
         <div className={styles.heroArt}>
-          <svg className={styles.blob} viewBox="0 0 440 380" preserveAspectRatio="none" aria-hidden="true">
-            <path
-              d="M60 30C140 2 300 0 386 30c46 18 52 110 42 192-10 78-54 148-160 152-100 4-202-4-242-72C2 250 8 64 60 30z"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
+          <div className={`stamp-edge ${styles.polaroid}`} aria-hidden="true">
+            <div />
+          </div>
+          <PaperClip className={styles.heroClip} />
           <Doodle name="star" color="var(--ink)" fill="var(--blue)" className={styles.heroStar} />
-          <Doodle name="squiggle" className={`doodle-desktop ${styles.heroSquiggle}`} />
           <HeroAvatar />
         </div>
       </section>
 
       {/* 2. Selected work */}
       <section id="work" className={`container ${styles.work}`} aria-labelledby="work-heading">
-        <h2 id="work-heading" className="h2">
-          Selected work
+        <h2 id="work-heading" className={`h2 ${styles.workHeading}`}>
+          Selected work{" "}
+          <span className={styles.workHint}>
+            {projects.length} folders, pull one out <span aria-hidden="true">↓</span>
+          </span>
         </h2>
         <div className={styles.cards}>
           {projects.map((p, i) => (

@@ -13,7 +13,7 @@ import figmaMap from "@media/glutenia/figma/map.png";
 import sprint1 from "@media/glutenia/deck/23-sprint1-auth-screens.jpg";
 import sprint2 from "@media/glutenia/deck/27-sprint2-scan-shop-screens.jpg";
 import sprint3 from "@media/glutenia/deck/31-sprint3-community-admin-screens.jpg";
-import glutitanHero from "@media/glutenia/mascot/glutitan-hero.png";
+import glutitanThumbsUp from "@media/glutenia/mascot/glutitan-thumbs-up.png";
 
 const v = (name: string) => video("glutenia", name, 720, 1456);
 
@@ -29,15 +29,16 @@ export const glutenia: Project = {
     "Case study: Glutenia, a mobile app for people living gluten-free — barcode and AI label scanning, a gluten-free shop, map and events. Designed in Figma and built in React Native by Manel Ayari.",
   readingTime: "5 min read",
   cardStickers: ["Figma", "React Native", "AI label scan"],
+  cardTab: { title: "Glutenia", kind: "mobile app" },
+  cardNote: "Designed it + built it, solo ✶",
   cardVisual: {
-    kind: "fan",
-    left: { image: appMap, alt: "Glutenia map screen with gluten-free places pinned around Tunis" },
-    center: {
-      video: video("glutenia", "promo-vertical", 720, 1280, { webm: false }),
-      label: "Glutenia promo film, vertical cut",
-    },
-    right: { image: appBadges, alt: "Glutenia badges screen: 3 of 19 badges earned" },
-    mascot: { image: glutitanHero, alt: "" },
+    kind: "phones",
+    screens: [
+      { image: appMap, alt: "Glutenia map screen with gluten-free places pinned around Tunis" },
+      { image: appResultGluten, alt: "Glutenia scan result: “Contains gluten”, with the flagged ingredient" },
+      { image: appBadges, alt: "Glutenia badges screen: 3 of 19 badges earned" },
+    ],
+    mascot: { image: glutitanThumbsUp, alt: "" },
   },
   hero: {
     kind: "film",

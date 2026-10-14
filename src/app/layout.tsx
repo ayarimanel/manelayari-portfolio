@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Caveat, Instrument_Sans } from "next/font/google";
 import { keywords, site } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -17,6 +17,14 @@ const instrument = Instrument_Sans({
   variable: "--font-instrument",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+/** Handwritten notes: sticky notes, the hero greeting, small annotations. */
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -51,7 +59,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${instrument.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${bricolage.variable} ${instrument.variable} ${caveat.variable}`} suppressHydrationWarning>
       <head>
         {/* Lets CSS hide scroll-reveal content only when JS can reveal it again. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
