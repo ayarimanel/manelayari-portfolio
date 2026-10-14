@@ -58,6 +58,9 @@ test.describe("links", () => {
     for (const href of external) {
       if (href.startsWith("mailto:")) {
         expect(href).toBe("mailto:manelayari04@gmail.com");
+      } else if (href.startsWith("https://mail.google.com/")) {
+        // Gmail compose link: check the recipient, don't fetch (it redirects to a login page).
+        expect(new URL(href).searchParams.get("to")).toBe("manelayari04@gmail.com");
       } else {
         expect(href).toMatch(/^https:\/\/editionapa\.tn/);
         const res = await request.get(href, { timeout: 30_000 });

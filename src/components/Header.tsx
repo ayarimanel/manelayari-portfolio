@@ -9,7 +9,9 @@ import styles from "./Header.module.css";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: `mailto:${site.email}`, label: "Email" },
+  // The contact block shows the address with copy, email-app and Gmail options, so it
+  // works for visitors without a default email app (a bare mailto: does nothing there).
+  { href: "/#contact", label: "Email" },
 ];
 
 export function Header() {
