@@ -34,7 +34,6 @@ export function PageProblem() {
         </span>
       </p>
       <Sparkle x={86} y={56} d={2.4} size={4} />
-      <Sparkle x={14} y={18} d={2.6} size={3} color="#FFE45C" />
     </div>
   );
 }

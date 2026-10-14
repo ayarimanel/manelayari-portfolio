@@ -1,7 +1,7 @@
 import Image from "next/image";
 import home from "@media/design-book/lafricaine-home.jpg";
 import idea from "@media/about/manel-idea.png";
-import { Heart, RansomTitle, Sparkle } from "./Decor";
+import { RansomTitle, Sparkle } from "./Decor";
 import styles from "./DesignBook.module.css";
 
 export function PageLaunch() {
@@ -41,9 +41,6 @@ export function PageLaunch() {
       </p>
       <Sparkle x={60} y={12} d={2.1} size={5} />
       <Sparkle x={92} y={50} d={2.25} size={4} color="#FFE45C" />
-      <Sparkle x={56} y={44} d={2.4} size={3} />
-      <Sparkle x={4} y={30} d={2.55} size={3.5} color="#FFE45C" />
-      <Heart x={90} y={10} r={14} d={2.3} size={4} />
     </div>
   );
 }

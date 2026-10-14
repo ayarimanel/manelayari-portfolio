@@ -67,6 +67,8 @@ export default function About() {
         </div>
       </section>
 
+      <DesignBookLazy />
+
       <section className={`container ${styles.details}`} aria-label="Background">
         <dl className={styles.list}>
           <div>
@@ -107,8 +109,6 @@ export default function About() {
       </section>
 
       <ContactBlock />
-
-      <DesignBookLazy />
     </>
   );
 }

@@ -52,12 +52,11 @@ export function PageDesign() {
       </div>
       <p
         className={`${styles.abs} ${styles.hand} ${styles.handInk} ${styles.write}`}
-        style={{ left: "6cqw", top: "64cqw", fontSize: "4.6cqw", ["--d" as string]: "2.8s" }}
+        style={{ left: "6cqw", top: "64cqw", fontSize: "max(16px, 4.6cqw)", ["--d" as string]: "2.8s" }}
       >
         drag, drop, snap ✓
       </p>
       <Sparkle x={86} y={6} d={2.5} size={4} />
-      <Sparkle x={44} y={10} d={2.7} size={3} color="#FFE45C" />
     </div>
   );
 }

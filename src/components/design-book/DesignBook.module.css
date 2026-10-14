@@ -3,21 +3,30 @@
    collage keeps its layout at every width (the stage is 100 × 80 cqw). */
 
 .section {
-  padding-block: var(--section-gap, 96px) calc(var(--section-gap, 96px) / 2);
+  padding-block: calc(var(--section-gap, 96px) / 2);
 }
 
 .heading {
   margin-bottom: 24px;
 }
 
+/* Book size: one 4:5 diary page on mobile (≤ 75vh), an open A5 spread on
+   desktop (760 × 520 max, ≤ 70vh). Width is derived so the ratio holds. */
 .slot {
-  max-width: 880px;
+  --book-ratio: 4 / 5;
+  width: min(100%, 60vh);
   margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .slot {
+    --book-ratio: 760 / 520;
+    width: min(100%, 760px, 102vh);
+  }
 }
 
 .placeholder {
-  aspect-ratio: 5 / 4;
-  border-radius: 22px;
+  aspect-ratio: var(--book-ratio);
+  border-radius: 2.4%;
   background: #fad0e4;
 }
 
@@ -39,15 +48,14 @@
 
 .stage {
   position: relative;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: var(--book-ratio);
   container-type: inline-size;
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 1.6cqw;
   background: var(--pink-2);
   box-shadow:
-    0 2px 0 #c95a92,
-    0 18px 40px -18px rgba(120, 20, 70, 0.45);
-  perspective: 1400px;
+    0 0.3cqw 0 #c95a92,
+    0 2.4cqw 5cqw -2.4cqw rgba(120, 20, 70, 0.45);
   touch-action: pan-y;
 }
 
@@ -56,6 +64,67 @@
   inset: 0;
   overflow: hidden;
   background: var(--pink);
+}
+
+/* The collage: a 5:4 box (100 × 80 cqw inside) with paper all around it. */
+.scene {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90%;
+  aspect-ratio: 5 / 4;
+  translate: -50% -50%;
+  container-type: inline-size;
+  perspective: 1400px;
+}
+@media (min-width: 768px) {
+  .scene {
+    width: 74%;
+  }
+}
+
+/* Spread: spine shadow down the middle and page edges (desktop only). */
+.spine {
+  display: none;
+}
+@media (min-width: 768px) {
+  .spine {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 46%,
+        rgba(110, 20, 65, 0.1) 48.6%,
+        rgba(110, 20, 65, 0.26) 50%,
+        rgba(110, 20, 65, 0.1) 51.4%,
+        transparent 54%
+      ),
+      linear-gradient(90deg, rgba(110, 20, 65, 0.12), transparent 2.5%, transparent 97.5%, rgba(110, 20, 65, 0.12));
+  }
+}
+.ribbon {
+  position: absolute;
+  z-index: 7;
+  top: 0;
+  right: 10%;
+  width: 3%;
+  height: 16%;
+  background: var(--hot);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  filter: drop-shadow(0.2cqw 0.3cqw 0 rgba(110, 20, 65, 0.3));
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .ribbon {
+    right: auto;
+    left: 52%;
+    width: 1.8%;
+    height: 22%;
+  }
 }
 .sheet::before {
   content: "";
@@ -307,7 +376,7 @@
   }
 }
 .coverOwner {
-  font-size: 3.4cqw;
+  font-size: max(16px, 3.4cqw);
   color: #fff;
 }
 .peek {
@@ -477,7 +546,7 @@
   }
 }
 .flowLabel {
-  font-size: 3cqw;
+  font-size: max(13px, 3cqw);
   transform: translate(-50%, -50%);
   animation: popPlain 0.25s steps(3, end) var(--d) both;
 }
@@ -848,7 +917,7 @@
 .buildCaption {
   left: 5cqw;
   top: 13cqw;
-  font-size: 4.6cqw;
+  font-size: max(16px, 4.6cqw);
   transform: rotate(-2deg);
 }
 
@@ -998,17 +1067,21 @@
 /* ---------- Controls ---------- */
 .controls {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 12px 16px;
-  margin-top: 20px;
+  gap: 6px;
+  margin-top: 14px;
+}
+@media (min-width: 768px) {
+  .controls {
+    gap: 12px;
+  }
 }
 .navBtn,
 .replayBtn {
-  min-width: 48px;
+  min-width: 44px;
   min-height: 44px;
-  padding: 6px 14px;
+  padding: 6px 10px;
   border: 2px solid var(--ink-b);
   border-radius: 14px;
   background: #fff;
@@ -1057,12 +1130,25 @@
 .dot {
   display: grid;
   place-items: center;
-  width: 28px;
+  width: 30px;
   height: 44px;
   padding: 0;
   border: 0;
   background: none;
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  .dot {
+    width: 44px;
+  }
+}
+.replayText {
+  display: none;
+}
+@media (min-width: 768px) {
+  .replayText {
+    display: inline;
+  }
 }
 .dot::before {
   content: "";

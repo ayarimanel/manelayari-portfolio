@@ -120,8 +120,12 @@ export function DesignBook() {
       <div className={styles.stage} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div key={`${page}-${take}`} className={`${styles.sheet} ${tint} ${turn}`}>
           <p className="visually-hidden">{text}</p>
-          <Scene />
+          <div className={styles.scene}>
+            <Scene />
+          </div>
+          <span className={styles.spine} aria-hidden="true" />
         </div>
+        <span className={styles.ribbon} aria-hidden="true" />
       </div>
 
       <p className="visually-hidden" aria-live="polite">
@@ -169,7 +173,7 @@ export function DesignBook() {
             setTake((t) => t + 1);
           }}
         >
-          ↻ Replay
+          ↻<span className={styles.replayText}> Replay</span>
         </button>
       </div>
     </div>

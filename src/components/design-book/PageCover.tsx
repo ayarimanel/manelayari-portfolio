@@ -1,13 +1,12 @@
 import Image from "next/image";
 import thinking from "@media/about/manel-thinking.png";
-import { RansomTitle, Sparkle, Heart, Tape } from "./Decor";
+import { RansomTitle, Sparkle, Heart } from "./Decor";
 import styles from "./DesignBook.module.css";
 
 export function PageCover() {
   return (
     <>
       <div className={`${styles.abs} ${styles.coverInside}`} aria-hidden="true">
-        <Tape kind="hearts" x={6} y={6} r={-8} d={1.4} />
         <RansomTitle text="The Design Book" big className={styles.abs} style={{ left: "8cqw", top: "18cqw", maxWidth: "62cqw" }} delay={1.4} />
         <p
           className={`${styles.abs} ${styles.hand} ${styles.write}`}
@@ -17,7 +16,6 @@ export function PageCover() {
         </p>
         <Heart x={56} y={8} r={-12} d={1.8} size={5} />
         <Sparkle x={70} y={30} d={1.9} size={4} color="#FFE45C" />
-        <Sparkle x={6} y={66} d={2.1} size={3} />
         <div className={`${styles.abs} ${styles.peek} ${styles.sticker}`}>
           <Image src={thinking} alt="" sizes="(min-width: 900px) 280px, 32vw" className={styles.img} />
         </div>
