@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { openTo, site, summary, tools } from "@/content/site";
 import { projects } from "@/content/projects";
-import { otherWork } from "@/content/otherWork";
 import { Sticker } from "@/components/Sticker";
 import { Doodle } from "@/components/Doodle";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -114,45 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Other work: smaller projects without a case study */}
-      {otherWork.length > 0 && (
-        <section className={`container ${styles.other}`} aria-labelledby="other-heading">
-          <h2 id="other-heading" className="h2">
-            Other work
-          </h2>
-          <ul className={styles.otherList}>
-            {otherWork.map((w) => (
-              <li key={w.title}>
-                <article className={styles.otherCard} aria-labelledby={`other-${w.title}`}>
-                  <p className={styles.otherMeta}>
-                    {w.context} · {w.date}
-                  </p>
-                  <h3 id={`other-${w.title}`} className="h3">
-                    {w.title}
-                  </h3>
-                  <p className={styles.otherRole}>{w.role}</p>
-                  <ul className={styles.otherPoints}>
-                    {w.points.map((pt) => (
-                      <li key={pt}>{pt}</li>
-                    ))}
-                  </ul>
-                  <ul className={styles.otherTags} aria-label="Tools">
-                    {w.tags.map((t, i) => (
-                      <li key={t}>
-                        <Sticker variant="cream" rotate={[-2, 2, -1][i % 3]} size="sm">
-                          {t}
-                        </Sticker>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* 4. What I do */}
+      {/* 3. What I do */}
       <section className={`container ${styles.skillsSection}`} aria-labelledby="skills-heading">
         <h2 id="skills-heading" className="h2">
           What I do
@@ -169,7 +130,7 @@ export default function Home() {
         <Marquee items={tools} label="Tools I use" />
       </section>
 
-      {/* 5. About teaser */}
+      {/* 4. About teaser */}
       <section className={`container ${styles.about}`} aria-labelledby="about-heading">
         <Reveal className={styles.aboutInner}>
           <h2 id="about-heading" className="h2">
@@ -185,7 +146,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* 6. Contact */}
+      {/* 5. Contact */}
       <ContactBlock />
     </>
   );
