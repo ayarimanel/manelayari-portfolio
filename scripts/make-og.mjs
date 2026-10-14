@@ -46,7 +46,7 @@ const pages = {
   home: async () => `
     <div class="wrap"><div class="text">
       <h1 style="font-size:120px;color:#F2542D">Hi, I'm Manel.</h1>
-      <p class="line">UX/UI designer. I design friendly apps and websites, then build them.</p>
+      <p class="line">UX/UI Designer &amp; Full-Stack Developer. I design friendly apps and websites, then build them.</p>
       <span class="sticker" style="background:#1F1B16;color:#FFF1E2;transform:rotate(-3deg)">Figma</span>
       <span class="sticker" style="background:#2F6BFF;color:#fff;transform:rotate(2deg)">React Native</span>
     </div>${phone(await dataUri(media("glutenia/app/home.png"), 460))}</div>`,
@@ -54,7 +54,7 @@ const pages = {
     <div class="wrap"><div class="text">
       <p class="kicker">About</p>
       <h1 style="font-size:104px">Manel Ayari</h1>
-      <p class="line">UX/UI designer and Computer Science graduate, based in Bardo, Tunis.</p>
+      <p class="line">UX/UI Designer &amp; Full-Stack Developer and Computer Science graduate, based in Bardo, Tunis.</p>
       <span class="sticker" style="background:#F2542D">Open to work</span>
     </div>${phone(await dataUri(media("glutenia/app/badges.png"), 460))}</div>`,
   glutenia: async () => `

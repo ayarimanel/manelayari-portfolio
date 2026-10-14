@@ -46,14 +46,18 @@ export const glutenia: Project = {
     captions: "/media/glutenia/video/promo-landscape.vtt",
   },
   facts: [
-    { label: "Role", value: "UX/UI design and full-stack development (solo)" },
+    { label: "Role", value: "UX/UI Designer & Full-Stack Developer (solo)" },
     {
       label: "Context",
       value:
         "Final-year project, BSc Computer Science (GLSI), Faculté des Sciences de Tunis — hosted by RedStart Tunisie",
     },
     { label: "Timeline", value: "Mar–Sep 2026 · 3 Scrum sprints" },
-    { label: "Tools", value: "Figma, React Native, Expo, Node.js, MongoDB, Gemini, Groq, Remotion" },
+    {
+      label: "Stack",
+      value:
+        "Figma · React Native + Expo (TypeScript) · Node.js, Express and MongoDB REST API · JWT role-based access · AI label analysis with Gemini and Groq · Remotion",
+    },
   ],
   sections: [
     {

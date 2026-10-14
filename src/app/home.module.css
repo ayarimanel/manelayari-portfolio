@@ -22,6 +22,16 @@
   max-width: 34ch;
   animation: rise var(--dur-slow) var(--ease) 120ms both;
 }
+.heroIntro {
+  margin-top: var(--s-4);
+  max-width: 52ch;
+  color: var(--ink-soft);
+  animation: rise var(--dur-slow) var(--ease) 180ms both;
+}
+.heroCv {
+  margin-top: var(--s-5);
+  font-weight: 600;
+}
 .heroStickers {
   list-style: none;
   padding: 0;
@@ -137,6 +147,56 @@
   display: grid;
   gap: var(--s-7);
   margin-top: var(--s-6);
+}
+
+/* ---------- Other work ---------- */
+.other {
+  padding-block: calc(var(--section-gap) / 2);
+}
+.otherList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+@media (min-width: 768px) {
+  .otherList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.otherCard {
+  height: 100%;
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-card);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.otherMeta {
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.otherRole {
+  font-weight: 600;
+  color: var(--tomato-ink);
+}
+.otherPoints {
+  display: grid;
+  gap: var(--s-2);
+  padding-left: 1.1em;
+  margin-block: var(--s-2);
+}
+.otherTags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-3);
+  margin-top: var(--s-2);
 }
 
 /* ---------- What I do ---------- */

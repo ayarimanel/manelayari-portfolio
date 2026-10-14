@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { site } from "@/content/site";
-import { Sticker } from "@/components/Sticker";
+import { openTo, site, skillGroups } from "@/content/site";
 import { Doodle } from "@/components/Doodle";
 import { ContactBlock } from "@/components/ContactBlock";
 import styles from "./about.module.css";
 
 const description =
-  "About Manel Ayari: UX/UI designer and Computer Science graduate from the Faculté des Sciences de Tunis, based in Bardo, Tunis.";
+  "About Manel Ayari: UX/UI Designer & Full-Stack Developer and Computer Science graduate from the Faculté des Sciences de Tunis, based in Bardo, Tunis.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,9 +19,6 @@ export const metadata: Metadata = {
     images: [{ url: "/og/about.png", width: 1200, height: 630, alt: `About ${site.name}` }],
   },
 };
-
-const aboutTools = ["Figma", "Photoshop", "Illustrator", "React Native", "Expo", "Node.js", "MongoDB", "Remotion"];
-const rotations = [-2, 1, -1, 3, -3, 2, 0, -2];
 
 export default function About() {
   return (
@@ -52,11 +48,21 @@ export default function About() {
             About me
           </h1>
           <p className="lead">
-            I&rsquo;m Manel, a UX/UI designer who likes turning confusing everyday tasks into friendly, clear
-            interfaces. For my final-year project I designed and built Glutenia, an app that helps people living
-            gluten-free check products and find safe places. I also designed the website of L&rsquo;Africaine de Prod
-            Artistique, a children&rsquo;s book publisher.
+            I&rsquo;m Manel, a Computer Science graduate (Software Engineering &amp; Information Systems) working as a
+            UX/UI designer and full-stack developer. I turn stressful everyday tasks into clear, friendly interfaces.
           </p>
+          <p>
+            I map users and flows, design high-fidelity screens and interactive prototypes in Figma, then build them
+            with React Native and Next.js on a Node.js, Express and MongoDB back end, in Scrum teams and on client
+            projects. {openTo}
+          </p>
+          {site.cvUrl && (
+            <p className={styles.cv}>
+              <a className="link link-ink" href={site.cvUrl} download>
+                Download CV <span className="visually-hidden">(PDF)</span>
+              </a>
+            </p>
+          )}
         </div>
       </section>
 
@@ -65,39 +71,37 @@ export default function About() {
           <div>
             <dt className="h3">Education</dt>
             <dd>
-              BSc in Computer Science (GLSI — software engineering and information systems), Faculté des Sciences de
-              Tunis, 2026.
+              Licence en Informatique — GLSI (Software Engineering &amp; Information Systems), Faculté des Sciences de
+              Tunis, Université de Tunis El Manar, 2026. <em>Mention Très Bien</em>.
             </dd>
           </div>
           <div>
             <dt className="h3">Experience</dt>
             <dd>
-              Optima Junior Entreprise — marketing team: community manager for the X account and visuals in Photoshop
-              and Illustrator; project team: UX/UI design for client work.
+              RedStart Tunisie — UX/UI Designer &amp; Full-Stack Developer, final-year project (solo), 2026.
+              <br />
+              Optima Junior Entreprise — project team: UX/UI design for client work; marketing team: web design, the X
+              account and visuals in Photoshop and Illustrator.
             </dd>
-          </div>
-          <div>
-            <dt className="h3">Tools</dt>
-            <dd>
-              <ul className={styles.tools}>
-                {aboutTools.map((t, i) => (
-                  <li key={t}>
-                    <Sticker variant={i % 4 === 0 ? "ink" : i % 4 === 2 ? "blue" : "cream"} rotate={rotations[i]}>
-                      {t}
-                    </Sticker>
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-          <div>
-            <dt className="h3">Languages</dt>
-            <dd>Arabic (native), French (fluent), English (advanced, C1).</dd>
           </div>
           <div>
             <dt className="h3">Based in</dt>
             <dd>{site.location}.</dd>
           </div>
+        </dl>
+      </section>
+
+      <section className={`container ${styles.details}`} aria-labelledby="skills-title">
+        <h2 id="skills-title" className="h2">
+          Skills
+        </h2>
+        <dl className={`${styles.list} ${styles.skills}`}>
+          {skillGroups.map((g) => (
+            <div key={g.title}>
+              <dt className="h3">{g.title}</dt>
+              <dd>{g.items.join(", ")}.</dd>
+            </div>
+          ))}
         </dl>
       </section>
 

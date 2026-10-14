@@ -18,13 +18,13 @@ export type Site = {
 
 export const site: Site = {
   name: "Manel Ayari",
-  role: "UX/UI designer",
-  roleLine: "UX/UI designer. I design friendly apps and websites, then build them.",
+  role: "UX/UI Designer & Full-Stack Developer",
+  roleLine: "UX/UI Designer & Full-Stack Developer. I design friendly apps and websites, then build them.",
   email: "manelayari04@gmail.com",
   location: "Bardo, Tunis",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://manelayari.vercel.app",
   description:
-    "UX/UI designer based in Tunis. I design friendly apps and websites in Figma, then build them. Case studies: Glutenia and L'Africaine de Prod Artistique.",
+    "UX/UI Designer & Full-Stack Developer based in Tunis. I design friendly apps and websites in Figma, then build them with React Native, Next.js and Node.js. Case studies: Glutenia, L'Africaine de Prod Artistique and Value.",
   linkedin: undefined,
   cvUrl: "/manel-ayari-cv.pdf",
   photo: undefined,
@@ -36,8 +36,62 @@ export const tools = [
   "Illustrator",
   "React Native",
   "Expo",
+  "Next.js",
   "Node.js",
   "Express",
   "MongoDB",
   "Remotion",
+];
+
+/** Search keywords, from the CV. */
+export const keywords = [
+  "UX/UI designer",
+  "full-stack developer",
+  "product designer",
+  "Figma",
+  "prototyping",
+  "React Native",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "MongoDB",
+];
+
+/** Career summary from the CV, used on the home hero and the About page. */
+export const summary =
+  "Computer Science graduate. I map users and flows, design high-fidelity screens and interactive prototypes in Figma, then build them with React Native and Next.js on a Node.js, Express and MongoDB back end.";
+
+export const openTo = "Open to UX/UI, Product Designer and Full-Stack Developer roles.";
+
+/** Skill groups, copied from the CV. */
+export const skillGroups: { title: string; items: string[] }[] = [
+  {
+    title: "UX & UI",
+    items: [
+      "User flows",
+      "information architecture",
+      "wireframes and mockups (maquettage)",
+      "high-fidelity UI",
+      "interactive prototyping",
+      "mobile and responsive web design",
+      "style guides",
+      "UI states",
+      "design hand-off",
+    ],
+  },
+  { title: "Design tools", items: ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Canva"] },
+  {
+    title: "Front-end",
+    items: ["React Native", "Expo", "React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS"],
+  },
+  {
+    title: "Back-end",
+    items: ["Node.js", "Express", "MongoDB", "REST APIs", "JWT authentication", "SQL", "AI APIs (Gemini, Groq)"],
+  },
+  {
+    title: "Tools & methods",
+    items: ["Git", "GitHub", "Postman", "Remotion", "Scrum / Agile", "teamwork, client and developer collaboration"],
+  },
+  { title: "Languages", items: ["Arabic (native)", "French (fluent)", "English (advanced, C1)"] },
 ];

@@ -19,15 +19,15 @@ export const value: Project = {
   slug: "value",
   title: "Value",
   theme: "value",
-  cardLabel: "Client project · Website redesign · Project lead",
+  cardLabel: "Client project · Website redesign · Live",
   heroLabel: { number: "03", text: "Client project · Website redesign" },
   summary:
-    "Redesign mockups for a Tunisian consulting, AI and data company. I led the mockup project and designed the homepage and careers page.",
+    "Redesign mockups for a Tunisian consulting, AI and data company. I led the mockups with the marketing team, designed the homepage and careers page, and presented them to the client.",
   lead: "Redesign mockups for Value, a Tunisian consulting, AI and data company. I led the team's mockup work and designed the homepage and the careers page myself.",
   metaDescription:
     "Case study: Manel Ayari led the redesign mockups for Value (value.com.tn) at Optima Junior Entreprise and designed its homepage and careers page.",
   readingTime: "3 min read",
-  cardStickers: ["Project lead", "UX/UI design", "Live site"],
+  cardStickers: ["UX/UI design", "Mockups", "Team lead"],
   cardVisual: {
     kind: "browserImage",
     image: homeTop,
@@ -45,7 +45,11 @@ export const value: Project = {
     caption: "Homepage, my mockup.",
   },
   facts: [
-    { label: "Role", value: "Project lead for the mockups; UX/UI design of the homepage and careers page" },
+    {
+      label: "Role",
+      value:
+        "Led the redesign mockups (maquettage) with the Optima marketing team; designed the homepage and careers page; presented the mockups to the client",
+    },
     { label: "Context", value: "Client project at Optima Junior Entreprise, with the marketing team" },
     { label: "Year", value: "2025" },
     {

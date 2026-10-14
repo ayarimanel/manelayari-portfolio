@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import portrait from "@media/about/manel-cartoon.png";
-import { site, tools } from "@/content/site";
+import { openTo, site, summary, tools } from "@/content/site";
 import { projects } from "@/content/projects";
+import { otherWork } from "@/content/otherWork";
 import { Sticker } from "@/components/Sticker";
 import { Doodle } from "@/components/Doodle";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -48,7 +49,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
-  jobTitle: "UX/UI Designer",
+  jobTitle: site.role,
   email: `mailto:${site.email}`,
   url: site.url,
   address: { "@type": "PostalAddress", addressLocality: "Tunis", addressCountry: "TN" },
@@ -66,6 +67,9 @@ export default function Home() {
             Hi, I&rsquo;m Manel.
           </h1>
           <p className={`lead ${styles.heroLine}`}>{site.roleLine}</p>
+          <p className={styles.heroIntro}>
+            {summary} {openTo}
+          </p>
           <ul className={styles.heroStickers} aria-label="Skills and status">
             {heroStickers.map((s, i) => (
               <li key={s.text} style={{ animationDelay: `${300 + i * 60}ms` }}>
@@ -75,6 +79,13 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          {site.cvUrl && (
+            <p className={styles.heroCv}>
+              <a className="link link-ink" href={site.cvUrl} download>
+                Download CV <span className="visually-hidden">(PDF)</span>
+              </a>
+            </p>
+          )}
         </div>
 
         <div className={styles.heroArt}>
@@ -115,7 +126,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. What I do */}
+      {/* 3. Other work: smaller projects without a case study */}
+      {otherWork.length > 0 && (
+        <section className={`container ${styles.other}`} aria-labelledby="other-heading">
+          <h2 id="other-heading" className="h2">
+            Other work
+          </h2>
+          <ul className={styles.otherList}>
+            {otherWork.map((w) => (
+              <li key={w.title}>
+                <article className={styles.otherCard} aria-labelledby={`other-${w.title}`}>
+                  <p className={styles.otherMeta}>
+                    {w.context} · {w.date}
+                  </p>
+                  <h3 id={`other-${w.title}`} className="h3">
+                    {w.title}
+                  </h3>
+                  <p className={styles.otherRole}>{w.role}</p>
+                  <ul className={styles.otherPoints}>
+                    {w.points.map((pt) => (
+                      <li key={pt}>{pt}</li>
+                    ))}
+                  </ul>
+                  <ul className={styles.otherTags} aria-label="Tools">
+                    {w.tags.map((t, i) => (
+                      <li key={t}>
+                        <Sticker variant="cream" rotate={[-2, 2, -1][i % 3]} size="sm">
+                          {t}
+                        </Sticker>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* 4. What I do */}
       <section className={`container ${styles.skillsSection}`} aria-labelledby="skills-heading">
         <h2 id="skills-heading" className="h2">
           What I do
@@ -132,7 +181,7 @@ export default function Home() {
         <Marquee items={tools} label="Tools I use" />
       </section>
 
-      {/* 4. About teaser */}
+      {/* 5. About teaser */}
       <section className={`container ${styles.about}`} aria-labelledby="about-heading">
         <Reveal className={styles.aboutInner}>
           <h2 id="about-heading" className="h2">
@@ -148,7 +197,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* 5. Contact */}
+      {/* 6. Contact */}
       <ContactBlock />
     </>
   );

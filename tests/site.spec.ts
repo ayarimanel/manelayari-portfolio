@@ -69,6 +69,17 @@ test.describe("links", () => {
     }
   });
 
+  for (const path of ["/", "/about"]) {
+    test(`${path} shows a Download CV link to the PDF`, async ({ page, request }) => {
+      await page.goto(path);
+      const link = page.getByRole("link", { name: /Download CV/ }).first();
+      await expect(link).toBeVisible();
+      const res = await request.get((await link.getAttribute("href"))!);
+      expect(res.status()).toBe(200);
+      expect(res.headers()["content-type"]).toContain("application/pdf");
+    });
+  }
+
   test("/#work anchor exists on the homepage", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#work")).toHaveCount(1);

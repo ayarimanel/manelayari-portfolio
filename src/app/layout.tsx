@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
-import { site } from "@/content/site";
+import { keywords, site } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SkipLink } from "@/components/SkipLink";
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}, ${site.role}`,
   },
   description: site.description,
+  keywords,
   authors: [{ name: site.name }],
   icons: {
     icon: [

@@ -100,10 +100,9 @@
 .list dd {
   margin: 0;
 }
-.tools {
-  list-style: none;
-  padding: 6px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-3);
+.skills {
+  margin-top: var(--s-6);
+}
+.cv {
+  font-weight: 600;
 }
