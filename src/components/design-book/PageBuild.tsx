@@ -1,5 +1,5 @@
 import Image from "next/image";
-import laptop from "@media/design-book/laptop-typing-pink.png";
+import laptop from "@media/design-book/laptop-typing-brown.png";
 import { Heart, RansomTitle, Sparkle } from "./Decor";
 import styles from "./DesignBook.module.css";
 

@@ -61,10 +61,11 @@ export default function Home() {
             <span className={styles.heroHi}>Hi, I&rsquo;m Manel</span> · {site.role} · Tunis
           </p>
           <h1 id="hero-heading" className={`display ${styles.heroTitle}`}>
-            I design apps, then <em>build them</em> myself.
+            I design <em>mockups &amp; prototypes</em>.
           </h1>
           <p className={styles.heroLine}>
-            From user flows and Figma prototypes to working React Native and Next.js apps. No hand-off needed.
+            And I can build them too. Designing is my favourite part: user flows, Figma screens and clickable
+            prototypes for websites and apps.
           </p>
           <div className={styles.heroCtas}>
             <a className={`btn ${styles.ctaPrimary}`} href="#work">

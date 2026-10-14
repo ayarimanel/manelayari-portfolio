@@ -1,7 +1,7 @@
 import Image from "next/image";
-import paper from "@media/design-book/grid-paper-tape.png";
+import paper from "@media/design-book/grid-paper-tape-brown.png";
 import stylus from "@media/design-book/hand-stylus.png";
-import pin from "@media/design-book/push-pin-pink.png";
+import pin from "@media/design-book/push-pin-brown.png";
 import { RansomTitle } from "./Decor";
 import styles from "./DesignBook.module.css";
 

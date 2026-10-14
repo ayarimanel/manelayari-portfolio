@@ -22,14 +22,14 @@ export function PageLaunch() {
         <div className={styles.laptop}>
           <div className={styles.lid} />
           <svg className={styles.base} viewBox="0 0 50 8" aria-hidden="true">
-            <ellipse cx="25" cy="7.6" rx="24" ry="0.5" fill="rgba(110, 20, 65, 0.22)" />
-            <path d="M3 0.6H47L50 6.2H0Z" fill="#F7B8D8" stroke="#2B211C" strokeWidth="0.35" strokeLinejoin="round" />
+            <ellipse cx="25" cy="7.6" rx="24" ry="0.5" fill="rgba(80, 45, 20, 0.22)" />
+            <path d="M3 0.6H47L50 6.2H0Z" fill="#dfbf9c" stroke="#2B211C" strokeWidth="0.35" strokeLinejoin="round" />
             <path d="M3.4 0.75H46.6" stroke="#FFF1E2" strokeWidth="0.25" strokeLinecap="round" />
             {KEYS.map((k, i) => (
-              <rect key={i} x={k.x} y={k.y} width={k.w} height={0.6} rx={0.18} fill="#FBD3E6" stroke="#C9679A" strokeWidth="0.1" />
+              <rect key={i} x={k.x} y={k.y} width={k.w} height={0.6} rx={0.18} fill="#f0dcc4" stroke="#946645" strokeWidth="0.1" />
             ))}
-            <rect x="20.5" y="3.6" width="9" height="2.1" rx="0.4" fill="#FBD3E6" stroke="#C9679A" strokeWidth="0.15" />
-            <path d="M0 6.2H50L49.2 7.1Q49 7.3 48.6 7.3H1.4Q1 7.3 0.8 7.1Z" fill="#E57FB1" stroke="#2B211C" strokeWidth="0.35" strokeLinejoin="round" />
+            <rect x="20.5" y="3.6" width="9" height="2.1" rx="0.4" fill="#f0dcc4" stroke="#946645" strokeWidth="0.15" />
+            <path d="M0 6.2H50L49.2 7.1Q49 7.3 48.6 7.3H1.4Q1 7.3 0.8 7.1Z" fill="#b4835a" stroke="#2B211C" strokeWidth="0.35" strokeLinejoin="round" />
           </svg>
           <div className={styles.browser}>
             <div className={styles.browserBar}>
