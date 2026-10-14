@@ -9,7 +9,7 @@ import styles from "./Header.module.css";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/about", label: "About" },
-  // The contact block shows the address with copy, email-app and Gmail options, so it
+  // The contact block shows the address with copy and Gmail options, so it
   // works for visitors without a default email app (a bare mailto: does nothing there).
   { href: "/#contact", label: "Email" },
 ];

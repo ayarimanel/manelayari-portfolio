@@ -18,7 +18,7 @@ export function ContactBlock() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open in Gmail <span className="visually-hidden">(opens in a new tab)</span>
+            Send an email <span className="visually-hidden">(opens Gmail in a new tab)</span>
           </a>
           {site.cvUrl && (
             <a className="btn" href={site.cvUrl} download>

@@ -5,11 +5,11 @@ import styles from "./CopyEmailButton.module.css";
 
 type Props = {
   email: string;
-  /** Extra actions shown after the mailto link, e.g. "Download CV". */
+  /** Extra actions shown after the address, e.g. "Send an email" and "Download CV". */
   children?: ReactNode;
 };
 
-/** Shows the email; clicking copies it and announces the result. A separate mailto link sits next to it. */
+/** Shows the email; clicking copies it and announces the result. */
 export function CopyEmailButton({ email, children }: Props) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<number | undefined>(undefined);
@@ -36,9 +36,6 @@ export function CopyEmailButton({ email, children }: Props) {
         </span>
         <span className="visually-hidden">— copy email address</span>
       </button>
-      <a className="btn" href={`mailto:${email}`}>
-        Send an email
-      </a>
       {children}
       <p className={styles.status} aria-live="polite" role="status">
         {status === "copied" && "Email copied"}
