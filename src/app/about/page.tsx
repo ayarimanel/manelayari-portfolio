@@ -92,7 +92,7 @@ export default function About() {
           </div>
           <div>
             <dt className="h3">Languages</dt>
-            <dd>French, English (fluent), Arabic.</dd>
+            <dd>Arabic (native), French (fluent), English (advanced, C1).</dd>
           </div>
           <div>
             <dt className="h3">Based in</dt>
