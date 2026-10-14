@@ -138,14 +138,6 @@
   transform: translate(var(--ox), var(--oy)) scale(0.3);
   transition: opacity var(--dur-fast) linear;
 }
-.desktopOnly {
-  display: none;
-}
-@media (min-width: 768px) {
-  .desktopOnly {
-    display: block;
-  }
-}
 [data-phase="tools"] .tool {
   animation: fly 300ms ease-out calc(var(--i) * 70ms) both;
 }

@@ -17,8 +17,8 @@ type Phase = "thinking" | "shaking" | "idea" | "tools" | "idle";
 
 const SHAKE_AT = 650;
 const SWAP_AT = 1100; // the shake runs 450 ms
-const TOOLS_AT = 1120; // 70 ms stagger, 300 ms flight: the 9th tool lands at 1980 ms
-const IDLE_AT = 2000;
+const TOOLS_AT = 1120; // 70 ms stagger, 300 ms flight: the 5th tool lands at 1700 ms
+const IDLE_AT = 1720;
 
 /* Colours sampled from the cartoon, plus the site's cream and Glutenia green. */
 const C = {
@@ -106,47 +106,6 @@ const art: Record<string, ReactNode> = {
       <path d="M21.5 17V30" {...shine} />
     </>
   ),
-  ruler: (
-    <>
-      <rect x="15" y="7" width="38" height="36" rx="3" fill={C.cream} {...line} />
-      <path d="M24.5 8.5V42M34 8.5V42M43.5 8.5V42M16.5 16H51.5M16.5 25H51.5M16.5 34H51.5" stroke={C.creamShade} strokeWidth={1.4} />
-      <rect x="15" y="7" width="38" height="36" rx="3" fill="none" {...line} />
-      <rect x="7" y="39" width="50" height="15" rx="2.5" fill={C.green} {...line} />
-      <path d="M8.3 48.5H55.7V52.7H8.3Z" fill={C.greenShade} {...flat} />
-      <rect x="7" y="39" width="50" height="15" rx="2.5" fill="none" {...line} />
-      <path d="M14 39.5V45M20 39.5V43M26 39.5V45M32 39.5V43M38 39.5V45M44 39.5V43M50 39.5V45" {...line} strokeWidth={1.8} />
-    </>
-  ),
-  note: (
-    <>
-      <path d="M9 12H55V44L45 54H9Z" fill={C.peach} {...line} />
-      <path d="M55 44H45V54Z" fill={C.peachShade} {...line} strokeWidth={2} />
-      <rect x="24" y="7" width="16" height="8" rx="1.5" fill={C.cream} {...line} strokeWidth={1.8} />
-      <text
-        x="14"
-        y="29"
-        fill={C.line}
-        stroke="none"
-        fontSize="10.5"
-        fontWeight="700"
-        style={{ fontFamily: "var(--font-body)" }}
-      >
-        user
-      </text>
-      <text
-        x="14"
-        y="41"
-        fill={C.line}
-        stroke="none"
-        fontSize="10.5"
-        fontWeight="700"
-        style={{ fontFamily: "var(--font-body)" }}
-      >
-        flow
-      </text>
-      <path d="M38 37.5H44M41.5 35L44 37.5L41.5 40" {...line} strokeWidth={1.6} fill="none" />
-    </>
-  ),
   phone: (
     <>
       <rect x="17" y="5" width="30" height="54" rx="7" fill={C.tee} {...line} />
@@ -162,26 +121,6 @@ const art: Record<string, ReactNode> = {
       <Sparkle x={54} y={14} />
     </>
   ),
-  layers: (
-    <>
-      {[
-        [26, C.green, C.greenShade],
-        [18, C.blue, C.blueShade],
-        [10, C.tee, C.teeShade],
-      ].map(([y, fill, shade]) => {
-        const t = Number(y);
-        const rhombus = `M32 ${t}L55 ${t + 12}L32 ${t + 24}L9 ${t + 12}Z`;
-        return (
-          <g key={t}>
-            <path d={rhombus} fill={String(fill)} {...line} />
-            <path d={`M32 ${t + 12}H54L32 ${t + 23.3}Z`} fill={String(shade)} {...flat} />
-            <path d={rhombus} fill="none" {...line} />
-          </g>
-        );
-      })}
-      <path d="M16 21.5L25 17" {...shine} />
-    </>
-  ),
   code: (
     <>
       <rect x="5" y="13" width="54" height="38" rx="10" fill={C.green} {...line} />
@@ -189,16 +128,6 @@ const art: Record<string, ReactNode> = {
       <rect x="5" y="13" width="54" height="38" rx="10" fill="none" {...line} />
       <path d="M22 24L14 32L22 40M35.5 22L28.5 42M42 24L50 32L42 40" fill="none" stroke={C.line} strokeWidth={7} />
       <path d="M22 24L14 32L22 40M35.5 22L28.5 42M42 24L50 32L42 40" fill="none" stroke={C.white} strokeWidth={3} />
-    </>
-  ),
-  database: (
-    <>
-      <path d="M13 15V48C13 52.5 21.5 56 32 56S51 52.5 51 48V15" fill={C.blue} {...line} />
-      <path d="M44 20.5V54.5C48.5 53 51 50.7 51 48V15C51 17.3 48.5 19.2 44 20.5Z" fill={C.blueShade} {...flat} />
-      <path d="M13 15V48C13 52.5 21.5 56 32 56S51 52.5 51 48V15" fill="none" {...line} />
-      <path d="M13 26.5C13 31 21.5 34.5 32 34.5S51 31 51 26.5M13 37.5C13 42 21.5 45.5 32 45.5S51 42 51 37.5" fill="none" {...line} />
-      <ellipse cx="32" cy="15" rx="19" ry="7.5" fill={C.blueTint} {...line} />
-      <path d="M18 23V30" {...shine} />
     </>
   ),
 };
@@ -213,20 +142,14 @@ type Tool = {
   /** Float duration and delay, seconds. */
   fd: number;
   fdl: number;
-  desktopOnly?: boolean;
 };
 
-// The first five also show on mobile, so they get the first stagger slots.
 const tools: Tool[] = [
   { id: "pen", x: 6, y: 15, r: -8, fd: 3.4, fdl: 0 },
   { id: "palette", x: 95, y: 38, r: 6, fd: 4.2, fdl: 0.6 },
   { id: "cursor", x: 5, y: 50, r: -4, fd: 3.8, fdl: 1.1 },
   { id: "phone", x: 95, y: 63, r: 5, fd: 4.8, fdl: 0.3 },
   { id: "code", x: 7, y: 84, r: 7, fd: 3.1, fdl: 0.9 },
-  { id: "ruler", x: 94, y: 89, r: -5, fd: 4.5, fdl: 1.4, desktopOnly: true },
-  { id: "note", x: 23, y: -1, r: -7, fd: 3.6, fdl: 0.2, desktopOnly: true },
-  { id: "layers", x: 78, y: -3, r: 4, fd: 4, fdl: 0.8, desktopOnly: true },
-  { id: "database", x: 50, y: 104, r: 3, fd: 4.9, fdl: 1.2, desktopOnly: true },
 ];
 
 export function HeroAvatar() {
@@ -314,7 +237,7 @@ export function HeroAvatar() {
         {tools.map((t, i) => (
           <li
             key={t.id}
-            className={`${styles.tool} ${t.desktopOnly ? styles.desktopOnly : ""}`}
+            className={styles.tool}
             style={
               {
                 "--x": t.x,
