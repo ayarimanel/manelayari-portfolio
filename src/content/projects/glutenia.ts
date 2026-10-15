@@ -103,11 +103,12 @@ export const glutenia: Project = {
         {
           kind: "phones",
           items: [
-            { video: v("01-barcode-scan"), label: "Scanning a product barcode in Glutenia", caption: "Barcode scan" },
+            { video: v("01-barcode-scan"), label: "Scanning a product barcode in Glutenia", caption: "Barcode scan", autoplay: true },
             {
               video: v("02-ai-label-scan"),
               label: "Photographing an ingredient label and getting the AI verdict",
               caption: "AI label scan",
+              autoplay: true,
             },
           ],
         },
@@ -193,14 +194,6 @@ export const glutenia: Project = {
           ],
         },
       ],
-    },
-    {
-      id: "under-the-hood",
-      heading: "Under the hood",
-      body: [
-        "A React Native and Expo app on a Node.js, Express and MongoDB API, with label reading by Gemini and Groq. I also made the promo film in code with Remotion.",
-      ],
-      blocks: [{ kind: "custom", name: "architecture" }],
     },
   ],
   credits: ["Designed and built by Manel Ayari.", "Character concept, name and story by Manel."],

@@ -213,34 +213,57 @@
   color: var(--ink);
 }
 
-/* ---------- Navigation map ---------- */
+/* ---------- Navigation map: a notebook sketch ---------- */
 .navFigure {
   padding: var(--s-5);
   background: var(--white);
-  border: var(--border);
-  border-radius: var(--r-card);
+  border: 2px solid var(--ink);
+  /* Uneven radii give the frame a hand-drawn wobble. */
+  border-radius: 18px 6px 22px 8px / 8px 20px 6px 18px;
 }
 .navHeader {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--s-2);
-  font-size: var(--fs-small);
-  color: var(--ink-soft);
+  gap: var(--s-2) var(--s-3);
   padding-bottom: var(--s-4);
-  margin-bottom: var(--s-4);
-  border-bottom: 1px dashed var(--ink-soft);
+  margin-bottom: var(--s-5);
+  border-bottom: 2px dashed rgba(43, 33, 28, 0.25);
+}
+.navHand {
+  font-family: var(--font-hand);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--glutenia-ink);
+}
+/* Small hand-drawn note. */
+.navChip,
+.navTab {
+  border: 2px solid var(--ink);
+  border-radius: 255px 12px 225px 12px / 12px 225px 12px 255px;
+  background: var(--cream);
+  font-weight: 600;
+  font-size: var(--fs-small);
+}
+.navChip {
+  padding: 4px 14px;
+  rotate: -1.5deg;
+}
+.navChipGreen {
+  background: var(--glutenia-panel);
+  rotate: 1.5deg;
 }
 .navTabs {
   list-style: none;
   padding: 0;
   display: grid;
-  gap: var(--s-4);
+  gap: var(--s-5);
 }
 @media (min-width: 480px) {
   .navTabs {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--s-2);
+    gap: var(--s-3);
   }
 }
 .navTabs > li {
@@ -253,32 +276,52 @@
   place-items: center;
   min-height: 44px;
   padding: 6px 4px;
-  border: var(--border);
-  border-radius: var(--r-pill);
-  background: var(--cream);
-  font-weight: 600;
-  font-size: var(--fs-small);
   text-align: center;
 }
+.navTabs > li:nth-child(odd) .navTab {
+  rotate: -1.2deg;
+}
+.navTabs > li:nth-child(even) .navTab {
+  rotate: 1deg;
+}
 .navPrimary .navTab {
+  min-height: 52px;
   background: var(--glutenia-green);
-  min-height: 56px;
-  box-shadow: var(--sticker-shadow);
+  box-shadow: 3px 4px 0 rgba(43, 33, 28, 0.18);
 }
 @media (min-width: 480px) {
   .navPrimary .navTab {
-    transform: translateY(-10px);
+    translate: 0 -8px;
   }
 }
+/* Screens behind each tab hang from a dashed, hand-drawn line. */
 .navTabs ul {
   list-style: none;
-  padding: 0 0 0 10px;
-  border-left: 2px solid var(--project);
+  margin-left: 10px;
+  padding: 2px 0 2px 12px;
+  border-left: 2px dashed var(--glutenia-green);
   display: grid;
   gap: 6px;
   font-size: 0.8125rem;
   line-height: 1.35;
   color: var(--ink);
+}
+.navTabs ul li {
+  position: relative;
+}
+.navTabs ul li::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0.65em;
+  width: 8px;
+  border-top: 2px solid var(--glutenia-green);
+}
+.navFigure .caption {
+  margin-top: var(--s-5);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
 }
 
 /* ---------- Scan flow ---------- */
@@ -429,27 +472,47 @@
   }
 }
 
-/* ---------- Result states ---------- */
+/* ---------- Result states: four small sticky notes ---------- */
 .states {
   list-style: none;
   padding: 0;
   display: grid;
-  gap: var(--s-3);
+  gap: var(--s-4) var(--s-3);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-@media (max-width: 379px) {
+@media (min-width: 900px) {
   .states {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 .state {
   --c: var(--glutenia-green);
   --c-tint: #eef7e3;
   --c-on: var(--ink);
-  padding: var(--s-4);
+  position: relative;
+  padding: 14px 12px 12px;
   background: var(--c-tint);
-  border: 2px solid var(--c);
-  border-radius: var(--r-card);
+  border: 2px solid var(--ink);
+  /* Uneven radii give the note a hand-drawn edge. */
+  border-radius: 255px 10px 225px 10px / 10px 225px 10px 255px;
+  box-shadow: 2px 3px 0 rgba(43, 33, 28, 0.15);
+  rotate: -1.2deg;
+}
+.state:nth-child(even) {
+  rotate: 1deg;
+}
+/* A strip of tape in the state's colour. */
+.state::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 44px;
+  height: 14px;
+  translate: -50% 0;
+  rotate: 3deg;
+  background: var(--c);
+  opacity: 0.5;
 }
 .state[data-state="gluten"] {
   --c: #c8243a;
@@ -467,32 +530,39 @@
   --c-on: var(--white);
 }
 .stateIcon {
+  float: left;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  margin-bottom: var(--s-2);
+  width: 24px;
+  height: 24px;
+  margin: 1px 8px 0 0;
   border-radius: 50%;
   background: var(--c);
   color: var(--c-on);
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.8125rem;
 }
 .state[data-state="unreadable"] .stateIcon {
   background: #5f646c;
 }
 .stateName {
   font-weight: 700;
+  font-size: var(--fs-small);
+  line-height: 1.3;
 }
 .stateTitle {
-  font-size: var(--fs-small);
-  font-weight: 600;
+  clear: left;
+  margin-top: 4px;
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--ink-soft);
 }
 .stateText {
-  margin-top: var(--s-2);
-  font-size: var(--fs-small);
-  line-height: 1.45;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  line-height: 1.4;
 }
 
 /* ---------- Glutitan ---------- */

@@ -12,7 +12,7 @@ export type Theme = "glutenia" | "lafricaine" | "value";
 
 /** One screen shown in a phone: a still image or a looping clip. */
 export type Screen =
-  { image: StaticImageData; alt: string; caption?: string } | { video: VideoSource; label: string; caption?: string };
+  { image: StaticImageData; alt: string; caption?: string } | { video: VideoSource; label: string; caption?: string; autoplay?: boolean };
 
 /** Content blocks a case-study section can contain. */
 export type Block =

@@ -183,10 +183,9 @@ export function NavMap() {
   return (
     <figure className={styles.navFigure}>
       <div className={styles.navHeader}>
-        <span>Header on every screen:</span> <Sticker size="sm">Notifications</Sticker>{" "}
-        <Sticker size="sm" variant="project">
-          Cart
-        </Sticker>
+        <span className={styles.navHand}>Header on every screen:</span>
+        <span className={styles.navChip}>Notifications</span>
+        <span className={`${styles.navChip} ${styles.navChipGreen}`}>Cart</span>
       </div>
       <ol className={styles.navTabs}>
         {tabs.map((t) => (

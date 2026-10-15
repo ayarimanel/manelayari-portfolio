@@ -35,7 +35,11 @@ export const lafricaine: Project = {
   hero: {
     kind: "browser",
     domain: DOMAIN,
-    screen: { video: v("01-home-scroll"), label: "Scrolling through the L'Africaine homepage design in Figma" },
+    screen: {
+      video: v("01-home-scroll"),
+      label: "Scrolling through the L'Africaine homepage design in Figma",
+      autoplay: true,
+    },
     caption: "Homepage, Figma mockup. Book covers and logos are placeholders throughout.",
   },
   facts: [
