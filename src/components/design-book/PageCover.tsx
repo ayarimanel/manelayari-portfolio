@@ -12,7 +12,7 @@ export function PageCover() {
           className={`${styles.abs} ${styles.hand} ${styles.write}`}
           style={{ left: "9cqw", top: "50cqw", fontSize: "5.4cqw", ["--d" as string]: "2s" }}
         >
-          how I work, in 5 steps →
+          how I work + about me →
         </p>
         <Heart x={56} y={8} r={-12} d={1.8} size={5} />
         <Sparkle x={70} y={30} d={1.9} size={4} color="#FFE45C" />
