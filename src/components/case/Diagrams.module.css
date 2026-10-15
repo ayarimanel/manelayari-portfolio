@@ -917,81 +917,90 @@
   transform: rotate(1deg);
 }
 
-/* ---------- Sprints: three circles orbiting each other ---------- */
-.orbitWrap {
-  --d: clamp(112px, 30vw, 150px); /* circle size */
-  --R: calc(var(--d) * 0.62); /* distance from the centre of the loop */
-  display: grid;
-  place-items: center;
-}
-.orbit {
-  position: relative;
-  width: calc(var(--R) * 2 + var(--d));
-  aspect-ratio: 1;
-  margin: 0;
-  padding: 0;
+/* ---------- Sprints: sketch papers joined by drawn arrows ---------- */
+.sprints {
   list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.planet {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: var(--d);
-  height: var(--d);
-  margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
-  transform: rotate(var(--a)) translate(var(--R)) rotate(calc(var(--a) * -1));
+.sprintStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.planetBody {
+.sprintArrow {
+  width: 40px;
+  height: 22px;
+  margin: 16px 0 12px;
+  rotate: 90deg;
+}
+.sprintArrow path {
+  fill: none;
+  stroke: var(--glutenia-ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sprintPaper {
+  position: relative;
   display: grid;
-  place-content: center;
   justify-items: center;
   gap: 2px;
-  width: 100%;
-  height: 100%;
-  padding: 14%;
-  border: var(--border);
-  border-radius: 50%;
+  width: 168px;
+  padding: 18px 14px 14px;
+  border: 2px solid var(--ink);
+  /* Uneven radii give the paper a hand-drawn edge. */
+  border-radius: 255px 12px 225px 12px / 12px 225px 12px 255px;
+  background: var(--white);
   text-align: center;
-  background: color-mix(in srgb, var(--glutenia-green) var(--tint), var(--white));
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: 3px 4px 0 rgba(43, 33, 28, 0.18);
 }
-.planetBody[data-step="1"] {
-  --tint: 25%;
+.sprintPaper[data-step="1"] {
+  background: var(--glutenia-panel);
+  rotate: -2deg;
 }
-.planetBody[data-step="2"] {
-  --tint: 50%;
+.sprintPaper[data-step="2"] {
+  rotate: 1.5deg;
 }
-.planetBody[data-step="3"] {
-  --tint: 80%;
+.sprintPaper[data-step="3"] {
+  background: var(--glutenia-panel);
+  rotate: -1deg;
 }
-@media (prefers-reduced-motion: no-preference) {
-  /* The loop turns one way, each circle the other, so the words never tilt. */
-  .orbit {
-    animation: orbit-spin 30s linear infinite;
-  }
-  .planetBody {
-    animation: orbit-spin 30s linear infinite reverse;
-  }
-  .orbit:hover,
-  .orbit:hover .planetBody {
-    animation-play-state: paused;
-  }
-}
-@keyframes orbit-spin {
-  to {
-    rotate: 360deg;
-  }
+/* A strip of tape holding each paper down. */
+.sprintPaper::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 54px;
+  height: 16px;
+  translate: -50% 0;
+  rotate: -4deg;
+  background: rgba(124, 192, 75, 0.45);
+  border: 1px solid rgba(43, 33, 28, 0.15);
 }
 .sprintNum {
-  font-size: 0.6875rem;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  line-height: 1;
   color: var(--glutenia-ink);
 }
 .sprintName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(0.8125rem, 0.7rem + 0.4vw, 1rem);
-  line-height: 1.15;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+@media (min-width: 640px) {
+  .sprints,
+  .sprintStep {
+    flex-direction: row;
+  }
+  .sprintArrow {
+    margin: 0 10px;
+    rotate: 0deg;
+  }
 }

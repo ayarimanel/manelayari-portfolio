@@ -369,24 +369,24 @@ export function XpTable() {
 /* ---------- Sprints ---------- */
 const sprints = [{ name: "Accounts and roles" }, { name: "Scan and shop" }, { name: "Community and admin" }];
 
-/**
- * Three small circles travelling slowly around each other. The loop turns;
- * each circle turns back the other way, so its words stay upright and still.
- */
+/** The three sprints as small sketch papers, joined by hand-drawn arrows. */
 export function Sprints() {
   return (
-    <div className={styles.orbitWrap}>
-      <ol className={styles.orbit} aria-label="The three sprints">
-        {sprints.map((s, i) => (
-          <li key={s.name} className={styles.planet} style={{ ["--a" as string]: `${i * 120 - 90}deg` }}>
-            <div className={styles.planetBody} data-step={i + 1}>
-              <span className={styles.sprintNum}>Sprint {i + 1}</span>
-              <span className={styles.sprintName}>{s.name}</span>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol className={styles.sprints} aria-label="The three sprints">
+      {sprints.map((s, i) => (
+        <li key={s.name} className={styles.sprintStep}>
+          {i > 0 && (
+            <svg className={styles.sprintArrow} viewBox="0 0 48 24" aria-hidden="true">
+              <path d="M3 13c9-6 22 4 38-2M35 5l7 6-8 5" />
+            </svg>
+          )}
+          <div className={styles.sprintPaper} data-step={i + 1}>
+            <span className={styles.sprintNum}>Sprint {i + 1}</span>
+            <span className={styles.sprintName}>{s.name}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 
