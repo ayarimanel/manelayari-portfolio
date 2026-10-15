@@ -2,17 +2,11 @@ import type { Project } from "../types";
 import { video } from "../media";
 
 import appHome from "@media/glutenia/app/home.png";
-import appCatalog from "@media/glutenia/app/catalog.png";
 import appMap from "@media/glutenia/app/map-live.png";
 import appBadges from "@media/glutenia/app/badges.png";
 import appResultGluten from "@media/glutenia/app/ai-result-gluten.png";
-import appFlagged from "@media/glutenia/app/ai-flagged-ingredients.png";
 import figmaHome from "@media/glutenia/figma/home.png";
-import figmaProducts from "@media/glutenia/figma/products.png";
 import figmaMap from "@media/glutenia/figma/map.png";
-import sprint1 from "@media/glutenia/deck/23-sprint1-auth-screens.jpg";
-import sprint2 from "@media/glutenia/deck/27-sprint2-scan-shop-screens.jpg";
-import sprint3 from "@media/glutenia/deck/31-sprint3-community-admin-screens.jpg";
 import glutitanThumbsUp from "@media/glutenia/mascot/glutitan-thumbs-up.png";
 
 const v = (name: string) => video("glutenia", name, 720, 1456);
@@ -27,7 +21,7 @@ export const glutenia: Project = {
   lead: "A mobile app supporting a gluten-free lifestyle — designed and built from Figma to a working app.",
   metaDescription:
     "Case study: Glutenia, a mobile app for people living gluten-free — barcode and AI label scanning, a gluten-free shop, map and events. Designed in Figma and built in React Native by Manel Ayari.",
-  readingTime: "5 min read",
+  readingTime: "4 min read",
   cardStickers: ["Figma", "React Native", "AI label scan"],
   cardTab: { title: "Glutenia", kind: "mobile app" },
   cardNote: "Designed it + built it, solo ✶",
@@ -65,7 +59,7 @@ export const glutenia: Project = {
       id: "problem",
       heading: "The problem",
       body: [
-        "For people living gluten-free, every product is a label to decode. Ingredient lists are long, mix Arabic, French and English, hide gluten behind names like barley malt extract, and often end with “may contain traces”.",
+        "For people living gluten-free, every product is a label to decode: long ingredient lists in Arabic, French and English, gluten hidden behind names like barley malt extract, and “may contain traces”.",
       ],
       blocks: [
         { kind: "custom", name: "labelExample" },
@@ -85,44 +79,20 @@ export const glutenia: Project = {
       id: "process",
       heading: "My role and process",
       body: [
-        "I worked as the product's designer and its only developer, in a Scrum team with a product owner and a scrum master, over three sprints.",
+        "I was the product's designer and its only developer, in a Scrum team with a product owner and a scrum master, over three sprints.",
       ],
-      blocks: [
-        {
-          kind: "strip",
-          label: "Screens delivered in each sprint",
-          items: [
-            {
-              image: sprint1,
-              alt: "Presentation slide, sprint 1: five built screens — register, pending approval, admin review of professional requests, onboarding and profile with XP",
-              caption: "Sprint 1 — authentication and user management",
-            },
-            {
-              image: sprint2,
-              alt: "Presentation slide, sprint 2: five built screens — barcode scanner, product found, catalog, cart and order placed",
-              caption: "Sprint 2 — catalog, shopping and AI label scanning",
-            },
-            {
-              image: sprint3,
-              alt: "Presentation slide, sprint 3: five built screens — admin dashboard, my establishment, gluten-free map, community event and badge unlocked",
-              caption: "Sprint 3 — professionals, community and administration",
-            },
-          ],
-        },
-      ],
+      blocks: [{ kind: "custom", name: "sprints" }],
     },
     {
       id: "structure",
       heading: "Structure and navigation",
-      body: [
-        "The bottom bar holds the app's five main places. Each one opens onto a small set of screens, so nothing is more than two taps away. The cart sits in the header, reachable from every screen.",
-      ],
+      body: ["The bottom bar holds the app's five main places, so nothing is more than two taps away."],
       blocks: [{ kind: "custom", name: "navMap" }],
       notes: [
         {
           number: 1,
           title: "Scan sits in the centre",
-          body: "The scan button is raised and green in the middle of the bottom bar. Checking a product is the task people repeat most, often in a shop aisle with one hand.",
+          body: "Checking a product is the task people repeat most, often in a shop aisle with one hand, so the scan button is raised and green in the middle of the bar.",
         },
       ],
     },
@@ -130,7 +100,6 @@ export const glutenia: Project = {
       id: "scan",
       heading: "Designing the scan",
       blocks: [
-        { kind: "custom", name: "scanFlow" },
         {
           kind: "phones",
           items: [
@@ -142,45 +111,19 @@ export const glutenia: Project = {
             },
           ],
         },
+        { kind: "custom", name: "resultStates" },
       ],
       notes: [
         {
           number: 2,
           title: "Barcode first, AI second",
-          body: "A barcode gives an instant answer for known products. Only when a product is unknown does the app ask for a photo of the ingredient label, so the AI is used where it adds value.",
+          block: 0,
+          body: "A barcode gives an instant answer. Only unknown products ask for a photo of the label, so the AI is used where it adds value.",
         },
         {
           number: 3,
           title: "The answer explains itself",
-          body: "The result lists each flagged ingredient with the reason, such as “Wheat flour: contains wheat, a primary source of gluten”. People understand the verdict instead of just trusting it, and the app presents it as decision support, not medical advice.",
-        },
-      ],
-    },
-    {
-      id: "states",
-      heading: "Four answers, four states",
-      layout: "pair",
-      blocks: [
-        {
-          kind: "phones",
-          items: [
-            {
-              image: appResultGluten,
-              alt: "Glutenia result screen: “Contains gluten” with three flagged ingredients and +10 XP",
-            },
-            {
-              image: appFlagged,
-              alt: "Glutenia flagged ingredients: enriched wheat flour, wheat flour and malted barley flour, each with the reason, above the extracted label text",
-            },
-          ],
-        },
-        { kind: "custom", name: "resultStates" },
-      ],
-      notes: [
-        {
-          number: 4,
-          title: "Four states, never colour alone",
-          body: "No danger, gluten detected, caution and unreadable label each have their own colour, icon and words, so the result is clear at a glance and for colour-blind users.",
+          body: "Each flagged ingredient comes with its reason, so people understand the verdict instead of just trusting it. It is decision support, not medical advice.",
         },
       ],
     },
@@ -188,23 +131,14 @@ export const glutenia: Project = {
       id: "glutitan",
       heading: "Meet Glutitan",
       band: true,
-      body: [
-        "Glutitan — gluten plus titan — is Glutenia's mascot. His story: people living with celiac disease are warriors who stay strong with a restriction they never chose. He motivates, helps and celebrates; he never lectures.",
-      ],
+      body: ["Glutitan (gluten plus titan) is the app's mascot. He motivates, helps and celebrates; he never lectures."],
       blocks: [{ kind: "custom", name: "glutitan" }],
-      notes: [
-        {
-          number: 6,
-          title: "Calm and friendly look",
-          body: "Soft green, white cards, rounded shapes and Glutitan keep a stressful health topic light and encouraging.",
-        },
-      ],
     },
     {
       id: "shop-map-events",
-      heading: "Shop, map and events",
+      heading: "Shop, map, events and badges",
       body: [
-        "Once a product is checked, the rest of the app helps people act on it: order certified products, find a place to eat or shop, and meet others at community events.",
+        "Once a product is checked, people can order it, find a place to eat or shop, and meet others at events. Each action earns XP towards 19 badges.",
       ],
       blocks: [
         {
@@ -217,30 +151,16 @@ export const glutenia: Project = {
               caption: "Map",
             },
             { video: v("06-events"), label: "Browsing community events and opening one", caption: "Events" },
+            { video: v("07-journey-badges"), label: "Profile journey and badges screens in Glutenia", caption: "Badges" },
           ],
         },
       ],
       notes: [
         {
-          number: 5,
+          number: 4,
           title: "A map built around needs",
-          body: "Filter chips separate stores, bakeries and pharmacies, because each answers a different need. A “Certified gluten-free” badge, distance and price on every card help people decide before they travel.",
+          body: "Filter chips separate stores, bakeries and pharmacies, and every card shows a “Certified gluten-free” badge, distance and price, so people decide before they travel.",
         },
-      ],
-    },
-    {
-      id: "level-up",
-      heading: "Level up",
-      layout: "pair",
-      body: [
-        "Scanning, ordering and joining events earn XP. Progress moves you along a five-step journey, and the app has 19 badges to collect.",
-      ],
-      blocks: [
-        {
-          kind: "phones",
-          items: [{ video: v("07-journey-badges"), label: "Profile journey and badges screens in Glutenia" }],
-        },
-        { kind: "custom", name: "xpTable" },
       ],
     },
     {
@@ -266,17 +186,6 @@ export const glutenia: Project = {
             {
               kind: "compare",
               frame: "phone",
-              caption: "Products",
-              before: { image: figmaProducts, label: "Figma", alt: "Figma mockup of the gluten-free products screen" },
-              after: {
-                image: appCatalog,
-                label: "Built app",
-                alt: "Built catalog screen with search bar and food-type categories",
-              },
-            },
-            {
-              kind: "compare",
-              frame: "phone",
               caption: "Map",
               before: { image: figmaMap, label: "Figma", alt: "Figma mockup of the collaborative map" },
               after: { image: appMap, label: "Built app", alt: "Built map screen with filter chips and favourites" },
@@ -289,29 +198,9 @@ export const glutenia: Project = {
       id: "under-the-hood",
       heading: "Under the hood",
       body: [
-        "The app is built with React Native and Expo, with translations through i18next. A Node.js and Express API with MongoDB handles accounts (JWT), products, orders, places and events, and documents itself with Swagger. Label reading uses Google Gemini and Groq. The backend runs on Render. I also made the promo film in code with Remotion.",
+        "A React Native and Expo app on a Node.js, Express and MongoDB API, with label reading by Gemini and Groq. I also made the promo film in code with Remotion.",
       ],
-      blocks: [
-        {
-          kind: "stickers",
-          label: "Stack",
-          items: [
-            "React Native",
-            "Expo",
-            "i18next",
-            "Node.js",
-            "Express",
-            "MongoDB",
-            "JWT",
-            "Swagger",
-            "Gemini",
-            "Groq",
-            "Render",
-            "Remotion",
-          ],
-        },
-        { kind: "custom", name: "architecture" },
-      ],
+      blocks: [{ kind: "custom", name: "architecture" }],
     },
   ],
   credits: ["Designed and built by Manel Ayari.", "Character concept, name and story by Manel."],

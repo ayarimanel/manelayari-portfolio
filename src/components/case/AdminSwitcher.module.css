@@ -1,0 +1,94 @@
+.switcher {
+  min-width: 0;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.modules,
+.states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Module tabs: like the admin's own purple nav pill. */
+.modules {
+  padding: 4px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--white);
+}
+.module {
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  transition: background var(--dur-fast) var(--ease);
+}
+.module:hover {
+  background: var(--project-panel);
+}
+.module[aria-pressed="true"] {
+  background: var(--project);
+  color: var(--project-on);
+}
+
+/* State chips: small stickers that tilt when picked. */
+.state {
+  padding: 5px 12px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  transition:
+    transform var(--dur-fast) var(--ease-overshoot),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.state:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.state[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--cream);
+  transform: rotate(-3deg);
+}
+.state[data-state="Delete"][aria-pressed="true"] {
+  background: var(--tomato);
+  color: var(--ink);
+}
+.state:disabled {
+  opacity: 0.35;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.sheet img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet {
+    animation: slide-in var(--dur) var(--ease) both;
+  }
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px) rotate(0.6deg);
+  }
+}
+.caption {
+  margin-top: var(--s-3);
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}

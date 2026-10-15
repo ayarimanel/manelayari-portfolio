@@ -15,9 +15,11 @@ import {
   ResultStates,
   RoleCards,
   ScanFlow,
+  Sprints,
   XpTable,
 } from "./GluteniaDiagrams";
 import { SiteMap, Swatches } from "./LafricaineDiagrams";
+import { AdminSwitcher } from "./AdminSwitcher";
 import styles from "./CaseBlock.module.css";
 
 const custom: Record<CustomBlockName, () => React.JSX.Element> = {
@@ -32,6 +34,8 @@ const custom: Record<CustomBlockName, () => React.JSX.Element> = {
   architecture: Architecture,
   swatches: Swatches,
   siteMap: SiteMap,
+  sprints: Sprints,
+  adminSwitcher: AdminSwitcher,
 };
 
 /** Kinds that can sit beside their decision notes on desktop. */

@@ -28,6 +28,32 @@
 .control:hover {
   transform: scale(1.06);
 }
+.video {
+  cursor: pointer;
+}
+/* Big play button over the poster: the clip waits to be started. */
+.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 10px 14px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.play:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
 .bottom-right {
   right: 10px;
 }

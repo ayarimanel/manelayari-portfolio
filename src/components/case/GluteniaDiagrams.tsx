@@ -350,6 +350,33 @@ export function XpTable() {
   );
 }
 
+/* ---------- Sprints ---------- */
+const sprints = [
+  { name: "Accounts and roles", items: ["Sign-up as customer or professional", "Admin approval", "Onboarding and profile"] },
+  { name: "Scan and shop", items: ["Barcode and AI label scan", "Catalog", "Cart and orders"] },
+  { name: "Community and admin", items: ["Gluten-free map", "Events and badges", "Admin dashboard"] },
+];
+
+export function Sprints() {
+  return (
+    <ol className={styles.sprints} aria-label="The three sprints">
+      {sprints.map((s, i) => (
+        <li key={s.name} className={styles.sprint}>
+          <Sticker variant={i === 1 ? "cream" : "project"} rotate={[-2, 1, -1][i]} size="sm">
+            Sprint {i + 1}
+          </Sticker>
+          <p className={styles.sprintName}>{s.name}</p>
+          <ul className={styles.sprintItems}>
+            {s.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /* ---------- Under the hood ---------- */
 export function Architecture() {
   return (

@@ -841,3 +841,51 @@
 .siteChildren .sitePages li {
   background: var(--apa-panel);
 }
+
+/* ---------- Sprints ---------- */
+.sprints {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--gutter);
+}
+@media (min-width: 768px) {
+  .sprints {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.sprint {
+  position: relative;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-card);
+}
+@media (min-width: 768px) {
+  .sprint:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: calc(var(--gutter) / -2);
+    transform: translate(50%, -50%);
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+}
+.sprintName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.sprintItems {
+  padding-left: 1.1em;
+  display: grid;
+  gap: 4px;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}

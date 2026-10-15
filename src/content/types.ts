@@ -61,7 +61,9 @@ export type CustomBlockName =
   | "xpTable"
   | "architecture"
   | "swatches"
-  | "siteMap";
+  | "siteMap"
+  | "sprints"
+  | "adminSwitcher";
 
 export type DecisionNote = {
   number: number;

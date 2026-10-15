@@ -1,13 +1,9 @@
 import type { Project } from "../types";
 
 import homeTop from "@media/value/home-top.jpg";
-import homeAbout from "@media/value/home-about.jpg";
 import homeSolutions from "@media/value/home-solutions.jpg";
 import homeExpertise from "@media/value/home-expertise.jpg";
-import homeWhy from "@media/value/home-why.jpg";
-import homeCta from "@media/value/home-cta.jpg";
 import careersTop from "@media/value/careers-top.jpg";
-import careersJoin from "@media/value/careers-join.jpg";
 import careersBenefits from "@media/value/careers-benefits.jpg";
 import careersForm from "@media/value/careers-form.jpg";
 import liveHome from "@media/value/live-home.png";
@@ -26,7 +22,7 @@ export const value: Project = {
   lead: "Redesign mockups for Value, a Tunisian consulting, AI and data company. I led the team's mockup work and designed the homepage and the careers page myself.",
   metaDescription:
     "Case study: Manel Ayari led the redesign mockups for Value (value.com.tn) at Optima Junior Entreprise and designed its homepage and careers page.",
-  readingTime: "3 min read",
+  readingTime: "2 min read",
   cardStickers: ["UX/UI design", "Mockups", "Team lead"],
   cardTab: { title: "Value", kind: "redesign" },
   cardNote: "Led the mockups, presented to the client",
@@ -46,7 +42,7 @@ export const value: Project = {
       image: homeTop,
       alt: "Value homepage mockup: “Committed Talents, Creating VALUE” over a dark network background, with two buttons",
     },
-    caption: "Homepage, my mockup.",
+    caption: "Homepage, my mockup. Photos and form copy are placeholders.",
   },
   facts: [
     {
@@ -68,66 +64,35 @@ export const value: Project = {
       id: "client",
       heading: "The client and the brief",
       body: [
-        "Value is a Tunisian digital services company working in consulting, AI, data and digital transformation. They asked Optima Junior Entreprise to redesign their website, starting with mockups of the new pages.",
+        "Value is a Tunisian company working in consulting, AI, data and digital transformation. They asked Optima Junior Entreprise to redesign their website, starting with mockups.",
       ],
     },
     {
       id: "lead",
       heading: "Leading the mockups",
       body: [
-        "I was the project lead for the mockups. I split the site's pages between members of the marketing team, reviewed each page and asked for changes, presented the mockups to Value and brought their feedback back to the team.",
-        "The other pages are my teammates' work, so this case study only shows the two pages I designed: the homepage and the careers page.",
-      ],
-      blocks: [
-        {
-          kind: "stickers",
-          label: "What I did as project lead",
-          items: ["Split the pages", "Reviewed and gave feedback", "Client contact"],
-        },
+        "I split the pages between the marketing team, reviewed each one, presented the mockups to Value and brought their feedback back. Other pages are my teammates' work, so this case study shows only the two I designed.",
       ],
     },
     {
       id: "home",
       heading: "The homepage",
-      body: [
-        "The homepage introduces Value, shows what they do and ends with a clear way to get in touch. Photos are placeholders; the figures are Value's own.",
-      ],
+      body: ["The homepage introduces Value, shows what they do and ends with a clear way to get in touch."],
       blocks: [
-        {
-          kind: "image",
-          image: homeAbout,
-          alt: "“Qui nous sommes” introduction with a Discover button, beside key figures: over 10 years of experience, 150 clients and 300 AI projects",
-          caption: "Who we are, with key figures.",
-          framed: true,
-        },
-        {
-          kind: "image",
-          image: homeSolutions,
-          alt: "“Ce que nous faisons” carousel of five solution cards, the selected Advisory card larger and darker",
-          caption: "Solutions carousel.",
-          framed: true,
-        },
-        {
-          kind: "image",
-          image: homeExpertise,
-          alt: "Dark “Domaines d'expertise” section: six cards for data engineering, machine learning, cloud, cybersecurity, automation and business intelligence",
-          caption: "Areas of expertise.",
-          framed: true,
-        },
         {
           kind: "gallery",
           frame: "card",
           columns: 2,
           items: [
             {
-              image: homeWhy,
-              alt: "“Votre partenaire de confiance” section: a short text with three points beside four reason cards",
-              caption: "Why Value",
+              image: homeSolutions,
+              alt: "“Ce que nous faisons” carousel of five solution cards, the selected Advisory card larger and darker",
+              caption: "Solutions carousel",
             },
             {
-              image: homeCta,
-              alt: "Closing call to action on a teal photo: “Besoin de discuter avec nos experts?” with an orange Contact button",
-              caption: "Closing call to action",
+              image: homeExpertise,
+              alt: "Dark “Domaines d'expertise” section: six cards for data engineering, machine learning, cloud, cybersecurity, automation and business intelligence",
+              caption: "Areas of expertise",
             },
           ],
         },
@@ -135,30 +100,20 @@ export const value: Project = {
       notes: [
         {
           number: 1,
-          title: "Track record next to the introduction",
-          block: 0,
-          body: "The “Who we are” block puts a short introduction beside Value's figures: over 10 years of experience, 150 clients and 300 AI projects.",
+          title: "Five solutions, one focus",
+          body: "The five solutions sit in one carousel with the selected card enlarged, so the section stays compact.",
         },
         {
           number: 2,
-          title: "Five solutions, one focus",
-          block: 1,
-          body: "The five solutions sit in one carousel with the selected card enlarged, so the section stays compact and each solution gets its moment.",
-        },
-        {
-          number: 3,
           title: "Orange where it matters",
-          block: 2,
-          body: "Dark and light sections alternate down the page, and Value's orange is kept for section labels and buttons, so the next step is always easy to find.",
+          body: "Dark and light sections alternate, and Value's orange is kept for labels and buttons, so the next step is always easy to find.",
         },
       ],
     },
     {
       id: "careers",
       heading: "The careers page",
-      body: [
-        "The careers page tells candidates what working at Value is like, then lets them apply on the spot. The form's copy is placeholder text.",
-      ],
+      body: ["It tells candidates what working at Value is like, then lets them apply on the spot."],
       blocks: [
         {
           kind: "gallery",
@@ -166,43 +121,23 @@ export const value: Project = {
           columns: 2,
           items: [
             {
-              image: careersTop,
-              alt: "Careers page mockup: “Carrières” on an orange-to-teal gradient with circuit lines and an orange button",
-              caption: "Careers hero",
+              image: careersBenefits,
+              alt: "“Travailler chez VALUE c'est :” beside four cards: being part of a big family, high-impact projects, thinking big, feeling valued",
+              caption: "Four reasons to join",
             },
             {
-              image: careersJoin,
-              alt: "Large office photo of a smiling employee with headphones, under a teal “Rejoignez-nous !” banner",
-              caption: "“Rejoignez-nous !” banner",
+              image: careersForm,
+              alt: "Teal application section: a form with name, email, phone and message fields beside a photo",
+              caption: "Application form",
             },
           ],
-        },
-        {
-          kind: "image",
-          image: careersBenefits,
-          alt: "“Travailler chez VALUE c'est :” beside four cards: being part of a big family, high-impact projects, thinking big, feeling valued",
-          caption: "Four reasons to join.",
-          framed: true,
-        },
-        {
-          kind: "image",
-          image: careersForm,
-          alt: "Teal application section: a form with name, email, phone and message fields beside a photo",
-          caption: "Application form (placeholder copy).",
-          framed: true,
         },
       ],
       notes: [
         {
-          number: 4,
-          title: "Four reasons, four cards",
-          block: 1,
-          body: "What working at Value means is split into four short cards, each with its own icon, so candidates can take it in at a glance.",
-        },
-        {
-          number: 5,
-          title: "Apply without leaving the page",
-          body: "The application form closes the page, so a candidate can apply right after reading why to join.",
+          number: 3,
+          title: "Read, then apply",
+          body: "Four short cards say why to join, and the form closes the page, so a candidate can apply right after reading.",
         },
       ],
     },
@@ -210,9 +145,7 @@ export const value: Project = {
       id: "mockup-to-live",
       heading: "From mockup to live",
       band: true,
-      body: [
-        "The mockups were changed before development, and the site that went live is simpler. It still follows the structure and content of my two pages. Drag the handles to compare.",
-      ],
+      body: ["The live site is simpler, but it keeps the structure and content of my two pages. Drag the handles to compare."],
       blocks: [
         {
           kind: "compare",
@@ -224,7 +157,7 @@ export const value: Project = {
             label: "Live site",
             alt: "The live value.com.tn homepage: “Committed talents, creating Value” over a sea photo, with two buttons",
           },
-          caption: "Homepage, above the fold.",
+          caption: "Homepage.",
         },
         {
           kind: "compare",
@@ -236,33 +169,7 @@ export const value: Project = {
             label: "Live site",
             alt: "The live value.com.tn careers page: “Join Us” on a dark band, then a typed hashtag and “Join us!”",
           },
-          caption: "Careers page, above the fold.",
-        },
-        {
-          kind: "table",
-          caption: "What carried over to the live site",
-          columns: ["Section", "My mockup", "Live site"],
-          rows: [
-            [
-              "Homepage hero",
-              "“Committed Talents, Creating VALUE” with two buttons",
-              "Same line and two buttons, over a sea photo",
-            ],
-            [
-              "Who we are",
-              "Introduction, “Discover more” and key figures",
-              "Introduction and “Discover more”, without the figures",
-            ],
-            ["Solutions", "The five solutions in a carousel", "The same five solutions as cards"],
-            ["Video", "A video section about Value's vision", "A “Get to know us” video section"],
-            ["Careers hero", "“Carrières” on an orange-to-teal gradient", "“Join Us” on a dark band"],
-            [
-              "Why join",
-              "A hashtag tag, a big title and four reason cards",
-              "A typed hashtag, “Join us!” and the same four reasons as a list, with the same photo",
-            ],
-            ["Application", "Form at the end of the page", "Form at the end of the page, with a CV upload"],
-          ],
+          caption: "Careers page.",
         },
       ],
     },

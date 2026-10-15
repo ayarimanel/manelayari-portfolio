@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { preload } from "react-dom";
-import { afterPageLoad } from "@/lib/afterPageLoad";
-import { prefersReducedMotionNow, usePrefersReducedMotion } from "@/lib/reducedMotion";
 import type { VideoSource } from "@/content/types";
 import styles from "./VideoLoop.module.css";
 
@@ -12,47 +10,30 @@ type Props = {
   /** Describes the clip, e.g. "Scanning a barcode in Glutenia". */
   label: string;
   className?: string;
-  /** Where the play/pause button sits. */
+  /** Where the pause button sits while the clip plays. */
   controlPosition?: "bottom-right" | "bottom-left";
   /** First screen of the page: load the poster right away, at high priority. */
   priority?: boolean;
 };
 
 /**
- * Silent looping clip. Plays only while at least half of it is visible (and
- * after the page has loaded), never autoplays under reduced motion, and always
- * has a pause/play button. The poster loads once the clip is near the screen.
+ * Silent looping clip that waits to be played: it shows its poster with a big
+ * play button, and pauses again once it scrolls out of view. The poster loads
+ * once the clip is near the screen.
  */
 export function VideoLoop({ video, label, className, controlPosition = "bottom-right", priority }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
-  const userPaused = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [showPoster, setShowPoster] = useState(!!priority);
-  const reduced = usePrefersReducedMotion();
   if (priority) preload(video.poster, { as: "image", fetchPriority: "high" });
 
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === "undefined") return;
-    let inView = false;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        inView = entry.isIntersecting;
-        if (!inView) {
-          el.pause();
-          return;
-        }
-        afterPageLoad().then(() => {
-          // Read the media query live: the hook's value is still `false` during hydration.
-          const noAutoplay = reduced || prefersReducedMotionNow();
-          if (inView && !userPaused.current && !noAutoplay) el.play().catch(() => {});
-        });
-      },
-      { threshold: 0.5 },
-    );
+    const observer = new IntersectionObserver(([entry]) => !entry.isIntersecting && el.pause());
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reduced]);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -67,13 +48,8 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
   function toggle() {
     const el = ref.current;
     if (!el) return;
-    if (el.paused) {
-      userPaused.current = false;
-      el.play().catch(() => {});
-    } else {
-      userPaused.current = true;
-      el.pause();
-    }
+    if (el.paused) el.play().catch(() => {});
+    else el.pause();
   }
 
   return (
@@ -89,20 +65,28 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
         width={video.width}
         height={video.height}
         aria-label={label}
+        onClick={toggle}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       >
         {video.webm && <source src={video.webm} type="video/webm" />}
         <source src={video.mp4} type="video/mp4" />
       </video>
-      <button
-        type="button"
-        className={`${styles.control} ${styles[controlPosition]}`}
-        onClick={toggle}
-        aria-label={`${playing ? "Pause" : "Play"} video: ${label}`}
-      >
-        {playing ? <PauseIcon /> : <PlayIcon />}
-      </button>
+      {playing ? (
+        <button
+          type="button"
+          className={`${styles.control} ${styles[controlPosition]}`}
+          onClick={toggle}
+          aria-label={`Pause video: ${label}`}
+        >
+          <PauseIcon />
+        </button>
+      ) : (
+        <button type="button" className={styles.play} onClick={toggle} aria-label={`Play video: ${label}`}>
+          <PlayIcon />
+          <span aria-hidden="true">Play</span>
+        </button>
+      )}
     </div>
   );
 }
