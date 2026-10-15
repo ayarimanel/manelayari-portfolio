@@ -861,45 +861,60 @@
   background: var(--apa-panel);
 }
 
-/* ---------- Sprints ---------- */
+/* ---------- Sprints: three linked rings ---------- */
 .sprints {
+  --ring: clamp(150px, 26vw, 240px);
   list-style: none;
   padding: 0;
   display: grid;
-  gap: var(--gutter);
-}
-@media (min-width: 768px) {
-  .sprints {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 .sprint {
+  display: grid;
+  grid-template-columns: var(--ring) 1fr;
+  align-items: center;
+  gap: var(--s-4);
+}
+/* Stacked on phones: each ring tucks under the one above. */
+.sprint + .sprint {
+  margin-top: calc(var(--ring) * -0.14);
+}
+.sprintRing {
   position: relative;
   display: grid;
-  align-content: start;
-  justify-items: start;
-  gap: var(--s-3);
-  padding: var(--s-5);
-  background: var(--white);
+  place-content: center;
+  justify-items: center;
+  gap: 4px;
+  width: var(--ring);
+  aspect-ratio: 1;
+  padding: 14%;
   border: var(--border);
-  border-radius: var(--r-card);
+  border-radius: 50%;
+  text-align: center;
+  /* Translucent green: where two rings overlap, the overlap reads darker. */
+  background: color-mix(in srgb, var(--glutenia-green) var(--tint), transparent);
+  mix-blend-mode: multiply;
 }
-@media (min-width: 768px) {
-  .sprint:not(:last-child)::after {
-    content: "→";
-    position: absolute;
-    top: 50%;
-    right: calc(var(--gutter) / -2);
-    transform: translate(50%, -50%);
-    font-weight: 700;
-    color: var(--ink-soft);
-  }
+.sprintRing[data-step="1"] {
+  --tint: 22%;
+}
+.sprintRing[data-step="2"] {
+  --tint: 42%;
+}
+.sprintRing[data-step="3"] {
+  --tint: 64%;
+}
+.sprintNum {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--glutenia-ink);
 }
 .sprintName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.2;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  line-height: 1.15;
 }
 .sprintItems {
   padding-left: 1.1em;
@@ -907,4 +922,28 @@
   gap: 4px;
   font-size: var(--fs-small);
   color: var(--ink-soft);
+}
+/* Desktop: the rings sit in a row and overlap sideways, details underneath. */
+@media (min-width: 768px) {
+  .sprints {
+    display: flex;
+    justify-content: center;
+  }
+  .sprint {
+    width: var(--ring);
+    grid-template-columns: 1fr;
+    align-content: start;
+    justify-items: center;
+    align-items: start;
+  }
+  .sprint + .sprint {
+    margin-top: 0;
+    margin-left: calc(var(--ring) * -0.12);
+  }
+  .sprintItems {
+    justify-self: center;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+  }
 }

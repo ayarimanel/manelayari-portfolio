@@ -373,15 +373,16 @@ const sprints = [
   { name: "Community and admin", items: ["Gluten-free map", "Events and badges", "Admin dashboard"] },
 ];
 
+/** Three linked rings: each sprint overlaps the last, a shade greener. */
 export function Sprints() {
   return (
     <ol className={styles.sprints} aria-label="The three sprints">
       {sprints.map((s, i) => (
         <li key={s.name} className={styles.sprint}>
-          <Sticker variant={i === 1 ? "cream" : "project"} rotate={[-2, 1, -1][i]} size="sm">
-            Sprint {i + 1}
-          </Sticker>
-          <p className={styles.sprintName}>{s.name}</p>
+          <div className={styles.sprintRing} data-step={i + 1}>
+            <span className={styles.sprintNum}>Sprint {i + 1}</span>
+            <p className={styles.sprintName}>{s.name}</p>
+          </div>
           <ul className={styles.sprintItems}>
             {s.items.map((item) => (
               <li key={item}>{item}</li>
