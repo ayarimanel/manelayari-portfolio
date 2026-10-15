@@ -9,9 +9,6 @@ import { PageSketch } from "./PageSketch";
 import { PageDesign } from "./PageDesign";
 import { PageBuild } from "./PageBuild";
 import { PageLaunch } from "./PageLaunch";
-import { PageSchool } from "./PageSchool";
-import { PageWork } from "./PageWork";
-import { PageTools } from "./PageTools";
 import { RansomTitle } from "./Decor";
 import styles from "./DesignBook.module.css";
 
@@ -20,7 +17,7 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["700"], variable: "--font-c
 const PAGES: { title: string; text: string; tint: string; Scene: ComponentType }[] = [
   {
     title: "The Design Book",
-    text: "The cover of my design book: how I work in five steps, then a few pages about me.",
+    text: "The cover of my design book opens on how I work, in five steps.",
     tint: styles.tintDeep,
     Scene: PageCover,
   },
@@ -53,24 +50,6 @@ const PAGES: { title: string; text: string; tint: string; Scene: ComponentType }
     text: "Finally it ships: the L'Africaine homepage mockup unrolls out of a laptop screen and scrolls.",
     tint: styles.tintCream,
     Scene: PageLaunch,
-  },
-  {
-    title: "Class of 2026",
-    text: "My ID card: Licence en Informatique (GLSI), Faculté des Sciences de Tunis, class of 2026, with a gold Mention Très Bien seal, and a photo of me and a friend on the day, in a camera frame.",
-    tint: styles.tintLight,
-    Scene: PageSchool,
-  },
-  {
-    title: "Experience",
-    text: "Typed on a typewriter: RedStart Tunisie, 2026, Glutenia, designed and built solo. Optima Junior Entreprise, 2025, client websites and marketing visuals. An iced coffee sits beside it.",
-    tint: "",
-    Scene: PageWork,
-  },
-  {
-    title: "My toolbox",
-    text: "A pencil case holding Figma, Photoshop and Illustrator; code labels for React Native, Next.js, Node.js and MongoDB; and a ticket listing my languages: Arabic (native), French (fluent), English (C1).",
-    tint: styles.tintCream,
-    Scene: PageTools,
   },
 ];
 
