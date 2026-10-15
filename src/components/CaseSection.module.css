@@ -78,3 +78,26 @@
     align-items: center;
   }
 }
+
+/* A short note introducing the block below it: narrower, smaller type. */
+.notesCompact {
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+}
+.notesCompact > * {
+  gap: var(--s-3);
+  padding: var(--s-4);
+}
+.notesCompact h3 {
+  font-size: 1.0625rem;
+  margin-bottom: 2px;
+}
+.notesCompact p {
+  font-size: var(--fs-small);
+}
+.notesCompact > * > span[aria-hidden] {
+  width: 32px;
+  height: 32px;
+  font-size: 0.9375rem;
+}

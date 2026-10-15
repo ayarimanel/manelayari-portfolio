@@ -6,9 +6,9 @@ import styles from "./CaseSection.module.css";
 
 type Props = { section: Section; index: number };
 
-function Notes({ notes }: { notes: Note[] }) {
+function Notes({ notes, compact }: { notes: Note[]; compact?: boolean }) {
   return (
-    <div className={styles.notes}>
+    <div className={compact ? `${styles.notes} ${styles.notesCompact}` : styles.notes}>
       {notes.map((n) => (
         <DecisionNote key={n.number} note={n} />
       ))}
@@ -23,7 +23,7 @@ function BlockWithNotes({ block, notes: all }: { block: Block; notes: Note[] }) 
   if (above.length) {
     return (
       <>
-        <Notes notes={above} />
+        <Notes notes={above} compact />
         <BlockWithNotes block={block} notes={notes} />
       </>
     );
