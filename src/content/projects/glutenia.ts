@@ -124,6 +124,7 @@ export const glutenia: Project = {
         {
           number: 3,
           title: "The answer explains itself",
+          block: 0,
           body: "Each flagged ingredient comes with its reason, so people understand the verdict instead of just trusting it. It is decision support, not medical advice.",
         },
       ],
