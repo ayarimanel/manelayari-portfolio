@@ -106,20 +106,39 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+/* Light icon row: no boxes, so it doesn't echo the sprint cards below. */
 .role {
   display: grid;
-  align-content: start;
-  justify-items: start;
-  gap: var(--s-3);
-  padding: var(--s-5);
-  background: var(--white);
-  border: var(--border);
-  border-radius: var(--r-card);
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: var(--s-3);
+  row-gap: 2px;
 }
-.roleSub {
+.roleIcon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--project-panel);
+  color: var(--project-ink);
+}
+.roleIcon svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.roleName {
+  font-weight: 700;
+  align-self: end;
+}
+.roleBody {
   font-size: var(--fs-small);
   color: var(--ink-soft);
-  margin-bottom: -6px;
+  align-self: start;
 }
 
 /* ---------- Competitor table ---------- */

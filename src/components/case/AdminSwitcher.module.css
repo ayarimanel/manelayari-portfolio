@@ -1,5 +1,70 @@
 .switcher {
   min-width: 0;
+  max-width: 860px;
+  margin-inline: auto;
+}
+.hint {
+  margin-bottom: var(--s-2);
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--project-ink);
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+/* Big side arrows: the carousel cue for people who only scroll. */
+.stage {
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: var(--border);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 1.75rem;
+  line-height: 1;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translateY(-50%);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+.prev {
+  left: -18px;
+}
+.next {
+  right: -18px;
+}
+@media (max-width: 767px) {
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .prev {
+    left: 6px;
+  }
+  .next {
+    right: 6px;
+  }
+}
+.count {
+  display: inline-block;
+  margin-right: var(--s-2);
+  padding: 1px 8px;
+  border: var(--border);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 .controls {
   display: flex;
@@ -17,11 +82,13 @@
 }
 
 /* Module tabs: like the admin's own purple nav pill. */
-.modules {
-  padding: 4px;
-  border: var(--border);
-  border-radius: var(--r-pill);
-  background: var(--white);
+@media (min-width: 640px) {
+  .modules {
+    padding: 4px;
+    border: var(--border);
+    border-radius: var(--r-pill);
+    background: var(--white);
+  }
 }
 .module {
   padding: 6px 14px;
@@ -30,6 +97,12 @@
   font-size: var(--fs-small);
   color: var(--ink);
   transition: background var(--dur-fast) var(--ease);
+}
+@media (max-width: 639px) {
+  .module {
+    border: var(--border);
+    background: var(--white);
+  }
 }
 .module:hover {
   background: var(--project-panel);

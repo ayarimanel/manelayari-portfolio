@@ -88,12 +88,18 @@ const modules: { name: string; states: Partial<Record<State, Shot>> }[] = [
 
 const allStates: State[] = ["List", "Add", "Edit", "Delete"];
 
-/** One browser window over the admin mockups: pick a module, then a state. */
+/** Every screen in order, for the ‹ › arrows. */
+const screens = modules.flatMap((m, i) =>
+  (["Overview", ...allStates] as State[]).filter((s) => m.states[s]).map((s) => ({ moduleIndex: i, state: s })),
+);
+
+/** One browser window over the admin mockups: pick a module, then a state, or step through with the arrows. */
 export function AdminSwitcher() {
   const [moduleIndex, setModuleIndex] = useState(0);
   const [state, setState] = useState<State>("Overview");
   const current = modules[moduleIndex];
   const shot = current.states[state]!;
+  const position = screens.findIndex((s) => s.moduleIndex === moduleIndex && s.state === state);
 
   function pickModule(i: number) {
     setModuleIndex(i);
@@ -101,8 +107,17 @@ export function AdminSwitcher() {
     if (!states[state]) setState(states.Overview ? "Overview" : "List");
   }
 
+  function step(by: number) {
+    const next = screens[(position + by + screens.length) % screens.length];
+    setModuleIndex(next.moduleIndex);
+    setState(next.state);
+  }
+
   return (
     <figure className={styles.switcher}>
+      <p className={styles.hint} aria-hidden="true">
+        It&rsquo;s clickable, have a look around ↓
+      </p>
       <div className={styles.controls}>
         <div className={styles.modules} role="group" aria-label="Admin section">
           {modules.map((m, i) => (
@@ -135,12 +150,25 @@ export function AdminSwitcher() {
           </div>
         )}
       </div>
-      <BrowserFrame domain="editionapa.tn">
-        <div className={styles.sheet} key={`${moduleIndex}-${state}`}>
-          <Image src={shot.image} alt={shot.alt} sizes="(max-width: 1240px) 100vw, 1240px" />
-        </div>
-      </BrowserFrame>
+      <div className={styles.stage}>
+        <BrowserFrame domain="editionapa.tn">
+          <div className={styles.sheet} key={`${moduleIndex}-${state}`}>
+            <Image src={shot.image} alt={shot.alt} sizes="(max-width: 900px) 100vw, 860px" />
+          </div>
+        </BrowserFrame>
+        <button type="button" className={`${styles.arrow} ${styles.prev}`} onClick={() => step(-1)}>
+          <span aria-hidden="true">‹</span>
+          <span className="visually-hidden">Previous admin screen</span>
+        </button>
+        <button type="button" className={`${styles.arrow} ${styles.next}`} onClick={() => step(1)}>
+          <span aria-hidden="true">›</span>
+          <span className="visually-hidden">Next admin screen</span>
+        </button>
+      </div>
       <figcaption className={styles.caption} aria-live="polite">
+        <span className={styles.count}>
+          {position + 1} / {screens.length}
+        </span>
         {current.name}
         {state !== "Overview" && ` — ${state.toLowerCase()}`}. Figma mockups with mock data.
       </figcaption>

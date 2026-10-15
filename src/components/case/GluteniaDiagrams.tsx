@@ -49,31 +49,47 @@ export function LabelExample() {
 }
 
 /* ---------- Who it's for ---------- */
+/* 24×24 line icons, drawn in the ink colour. */
+const roleIcons = {
+  customer: (
+    <>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5" />
+    </>
+  ),
+  professional: (
+    <>
+      <path d="M4 9.5 5.5 4h13L20 9.5" />
+      <path d="M4 9.5c0 1.4 1.2 2.5 2.7 2.5s2.6-1.1 2.6-2.5c0 1.4 1.2 2.5 2.7 2.5s2.7-1.1 2.7-2.5c0 1.4 1.2 2.5 2.6 2.5S20 10.9 20 9.5" />
+      <path d="M5.5 12v8h13v-8M10 20v-4.5h4V20" />
+    </>
+  ),
+  admin: (
+    <>
+      <path d="M12 3.5 19 6v5.5c0 4.2-3 7.4-7 9-4-1.6-7-4.8-7-9V6z" />
+      <path d="m9 12 2.2 2.2L15.5 10" />
+    </>
+  ),
+};
+
 const roles = [
-  {
-    name: "Customer",
-    body: "Scan labels and barcodes, order products, find places, join events and earn badges.",
-  },
-  {
-    name: "Professional",
-    sub: "Shops, bakeries, restaurants",
-    body: "Manage products, their establishment and orders.",
-  },
-  {
-    name: "Administrator",
-    body: "Manage users and roles, review professional requests, products, orders, establishments and events.",
-  },
-];
+  { icon: "customer", name: "Customer", body: "Scans products, shops, finds places and joins events." },
+  { icon: "professional", name: "Professional", body: "Shops, bakeries and restaurants manage products and orders." },
+  { icon: "admin", name: "Administrator", body: "Approves professionals and oversees users, products and orders." },
+] as const;
+
 export function RoleCards() {
   return (
     <ul className={styles.roles}>
-      {roles.map((r, i) => (
+      {roles.map((r) => (
         <li key={r.name} className={styles.role}>
-          <Sticker variant={i === 0 ? "project" : i === 1 ? "cream" : "ink"} rotate={[-2, 1, -1][i]}>
-            {r.name}
-          </Sticker>
-          {r.sub && <p className={styles.roleSub}>{r.sub}</p>}
-          <p>{r.body}</p>
+          <span className={styles.roleIcon} aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26">
+              {roleIcons[r.icon]}
+            </svg>
+          </span>
+          <p className={styles.roleName}>{r.name}</p>
+          <p className={styles.roleBody}>{r.body}</p>
         </li>
       ))}
     </ul>

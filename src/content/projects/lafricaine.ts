@@ -109,7 +109,7 @@ export const lafricaine: Project = {
     {
       id: "admin",
       heading: "The admin back-office",
-      body: ["The publisher's team manages books, orders, news and filters from one place. Pick a section and a state."],
+      body: ["The publisher's team manages books, orders, news and filters from one place."],
       blocks: [{ kind: "custom", name: "adminSwitcher" }],
       notes: [
         {
