@@ -111,7 +111,16 @@
     max-width: none;
   }
 }
-.background dd {
+/* Skills: three groups per row on wide screens. */
+@media (min-width: 900px) {
+  .skills {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-6);
+    max-width: none;
+  }
+}
+.background dd,
+.skills dd {
   font-size: var(--fs-small);
   line-height: 1.55;
 }
