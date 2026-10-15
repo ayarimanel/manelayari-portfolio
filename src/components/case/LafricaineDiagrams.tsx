@@ -67,29 +67,64 @@ const groups = [
   { name: "Admin", kind: "path", items: ["Login", "Dashboard"], children: ["Articles", "Orders", "News", "Filters"] },
 ] as const;
 
+/* Hand-drawn strokes for the sketch (purple ink, round ends). */
+function Squiggle() {
+  return (
+    <svg className={styles.siteSquiggle} viewBox="0 0 120 12" aria-hidden="true">
+      <path d="M2 8c12-6 20-6 30-1s18 5 28 0 20-6 30-1 16 5 28 0" />
+    </svg>
+  );
+}
+function Arrow({ flip }: { flip?: boolean }) {
+  return (
+    <svg className={styles.siteArrow} viewBox="0 0 24 30" aria-hidden="true" style={flip ? { scale: "-1 1" } : undefined}>
+      <path d="M12 2c-5 7 4 12-1 24M6.5 21.5 11 27l5-5" />
+    </svg>
+  );
+}
+function Fork() {
+  return (
+    <svg className={styles.siteFork} viewBox="0 0 100 30" aria-hidden="true">
+      <path d="M50 2c-2 9-16 13-24 24M21 21l4.5 6 6-3.5M50 2c2 9 16 13 24 24M68.5 23.5l6 3.5 4-6.5" />
+    </svg>
+  );
+}
+
+/** The site map as a quick notebook sketch: handwritten areas, wobbly notes, drawn arrows. */
 export function SiteMap() {
   return (
-    <figure className={styles.siteFigure}>
+    <figure className={styles.siteFigure} aria-label="Site structure: three areas">
       <div className={styles.siteGroups}>
         {groups.map((g) => (
           <section key={g.name} className={styles.siteGroup} aria-label={`${g.name} pages`}>
-            <p className={styles.siteGroupName}>{g.name}</p>
+            <p className={styles.siteGroupName}>
+              {g.name}
+              <Squiggle />
+            </p>
             {g.kind === "list" ? (
-              <ul className={styles.sitePages}>
+              <ul className={styles.siteScatter}>
                 {g.items.map((i) => (
-                  <li key={i}>{i}</li>
+                  <li key={i} className={styles.siteNote}>
+                    {i}
+                  </li>
                 ))}
               </ul>
             ) : (
               <ol className={styles.sitePath}>
-                {g.items.map((i) => (
-                  <li key={i}>{i}</li>
+                {g.items.map((i, n) => (
+                  <li key={i} className={styles.siteStep}>
+                    {n > 0 && <Arrow flip={n % 2 === 0} />}
+                    <span className={styles.siteNote}>{i}</span>
+                  </li>
                 ))}
                 {"children" in g && (
-                  <li className={styles.siteChildren}>
-                    <ul className={styles.sitePages}>
+                  <li className={styles.siteStep}>
+                    <Fork />
+                    <ul className={styles.siteChildren}>
                       {g.children.map((c) => (
-                        <li key={c}>{c}</li>
+                        <li key={c} className={`${styles.siteNote} ${styles.siteSub}`}>
+                          {c}
+                        </li>
                       ))}
                     </ul>
                   </li>
@@ -99,9 +134,6 @@ export function SiteMap() {
           </section>
         ))}
       </div>
-      <figcaption className={styles.caption}>
-        Site structure: three areas, with arrows showing the path through each.
-      </figcaption>
     </figure>
   );
 }

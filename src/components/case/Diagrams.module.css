@@ -798,131 +798,200 @@
   height: auto;
 }
 
-/* ---------- Site map ---------- */
+/* ---------- Site map: a notebook sketch ---------- */
 .siteFigure {
-  padding: var(--s-5);
+  padding: var(--s-6) var(--s-5);
   background: var(--white);
-  border: var(--border);
-  border-radius: var(--r-card);
+  border: 2px solid var(--ink);
+  /* Uneven radii give the frame a hand-drawn wobble. */
+  border-radius: 18px 6px 22px 8px / 8px 20px 6px 18px;
 }
 .siteGroups {
   display: grid;
-  gap: var(--s-5);
+  gap: var(--s-7) var(--s-5);
 }
 @media (min-width: 768px) {
   .siteGroups {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-.siteGroupName {
-  display: inline-block;
-  margin-bottom: var(--s-3);
-  padding: 4px 14px;
-  border-radius: var(--r-pill);
-  background: var(--apa-purple);
-  color: var(--white);
-  font-weight: 600;
-  font-size: var(--fs-sticker);
-}
-.sitePages,
-.sitePath {
-  list-style: none;
-  padding: 0;
+.siteGroup {
   display: grid;
-  gap: var(--s-2);
+  justify-items: center;
+  align-content: start;
+  gap: var(--s-4);
 }
-.sitePages li,
-.sitePath > li:not(.siteChildren) {
-  padding: 8px 12px;
-  border: var(--border);
-  border-radius: 8px;
+.siteGroupName {
+  position: relative;
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--apa-purple);
+}
+.siteSquiggle {
+  position: absolute;
+  left: -6%;
+  bottom: -10px;
+  width: 112%;
+  height: 10px;
+}
+.siteSquiggle path,
+.siteArrow path,
+.siteFork path {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.siteSquiggle path {
+  stroke: #d8a552;
+  stroke-width: 3;
+}
+.siteArrow path,
+.siteFork path {
+  stroke: var(--apa-purple);
+}
+
+/* A page: a small wobbly note, sized to its name. */
+.siteNote {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
   background: var(--cream);
   font-weight: 500;
   font-size: var(--fs-small);
+  white-space: nowrap;
 }
-.sitePath > li:not(:first-child)::before {
-  content: "↓";
-  display: block;
-  margin: -6px 0 2px;
-  font-weight: 700;
-  color: var(--apa-purple);
-  text-align: center;
-}
-.sitePath > li:not(.siteChildren):not(:first-child)::before {
-  margin: -36px 0 10px;
-}
-.sitePath {
-  gap: var(--s-5);
-}
-.siteChildren .sitePages {
-  grid-template-columns: 1fr 1fr;
-}
-.siteChildren .sitePages li {
-  background: var(--apa-panel);
-}
-
-/* ---------- Sprints: three linked rings ---------- */
-.sprints {
-  --ring: clamp(118px, 27vw, 230px);
+.siteScatter {
   list-style: none;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: var(--s-3) var(--s-2);
+  max-width: 260px;
 }
-.sprintRing {
-  position: relative;
+.siteScatter .siteNote:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+.siteScatter .siteNote:nth-child(even) {
+  transform: rotate(1.2deg) translateY(3px);
+}
+.sitePath {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+}
+.siteStep {
+  display: grid;
+  justify-items: center;
+}
+.siteArrow {
+  width: 22px;
+  height: 30px;
+  margin: 2px 0;
+}
+.siteFork {
+  width: 120px;
+  height: 30px;
+  margin: 2px 0 4px;
+}
+.siteChildren {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--s-2);
+}
+.siteSub {
+  background: var(--apa-panel);
+  text-align: center;
+}
+.siteChildren .siteSub:nth-child(1) {
+  transform: rotate(-1.2deg);
+}
+.siteChildren .siteSub:nth-child(4) {
+  transform: rotate(1deg);
+}
+
+/* ---------- Sprints: three circles orbiting each other ---------- */
+.orbitWrap {
+  --d: clamp(112px, 30vw, 150px); /* circle size */
+  --R: calc(var(--d) * 0.62); /* distance from the centre of the loop */
   display: grid;
   place-items: center;
-  flex: none;
-  width: var(--ring);
+}
+.orbit {
+  position: relative;
+  width: calc(var(--R) * 2 + var(--d));
   aspect-ratio: 1;
-  padding: calc(var(--ring) * 0.2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.planet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--d);
+  height: var(--d);
+  margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
+  transform: rotate(var(--a)) translate(var(--R)) rotate(calc(var(--a) * -1));
+}
+.planetBody {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 14%;
   border: var(--border);
   border-radius: 50%;
   text-align: center;
-  /* Translucent green: where two rings overlap, the overlap reads darker. */
-  background: color-mix(in srgb, var(--glutenia-green) var(--tint), transparent);
-  mix-blend-mode: multiply;
+  background: color-mix(in srgb, var(--glutenia-green) var(--tint), var(--white));
+  box-shadow: 3px 3px 0 var(--ink);
 }
-.sprintRing + .sprintRing {
-  margin-left: calc(var(--ring) * -0.04);
+.planetBody[data-step="1"] {
+  --tint: 25%;
 }
-.sprintRing[data-step="1"] {
-  --tint: 22%;
+.planetBody[data-step="2"] {
+  --tint: 50%;
 }
-.sprintRing[data-step="2"] {
-  --tint: 42%;
-  --spin: reverse;
-}
-.sprintRing[data-step="3"] {
-  --tint: 64%;
-}
-.sprintBand {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  fill: var(--glutenia-ink);
+.planetBody[data-step="3"] {
+  --tint: 80%;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .sprintBand {
-    animation: sprint-spin 28s linear infinite var(--spin, normal);
+  /* The loop turns one way, each circle the other, so the words never tilt. */
+  .orbit {
+    animation: orbit-spin 30s linear infinite;
   }
-  .sprints:hover .sprintBand {
+  .planetBody {
+    animation: orbit-spin 30s linear infinite reverse;
+  }
+  .orbit:hover,
+  .orbit:hover .planetBody {
     animation-play-state: paused;
   }
 }
-@keyframes sprint-spin {
+@keyframes orbit-spin {
   to {
-    transform: rotate(360deg);
+    rotate: 360deg;
   }
+}
+.sprintNum {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--glutenia-ink);
 }
 .sprintName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(0.8125rem, 0.65rem + 0.8vw, 1.25rem);
+  font-size: clamp(0.8125rem, 0.7rem + 0.4vw, 1rem);
   line-height: 1.15;
 }

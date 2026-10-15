@@ -103,6 +103,18 @@
 .skills {
   margin-top: var(--s-6);
 }
+/* Education, experience and location side by side. */
+@media (min-width: 900px) {
+  .background {
+    grid-template-columns: 1.2fr 1.6fr 0.6fr;
+    gap: var(--s-6);
+    max-width: none;
+  }
+}
+.background dd {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+}
 .cv {
   font-weight: 600;
 }

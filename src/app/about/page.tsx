@@ -71,7 +71,7 @@ export default function About() {
       <DesignBookLazy />
 
       <section className={`container ${styles.details}`} aria-label="Background">
-        <dl className={styles.list}>
+        <dl className={`${styles.list} ${styles.background}`}>
           <div>
             <dt className="h3">Education</dt>
             <dd>
