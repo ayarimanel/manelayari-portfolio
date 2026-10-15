@@ -71,6 +71,8 @@ export type DecisionNote = {
   body: string;
   /** Index of the block this note explains (defaults to the section's last block). */
   block?: number;
+  /** Show the note above its block (as an intro to it) instead of beside or below. */
+  above?: boolean;
 };
 
 export type CaseSection = {

@@ -492,7 +492,6 @@
   --c-tint: #eef7e3;
   --c-on: var(--ink);
   position: relative;
-  aspect-ratio: 4 / 5;
   padding: 18px 14px 14px;
   background: var(--c-tint);
   border: 2px solid var(--ink);
@@ -1076,4 +1075,10 @@
     margin: 0 10px;
     rotate: 0deg;
   }
+}
+
+/* Caption centred under the centred notes. */
+.statesFigure .caption {
+  margin-top: var(--s-4);
+  text-align: center;
 }

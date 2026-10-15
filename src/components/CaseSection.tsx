@@ -17,7 +17,17 @@ function Notes({ notes }: { notes: Note[] }) {
 }
 
 /** A block with the decision notes that explain it: side by side on desktop, stacked below otherwise. */
-function BlockWithNotes({ block, notes }: { block: Block; notes: Note[] }) {
+function BlockWithNotes({ block, notes: all }: { block: Block; notes: Note[] }) {
+  const above = all.filter((n) => n.above);
+  const notes = all.filter((n) => !n.above);
+  if (above.length) {
+    return (
+      <>
+        <Notes notes={above} />
+        <BlockWithNotes block={block} notes={notes} />
+      </>
+    );
+  }
   if (!notes.length) return <CaseBlock block={block} />;
   if (isSideBySide(block)) {
     return (
