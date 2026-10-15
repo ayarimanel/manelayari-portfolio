@@ -863,30 +863,20 @@
 
 /* ---------- Sprints: three linked rings ---------- */
 .sprints {
-  --ring: clamp(150px, 26vw, 240px);
+  --ring: clamp(118px, 27vw, 230px);
   list-style: none;
   padding: 0;
-  display: grid;
-}
-.sprint {
-  display: grid;
-  grid-template-columns: var(--ring) 1fr;
-  align-items: center;
-  gap: var(--s-4);
-}
-/* Stacked on phones: each ring tucks under the one above. */
-.sprint + .sprint {
-  margin-top: calc(var(--ring) * -0.14);
+  display: flex;
+  justify-content: center;
 }
 .sprintRing {
   position: relative;
   display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 4px;
+  place-items: center;
+  flex: none;
   width: var(--ring);
   aspect-ratio: 1;
-  padding: 14%;
+  padding: calc(var(--ring) * 0.2);
   border: var(--border);
   border-radius: 50%;
   text-align: center;
@@ -894,56 +884,45 @@
   background: color-mix(in srgb, var(--glutenia-green) var(--tint), transparent);
   mix-blend-mode: multiply;
 }
+.sprintRing + .sprintRing {
+  margin-left: calc(var(--ring) * -0.04);
+}
 .sprintRing[data-step="1"] {
   --tint: 22%;
 }
 .sprintRing[data-step="2"] {
   --tint: 42%;
+  --spin: reverse;
 }
 .sprintRing[data-step="3"] {
   --tint: 64%;
 }
-.sprintNum {
-  font-size: 0.75rem;
+.sprintBand {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--glutenia-ink);
+  fill: var(--glutenia-ink);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sprintBand {
+    animation: sprint-spin 28s linear infinite var(--spin, normal);
+  }
+  .sprints:hover .sprintBand {
+    animation-play-state: paused;
+  }
+}
+@keyframes sprint-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .sprintName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  font-size: clamp(0.8125rem, 0.65rem + 0.8vw, 1.25rem);
   line-height: 1.15;
-}
-.sprintItems {
-  padding-left: 1.1em;
-  display: grid;
-  gap: 4px;
-  font-size: var(--fs-small);
-  color: var(--ink-soft);
-}
-/* Desktop: the rings sit in a row and overlap sideways, details underneath. */
-@media (min-width: 768px) {
-  .sprints {
-    display: flex;
-    justify-content: center;
-  }
-  .sprint {
-    width: var(--ring);
-    grid-template-columns: 1fr;
-    align-content: start;
-    justify-items: center;
-    align-items: start;
-  }
-  .sprint + .sprint {
-    margin-top: 0;
-    margin-left: calc(var(--ring) * -0.12);
-  }
-  .sprintItems {
-    justify-self: center;
-    padding-left: 0;
-    list-style: none;
-    text-align: center;
-  }
 }
