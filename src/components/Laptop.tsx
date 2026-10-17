@@ -7,7 +7,7 @@ export type LaptopPage = { image: StaticImageData; alt: string; domain: string }
 /**
  * A silver MacBook-style laptop in 3D. On load it sits closed at an angle,
  * the lid opens, then it turns to face the visitor and settles; the website
- * then floats out of the screen and scrolls on its own (with several pages it
+ * then appears on the screen and scrolls on its own (with several pages it
  * swaps between them). Pure CSS; under reduced motion it is simply open and still.
  */
 export function Laptop({ pages, caption }: { pages: LaptopPage[]; caption?: string }) {
@@ -40,7 +40,7 @@ export function Laptop({ pages, caption }: { pages: LaptopPage[]; caption?: stri
             </div>
           </div>
         </div>
-        {/* The website floats in front of the screen once the laptop faces the visitor */}
+        {/* The website, shown on the screen once the laptop faces the visitor */}
         <div className={styles.window}>
           {pages.map((p, i) => (
             <div key={p.domain} className={styles.page} style={{ "--i": i } as React.CSSProperties}>
