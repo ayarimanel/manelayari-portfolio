@@ -22,7 +22,17 @@
   font-size: 1.375rem;
   letter-spacing: -0.02em;
   text-decoration: none;
-  padding-block: 10px;
+  padding-block: 8px;
+}
+.logo {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+@media (min-width: 1024px) {
+  .logo {
+    height: 46px;
+  }
 }
 .nav {
   display: none;

@@ -29,12 +29,12 @@ a:hover .sticker {
   color: var(--cream);
 }
 .tomato {
-  background: var(--tomato);
+  background: var(--buttermilk);
   color: var(--ink);
 }
 .blue {
   background: var(--blue-sticker);
-  color: var(--white);
+  color: var(--ink);
 }
 .cream {
   background: var(--cream);

@@ -15,7 +15,7 @@ export function PageCover() {
           how I work, in 5 steps →
         </p>
         <Heart x={56} y={8} r={-12} d={1.8} size={5} />
-        <Sparkle x={70} y={30} d={1.9} size={4} color="#FFE45C" />
+        <Sparkle x={70} y={30} d={1.9} size={4} color="#f6d873" />
         <div className={`${styles.abs} ${styles.peek} ${styles.sticker}`}>
           <Image src={thinking} alt="" sizes="(min-width: 900px) 280px, 32vw" className={styles.img} />
         </div>

@@ -1,35 +1,39 @@
 :root {
-  /* Colour — "Sticker Studio" */
-  --cream: #fff1e2; /* page background */
-  --cream-deep: #ffe3c7; /* alternate bands, sticker paper */
-  --ink: #1f1b16; /* text, borders, dark stickers (15.4:1 on cream) */
-  --ink-soft: #5e554b; /* secondary text (6.6:1 on cream) */
-  --tomato: #f2542d; /* display ≥24px bold, doodles, CTA fill (ink text on it) */
-  --tomato-ink: #c2380f; /* small links / inline emphasis (4.9:1 on cream) */
-  --blue: #2f6bff; /* stars and doodles */
-  --blue-sticker: #2559e8; /* blue sticker fill: white text on it passes 5.7:1 (#2F6BFF is only 4.5:1) */
+  /* Colour — "Buttermilk, pastel blue, old burgundy" */
+  --buttermilk: #fff1b5;
+  --pastel-blue: #c1dbe8;
+  --burgundy: #43302e;
+  --cream: #fff8de; /* page background: buttermilk, softened */
+  --cream-deep: #fff1b5; /* buttermilk bands */
+  --ink: #43302e; /* old burgundy: text, borders (11:1 on the page) */
+  --ink-soft: #6e5753; /* secondary text */
+  --tomato: #43302e; /* (legacy name) accent = burgundy */
+  --tomato-ink: #43302e;
+  --blue: #c1dbe8; /* pastel blue fills */
+  --blue-deep: #8fb8cf; /* pastel blue, one step darker (shadows, back flaps) */
+  --blue-sticker: #c1dbe8; /* blue fill, burgundy text on it */
   --white: #ffffff;
-  --glutenia-green: #8bc34a; /* Glutenia stickers/accents (ink text on it) */
-  --glutenia-ink: #3f6e14; /* Glutenia small text on cream/panel (5.3:1) */
+  --glutenia-green: #8bc34a;
+  --glutenia-ink: #3f6e14;
   --glutenia-panel: #e7f3d9;
-  --apa-purple: #4b1d7a; /* L'Africaine stickers (white text) */
+  --apa-purple: #4b1d7a;
   --apa-panel: #e9ddf7;
-  --value-teal: #327183; /* Value stickers (white text, 5.4:1) */
-  --value-ink: #275b6a; /* Value small text on cream/panel */
+  --value-teal: #327183;
+  --value-ink: #275b6a;
   --value-panel: #dcedf1;
-  --sticker-shadow: 3px 3px 0 var(--ink);
-  --sticker-shadow-lift: 4px 4px 0 var(--ink);
-  /* Folders, paper and notes on the home page */
-  --paper: #fffaf3;
-  --note-yellow: #fff3b8;
-  --grid-line: rgb(110 75 54 / 0.09); /* faint graph-paper grid on the page */
-  --kraft: #d9a96f; /* Glutenia folder (ink text, 8:1) */
-  --kraft-back: #bf8d55;
-  --terracotta: #a9532f; /* L'Africaine folder (cream text, 4.9:1) */
-  --terracotta-back: #8a4024;
-  --walnut: #6e4b36; /* Value folder (cream text, 7.2:1) */
-  --walnut-back: #563826;
-  --folder-cream: #fff6ea;
+  --sticker-shadow: 0 6px 14px rgb(67 48 46 / 0.14);
+  --sticker-shadow-lift: 0 10px 20px rgb(67 48 46 / 0.18);
+  /* Folders, paper and notes */
+  --paper: #fffdf4;
+  --note-yellow: #fff1b5;
+  --grid-line: rgb(67 48 46 / 0.06);
+  --kraft: #cfe2b4; /* Glutenia folder: soft green (burgundy text) */
+  --kraft-back: #b2cc90;
+  --terracotta: #43302e; /* L'Africaine folder: burgundy (buttermilk text) */
+  --terracotta-back: #2f2120;
+  --walnut: #f6e08a; /* Value folder: deep buttermilk (burgundy text) */
+  --walnut-back: #e8cd66;
+  --folder-cream: #fff1b5;
 
   /* Project theme (overridden per case study / card) */
   --project: var(--tomato);
@@ -38,9 +42,12 @@
   --project-panel: var(--cream-deep);
 
   /* Type */
-  --font-display: var(--font-bricolage), "Arial Black", system-ui, sans-serif;
-  --font-body: var(--font-instrument), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-hand: var(--font-caveat), "Segoe Print", cursive;
+  --font-display: var(--font-baloo), "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-script: var(--font-baloo), "Arial Rounded MT Bold", system-ui, sans-serif;
+  /* Retro sign lettering: burgundy letters, a cream gap, a pastel-blue offset */
+  --sign-shadow: 2px 2px 0 var(--cream), 5px 5px 0 var(--pastel-blue), 6px 6px 0 var(--burgundy);
+  --font-body: var(--font-karla), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: var(--font-patrick), "Segoe Print", cursive;
   /* Fluid sizes, 375 → 1440 px */
   --fs-display: clamp(3.5rem, 2.092rem + 6.009vw, 7.5rem);
   --fs-h1: clamp(2.5rem, 1.796rem + 3.005vw, 4.5rem);

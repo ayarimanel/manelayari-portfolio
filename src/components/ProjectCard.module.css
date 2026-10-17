@@ -92,14 +92,28 @@
 }
 .folder:hover .papers,
 .folder:focus-within .papers {
-  transform: translateY(-18px);
+  transform: translateY(-34px) rotate(-1.5deg);
+}
+/* The front flap tips forward like a folder being opened. */
+.folder {
+  perspective: 1400px;
+}
+.front {
+  transform-origin: 50% 100%;
+  transition: transform var(--dur-slow) var(--ease-overshoot);
+}
+.folder:hover .front,
+.folder:focus-within .front {
+  transform: rotateX(-14deg);
 }
 @media (prefers-reduced-motion: reduce) {
   .papers {
     transition: none;
   }
   .folder:hover .papers,
-  .folder:focus-within .papers {
+  .folder:focus-within .papers,
+  .folder:hover .front,
+  .folder:focus-within .front {
     transform: none;
   }
 }
@@ -265,7 +279,7 @@
 }
 .title {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
   letter-spacing: -0.03em;
   line-height: 1;

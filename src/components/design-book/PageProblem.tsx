@@ -1,6 +1,6 @@
 import Image from "next/image";
-import phones from "@media/design-book/phones-question-orange.png";
-import question from "@media/design-book/question-mark-orange.png";
+import phones from "@media/design-book/phones-question-blue.png";
+import question from "@media/design-book/question-mark-blue.png";
 import { RansomTitle, Sparkle, Tape } from "./Decor";
 import styles from "./DesignBook.module.css";
 

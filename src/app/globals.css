@@ -66,7 +66,7 @@ h3 {
   text-wrap: balance;
 }
 ::selection {
-  background: var(--tomato);
+  background: var(--pastel-blue);
   color: var(--ink);
 }
 
@@ -81,10 +81,10 @@ h3 {
 /* ---------- Type helpers ---------- */
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--fs-display);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 .h1 {
   font-family: var(--font-display);
@@ -153,7 +153,7 @@ h3 {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.2C18 3.1 31 6.4 47 4.6s29-2.6 44-.9c10 1.1 18 .6 27.5-.8' fill='none' stroke='%23F2542D' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.2C18 3.1 31 6.4 47 4.6s29-2.6 44-.9c10 1.1 18 .6 27.5-.8' fill='none' stroke='%2343302E' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 0.4em;
@@ -200,7 +200,7 @@ h3 {
 }
 .btn:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 var(--ink);
+  box-shadow: none;
 }
 .btn-ink {
   background: var(--ink);
@@ -296,5 +296,5 @@ h3 {
   --project-panel: var(--value-panel);
   --folder: var(--walnut);
   --folder-back: var(--walnut-back);
-  --folder-on: var(--folder-cream);
+  --folder-on: var(--ink);
 }

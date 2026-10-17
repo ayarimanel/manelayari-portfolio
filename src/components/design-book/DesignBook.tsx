@@ -41,7 +41,7 @@ const PAGES: { title: string; text: string; tint: string; Scene: ComponentType }
   },
   {
     title: "Build",
-    text: "Then I build it: hands type on a orange laptop while code snippets fly out.",
+    text: "Then I build it: hands type on a blue laptop while code snippets fly out.",
     tint: "",
     Scene: PageBuild,
   },

@@ -6,14 +6,14 @@
   display: grid;
   gap: var(--s-6);
   padding: clamp(32px, 6vw, 80px);
-  background: var(--tomato);
-  color: var(--ink);
-  border: var(--border);
-  border-radius: var(--r-card);
-  box-shadow: 6px 6px 0 var(--ink);
+  background: var(--burgundy);
+  color: var(--buttermilk);
+  border-radius: 28px;
 }
 .panel h2 {
   max-width: 11ch;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: clamp(2.75rem, 1.8rem + 4.5vw, 6rem);
 }
 .star {
@@ -22,4 +22,12 @@
   right: 32px;
   width: 64px;
   transform: rotate(12deg);
+}
+.panel :global(.btn) {
+  border-color: transparent;
+  background: var(--buttermilk);
+}
+.panel :global(.btn-ink) {
+  background: var(--pastel-blue);
+  color: var(--ink);
 }

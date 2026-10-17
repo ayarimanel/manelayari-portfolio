@@ -7,7 +7,7 @@ export function ContactBlock() {
   return (
     <section id="contact" className={`container ${styles.section}`} aria-labelledby="contact-heading">
       <div className={styles.panel}>
-        <Doodle name="star" color="var(--ink)" fill="var(--cream)" className={`doodle-tablet ${styles.star}`} />
+        <Doodle name="star" color="var(--buttermilk)" fill="var(--pastel-blue)" className={`doodle-tablet ${styles.star}`} />
         <h2 id="contact-heading" className="display">
           Let&rsquo;s work together.
         </h2>

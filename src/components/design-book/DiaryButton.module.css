@@ -1,0 +1,130 @@
+/* ---------- The notebook button ---------- */
+.diary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 84px;
+  padding: 16px 26px 16px 34px;
+  border: 0;
+  border-radius: 6px 16px 16px 6px;
+  background: var(--pastel-blue);
+  color: var(--ink);
+  text-align: left;
+  box-shadow:
+    inset 10px 0 0 #8fb8cf,
+    0 10px 20px -8px rgb(67 48 46 / 0.35);
+  transform: rotate(-1.5deg);
+  transition:
+    transform var(--dur) var(--ease-overshoot),
+    box-shadow var(--dur) var(--ease);
+}
+.diary:hover,
+.diary:focus-visible {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow:
+    inset 10px 0 0 #8fb8cf,
+    0 16px 26px -10px rgb(67 48 46 / 0.4);
+}
+/* Stitched spine */
+.spine {
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  bottom: 10px;
+  border-left: 2px dashed rgb(255 255 255 / 0.8);
+}
+/* A strip of buttermilk tape on the corner */
+.tape {
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  width: 64px;
+  height: 20px;
+  background: rgb(246 216 115 / 0.85);
+  transform: rotate(6deg);
+}
+.text {
+  display: grid;
+  gap: 2px;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1.1;
+}
+.hint {
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- The dialog ---------- */
+.dialog {
+  width: min(100% - 24px, 860px);
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 30px 60px -20px rgb(67 48 46 / 0.5);
+}
+.dialog::backdrop {
+  background: rgb(67 48 46 / 0.55);
+}
+.dialog[open] {
+  animation: pop var(--dur-slow) var(--ease-overshoot);
+}
+.panel {
+  padding: 18px 20px 24px;
+}
+@media (min-width: 768px) {
+  .panel {
+    padding: 22px 40px 32px;
+  }
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.dialogTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+.close {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--pastel-blue);
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.close:hover,
+.close:focus-visible {
+  background: #a3c6d9;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+  .diary,
+  .diary:hover,
+  .diary:focus-visible {
+    transition: none;
+  }
+}

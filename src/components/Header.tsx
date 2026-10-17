@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
+import logo from "../../public/media/home/logo-full.png";
 import styles from "./Header.module.css";
 
 const links = [
@@ -79,7 +81,7 @@ export function Header() {
     <header className={styles.header} data-scrolled={scrolled}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.wordmark} aria-label={`${site.name} — home`}>
-          {site.name}
+          <Image src={logo} alt="" sizes="160px" priority className={styles.logo} />
         </Link>
         <nav aria-label="Main" className={styles.nav}>
           <ul>
@@ -107,8 +109,8 @@ export function Header() {
       {open && (
         <div id="mobile-menu" ref={menuRef} className={styles.menu} role="dialog" aria-modal="true" aria-label="Menu">
           <div className={`container ${styles.bar}`}>
-            <Link href="/" className={styles.wordmark} onClick={() => close(false)}>
-              {site.name}
+            <Link href="/" className={styles.wordmark} onClick={() => close(false)} aria-label={`${site.name} — home`}>
+              <Image src={logo} alt="" sizes="160px" className={styles.logo} />
             </Link>
             <button type="button" className={styles.menuButton} onClick={() => close()}>
               Close

@@ -18,7 +18,7 @@
   background: var(--tomato);
   color: var(--ink);
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.125rem;
   box-shadow: 2px 2px 0 var(--ink);
   transform: rotate(-4deg);

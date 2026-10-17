@@ -541,7 +541,7 @@
   border-radius: 50%;
   background: var(--c);
   color: var(--c-on);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.8125rem;
 }
 .state[data-state="unreadable"] .stateIcon {
@@ -661,7 +661,7 @@
 .xpTable td {
   text-align: right;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.25rem;
   color: var(--glutenia-ink);
 }

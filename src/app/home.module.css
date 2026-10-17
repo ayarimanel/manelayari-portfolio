@@ -1,211 +1,443 @@
 /* ---------- Hero ---------- */
-.hero {
+.heroBand {
   position: relative;
-  padding-block: clamp(32px, 5vw, 64px) clamp(16px, 2vw, 32px);
-  display: grid;
-  gap: var(--s-7);
-  align-items: center;
+  background: var(--buttermilk);
+  padding-top: var(--s-7);
 }
-@media (min-width: 768px) {
+.hero {
+  display: grid;
+  gap: var(--s-8);
+  align-items: center;
+  padding-bottom: var(--s-9);
+}
+@media (min-width: 1024px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: var(--gutter);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--s-7);
+    min-height: calc(100svh - var(--header-h) - 80px);
+    padding-bottom: var(--s-10);
   }
 }
-.heroHello {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 8px;
-  margin-bottom: var(--s-4);
-  color: var(--ink-soft);
-  font-size: var(--fs-small);
-  animation: rise var(--dur-slow) var(--ease) both;
-}
-.heroHi {
-  font-family: var(--font-hand);
-  font-weight: 700;
-  font-size: 1.875rem;
+.hello {
+  font-family: var(--font-script);
+  font-weight: 800;
+  font-size: clamp(4.5rem, 3rem + 6.5vw, 8.5rem);
   line-height: 1;
-  color: var(--tomato-ink);
+  color: var(--ink);
+  margin-bottom: var(--s-5);
 }
 .heroTitle {
-  max-width: 13ch;
-  font-size: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-  animation: rise var(--dur-slow) var(--ease) 80ms both;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
+  line-height: 1.18;
+  max-width: 19ch;
 }
-.heroTitle em {
-  font-style: normal;
-  color: var(--tomato);
+.heroTitle strong {
+  font-weight: 800;
 }
 .heroLine {
   margin-top: var(--s-5);
-  max-width: 50ch;
+  max-width: 42ch;
   color: var(--ink-soft);
   font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
-  line-height: 1.5;
-  animation: rise var(--dur-slow) var(--ease) 140ms both;
 }
 .heroCtas {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-3) var(--s-4);
+  gap: var(--s-3);
   margin-top: var(--s-6);
-  animation: rise var(--dur-slow) var(--ease) 200ms both;
 }
-.heroCtas :global(.btn) {
-  font-family: var(--font-display);
-  font-weight: 700;
-}
-.ctaPrimary {
-  background: var(--tomato);
-}
-/* Plain facts, deliberately flat so they don't look clickable. */
-.heroClaims {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2);
-  margin-top: var(--s-5);
-  animation: rise var(--dur-slow) var(--ease) 260ms both;
-}
-.heroClaims li {
-  padding: 5px 12px;
-  border-radius: 6px;
-  background: rgb(110 75 54 / 0.1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-.heroClaims span {
-  color: var(--tomato-ink);
-}
-
-/* Portrait on a stamp-edged polaroid (the portrait and tools are drawn by
-   HeroAvatar). --p is the portrait box width, --b the frame width; the box
-   keeps a 695×845 ratio, so its height is --p × 1.216. */
 .heroArt {
-  --p: 180px;
-  --b: 236px;
-  --ph: calc(var(--p) * 1.216);
   position: relative;
   justify-self: center;
-  width: var(--b);
-  height: calc(var(--ph) * 1.05);
+  width: 100%;
+  max-width: 640px;
+  padding-bottom: 40px;
 }
-@media (min-width: 768px) {
-  .heroArt {
-    --p: 260px;
-    --b: 330px;
-    justify-self: end;
-  }
-}
-@media (min-width: 1024px) {
-  .heroArt {
-    --p: 330px;
-    --b: 410px;
-  }
-}
-/* The polaroid starts a seventh of the way down, so the head breaks out of its top edge. */
-.polaroid {
+.fuel {
   position: absolute;
-  inset: calc(var(--ph) * 0.14) 0 0;
-  transform: rotate(3deg);
-}
-.polaroid > div {
-  height: 100%;
-  border: 12px solid var(--paper);
-  background: var(--cream-deep);
-}
-.heroClip {
-  position: absolute;
-  z-index: 3;
-  top: calc(var(--ph) * 0.14 - 34px);
-  left: 18%;
-  width: 26px;
+  left: -120px;
+  bottom: -70px;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
   transform: rotate(-8deg);
 }
-.heroStar {
-  position: absolute;
-  z-index: 1;
-  top: calc(var(--ph) * 0.14 - 22px);
-  right: -10px;
-  width: clamp(40px, 5vw, 64px);
-  transform: rotate(14deg);
+.coffee {
+  width: 84px;
+  height: auto;
+  filter: drop-shadow(2px 6px 8px rgb(67 48 46 / 0.22));
 }
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
+@media (min-width: 768px) {
+  .coffee {
+    width: 112px;
+  }
+}
+.fuelNote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: -6px;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ink);
+  transform: rotate(10deg) translateY(30px);
+}
+.fuelNote svg {
+  width: 52px;
+  margin-bottom: 2px;
+  transform: scaleX(-1) rotate(180deg);
+}
+@media (max-width: 1023px) {
+  .heroArt {
+    padding-bottom: 120px;
+  }
+  .fuel {
+    left: 0;
+    bottom: -10px;
+  }
+}
+.wave {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 40px;
+}
+
+/* ---------- Ribbon ---------- */
+.ribbon {
+  overflow: hidden;
+  background: var(--burgundy);
+  color: var(--buttermilk);
+  padding: 12px 0 14px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ribbonTrack {
+  display: flex;
+  width: max-content;
+  animation: ribbon 36s linear infinite;
+}
+@keyframes ribbon {
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* ---------- Work ---------- */
-.work {
-  padding-block: var(--s-6) calc(var(--section-gap) / 2);
+/* ---------- Me and my skills ---------- */
+.intro {
+  display: grid;
+  gap: var(--s-8);
+  padding-block: var(--s-9);
 }
-.workHeading {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px var(--s-4);
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: var(--s-9);
+    align-items: start;
+  }
 }
-.workHint {
-  font-family: var(--font-hand);
-  font-weight: 600;
-  font-size: 1.625rem;
-  letter-spacing: 0;
-  color: var(--ink-soft);
-}
-.cards {
+.me {
   display: grid;
   gap: var(--s-6);
-  margin-top: var(--s-2);
+  justify-items: center;
 }
-
-/* ---------- What I do ---------- */
-.skillsSection {
-  padding-block: var(--section-gap) calc(var(--section-gap) / 2);
+@media (min-width: 1024px) {
+  .me {
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+  }
 }
-.skills {
+.portrait {
+  position: relative;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  border-radius: 40px;
+  background: var(--pastel-blue);
+  transform: rotate(-2deg);
+}
+.portrait img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 92%;
+  height: auto;
+  transform: translateX(-50%) rotate(2deg);
+}
+.bubble {
+  position: absolute;
+  z-index: 2;
+  padding: 8px 16px 9px;
+  border-radius: 99px;
+  background: var(--paper);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1;
+  box-shadow: var(--sticker-shadow);
+  white-space: nowrap;
+}
+.bubbleA {
+  top: 34%;
+  right: -26px;
+  transform: rotate(6deg);
+}
+.bubbleB {
+  bottom: 18%;
+  left: -24px;
+  transform: rotate(-6deg);
+}
+.contact {
   list-style: none;
   padding: 0;
   display: grid;
-  gap: var(--s-6) var(--gutter);
-  margin: var(--s-6) 0 var(--s-7);
+  gap: 6px;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.introHeading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: 1;
+}
+.aboutText {
+  margin-top: var(--s-5);
+  max-width: 60ch;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+}
+.grid {
+  display: grid;
+  gap: var(--s-6) var(--s-7);
+  margin-block: var(--s-7);
 }
 @media (min-width: 768px) {
-  .skills {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.label {
+  margin-bottom: var(--s-3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.tiles {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tiles li {
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--buttermilk);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.tilesBlue li {
+  background: var(--pastel-blue);
+}
+.small {
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.small strong {
+  color: var(--ink);
+}
+
+/* Steps as little tickets */
+.steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-5);
+  margin-bottom: var(--s-6);
+}
+@media (min-width: 768px) {
+  .steps {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-.skills li {
-  display: grid;
-  align-content: start;
-  gap: var(--s-2);
+.steps li {
+  position: relative;
+  padding: 26px 18px 18px;
+  border: 1.5px dashed rgb(67 48 46 / 0.4);
+  border-radius: 14px;
+  background: var(--paper);
+  font-size: var(--fs-small);
 }
-.skills p {
-  color: var(--ink-soft);
-  max-width: 32ch;
+.steps li:nth-child(2) {
+  transform: rotate(1deg);
 }
-.skillIcon {
-  width: 52px;
-  margin-bottom: var(--s-2);
+.stepTag {
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--burgundy);
+  color: var(--buttermilk);
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  line-height: 1;
 }
 
-/* ---------- About teaser ---------- */
-.about {
-  padding-block: calc(var(--section-gap) / 2);
+.diaryRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5) var(--s-7);
 }
-.aboutInner {
+
+/* ---------- Three folders ---------- */
+.workBand {
+  padding-block: var(--s-9);
+  background: var(--pastel-blue);
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.35) 2px, transparent 2px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.35) 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+.workHeading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  text-align: center;
+}
+.script {
+  font-family: var(--font-script);
+  font-weight: 800;
+}
+.workHint {
+  margin-top: var(--s-3);
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.375rem;
+}
+.folders {
+  position: relative;
   display: grid;
-  gap: var(--s-4);
-  justify-items: start;
-  max-width: var(--reading-max);
+  gap: var(--s-8) var(--s-5);
+  margin-top: var(--s-8);
 }
-.aboutText {
-  font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
-  line-height: 1.5;
+@media (min-width: 1024px) {
+  .folders {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+  .folders > * {
+    display: flex;
+  }
+  .folders > * > * {
+    flex: 1;
+  }
+}
+
+/* Floating hand that taps toward the folders */
+.pointer {
+  position: absolute;
+  z-index: 8;
+  left: 40%;
+  bottom: -96px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+.folders:has(article:hover) .pointer {
+  opacity: 0;
+}
+.hand {
+  width: 58px;
+  height: auto;
+  transform: rotate(-24deg);
+  filter: drop-shadow(2px 6px 6px rgb(67 48 46 / 0.25));
+  animation: tap 2.2s var(--ease) infinite;
+}
+.tap {
+  position: absolute;
+  left: -18px;
+  top: -18px;
+  width: 30px;
+  height: 30px;
+  border: 2.5px solid var(--burgundy);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ripple 2.2s var(--ease) infinite;
+}
+.pointerNote {
+  margin-bottom: 8px;
+  font-family: var(--font-hand);
+  font-size: 1.375rem;
+  line-height: 1.1;
+  max-width: 11ch;
+  transform: rotate(-3deg);
+}
+@keyframes tap {
+  0%,
+  100% {
+    transform: rotate(-24deg) translate(0, 0);
+  }
+  35% {
+    transform: rotate(-24deg) translate(0, -14px);
+  }
+  45% {
+    transform: rotate(-24deg) translate(0, -6px) scale(0.94);
+  }
+  60% {
+    transform: rotate(-24deg) translate(0, -12px);
+  }
+}
+@keyframes ripple {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  46% {
+    opacity: 0.9;
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@media (min-width: 1024px) {
+  .pointer {
+    left: 30%;
+    bottom: -84px;
+  }
+  .hand {
+    width: 70px;
+  }
+}
+@media (max-width: 1023px) {
+  .pointer {
+    left: auto;
+    right: 4px;
+    bottom: auto;
+    top: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hand,
+  .tap {
+    animation: none;
+  }
+  .ribbonTrack {
+    animation: none;
+  }
 }
