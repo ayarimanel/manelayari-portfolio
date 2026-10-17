@@ -13,11 +13,13 @@ export function FactsRow({ facts }: { facts: Fact[] }) {
             {f.href && (
               <>
                 <br />
-                <a className="link link-ink" href={f.href} target="_blank" rel="noopener">
+                <a className={styles.live} href={f.href} target="_blank" rel="noopener">
+                  <span className={styles.dot} aria-hidden="true" />
                   {f.linkLabel ?? f.href}
-                  <span aria-hidden="true"> ↗</span>
+                  <span aria-hidden="true">↗</span>
                   <span className="visually-hidden"> (opens in a new tab)</span>
                 </a>
+                {f.linkNote && <span className={styles.linkNote}>{f.linkNote}</span>}
               </>
             )}
           </dd>

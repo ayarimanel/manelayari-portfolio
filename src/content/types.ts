@@ -88,7 +88,14 @@ export type CaseSection = {
   band?: boolean;
 };
 
-export type Fact = { label: string; value: string; href?: string; linkLabel?: string };
+export type Fact = {
+  label: string;
+  value: string;
+  href?: string;
+  linkLabel?: string;
+  /** Optional small line under the link, e.g. "catalogue being added". */
+  linkNote?: string;
+};
 
 type CardImage = { image: StaticImageData; alt: string };
 

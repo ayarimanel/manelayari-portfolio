@@ -53,7 +53,8 @@ export const lafricaine: Project = {
       label: "Status",
       value: "Live — editionapa.tn",
       href: "https://editionapa.tn",
-      linkLabel: "Live site (catalogue being added)",
+      linkLabel: "Visit the live site",
+      linkNote: "catalogue being added",
     },
   ],
   sections: [

@@ -26,3 +26,60 @@
   font-size: var(--fs-small);
   line-height: 1.5;
 }
+
+/* Link to the live site: a mauve pill (the project colour, mixed lighter) with a blinking "live" dot. */
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: var(--s-3);
+  padding: 8px 18px 8px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--project) 26%, var(--white));
+  color: var(--project);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  box-shadow: 0 6px 14px -6px color-mix(in srgb, var(--project) 60%, transparent);
+  transition:
+    transform var(--dur) var(--ease-overshoot),
+    background var(--dur) var(--ease);
+}
+.live:hover,
+.live:focus-visible {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--project) 36%, var(--white));
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3fae5a;
+  box-shadow: 0 0 0 3px rgb(63 174 90 / 0.25);
+  animation: blink 1.6s ease-in-out infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+  .live:hover,
+  .live:focus-visible {
+    transform: none;
+  }
+}
+.live {
+  white-space: nowrap;
+}
+.linkNote {
+  display: block;
+  margin-top: 6px;
+  padding-left: 16px;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
