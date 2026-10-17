@@ -7,6 +7,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Reveal } from "@/components/Reveal";
 import { Laptop } from "@/components/Laptop";
+import { SkillTiles } from "@/components/SkillTiles";
 import { DiaryButton } from "@/components/design-book/DiaryButton";
 import coffee from "../../public/media/home/coffee.png";
 import pointingHand from "../../public/media/home/pointing-hand.png";
@@ -142,19 +143,11 @@ export default function Home() {
           <div className={styles.grid}>
             <div>
               <h3 className={styles.label}>Design tools</h3>
-              <ul className={styles.tiles}>
-                {designTools.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
+              <SkillTiles items={designTools} tone="butter" />
             </div>
             <div>
               <h3 className={styles.label}>Build tools</h3>
-              <ul className={`${styles.tiles} ${styles.tilesBlue}`}>
-                {buildTools.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
+              <SkillTiles items={buildTools} tone="blue" />
             </div>
             <div>
               <h3 className={styles.label}>Education</h3>
