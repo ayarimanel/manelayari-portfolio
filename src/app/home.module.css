@@ -363,7 +363,7 @@
   height: auto;
   transform: rotate(-24deg);
   filter: drop-shadow(2px 6px 6px rgb(67 48 46 / 0.25));
-  animation: tap 2.2s var(--ease) infinite;
+  animation: tap 3s var(--ease) infinite;
 }
 .tap {
   position: absolute;
@@ -374,7 +374,7 @@
   border: 2.5px solid var(--burgundy);
   border-radius: 50%;
   opacity: 0;
-  animation: ripple 2.2s var(--ease) infinite;
+  animation: ripple 3s var(--ease) infinite;
 }
 .pointerNote {
   margin-bottom: 8px;
@@ -414,13 +414,61 @@
     transform: scale(1.6);
   }
 }
+/* Desktop: a 9 s tour. The hand glides under each folder in turn and taps
+   it (the tap lands 1.35 s into each 3 s stop), and that folder hops. */
 @media (min-width: 1024px) {
   .pointer {
-    left: 30%;
+    left: 18%;
     bottom: -84px;
+    animation: tour 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
   .hand {
     width: 70px;
+  }
+  .folders > :not(.pointer) {
+    animation: hop 9s var(--ease) infinite;
+  }
+  .folders > :nth-child(2) {
+    animation-delay: 3s;
+  }
+  .folders > :nth-child(3) {
+    animation-delay: 6s;
+  }
+  .folders:has(article:hover) > * {
+    animation-play-state: paused;
+  }
+}
+@keyframes tour {
+  0%,
+  22% {
+    left: 18%;
+  }
+  33%,
+  55% {
+    left: 51%;
+  }
+  66%,
+  88% {
+    left: 84%;
+  }
+  100% {
+    left: 18%;
+  }
+}
+@keyframes hop {
+  0%,
+  13% {
+    transform: none;
+  }
+  16% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+  19% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+  23%,
+  100% {
+    transform: none;
   }
 }
 @media (max-width: 1023px) {
@@ -434,7 +482,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hand,
-  .tap {
+  .tap,
+  .pointer,
+  .folders > * {
     animation: none;
   }
   .ribbonTrack {
