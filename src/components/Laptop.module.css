@@ -2,11 +2,12 @@
   --cycle: 24s;
   --intro: 3.4s;
   --intro-delay: 0.4s;
-  /* Silver aluminium */
-  --alu: linear-gradient(160deg, #f1f2f4 0%, #d9dbdf 40%, #c3c6cb 100%);
-  --alu-back: linear-gradient(160deg, #e9eaed 0%, #cfd2d6 55%, #bcbfc4 100%);
-  --alu-edge: #a9adb3;
+  /* Pastel-blue aluminium, to match the folders and tiles */
+  --alu: linear-gradient(160deg, #dcebf3 0%, #c1dbe8 45%, #a9cadc 100%);
+  --alu-back: linear-gradient(160deg, #d3e6f0 0%, #b9d6e5 55%, #a3c6d9 100%);
+  --alu-edge: #8fb8cf;
   position: relative;
+  container-type: inline-size;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -17,14 +18,13 @@
   position: relative;
   perspective: 1600px;
   perspective-origin: 50% 20%;
-  padding: 4% 0 9%;
+  padding: 24% 0 9%;
 }
 .device {
   position: relative;
   width: 82%;
   margin-inline: auto;
   transform-style: preserve-3d;
-  transform: rotateX(-3deg);
   animation: turn var(--intro) cubic-bezier(0.45, 0, 0.2, 1) var(--intro-delay) both;
 }
 .ground {
@@ -46,11 +46,11 @@
   animation: open var(--intro) cubic-bezier(0.3, 0, 0.2, 1) var(--intro-delay) both;
 }
 .face {
+  position: relative;
   padding: 0.9%;
   border-radius: 16px 16px 6px 6px;
   background: var(--alu);
   box-shadow: inset 0 0 0 1px var(--alu-edge);
-  backface-visibility: hidden;
 }
 .glass {
   position: relative;
@@ -61,7 +61,6 @@
 .screen {
   position: relative;
   aspect-ratio: 16 / 10;
-  overflow: hidden;
   border-radius: 4px;
   background: #1a1a1d;
 }
@@ -87,12 +86,31 @@
   background: radial-gradient(circle at 35% 35%, #4d6b80, #0d0d0f 70%);
   transform: translateX(-50%);
 }
-/* The page sits under a thin menu bar, so the notch never covers it. */
+/* The website floats out of the laptop. It lives outside the 3D laptop (a
+   flat layer over the stage) so Chrome never clips it, and it only appears
+   once the laptop faces front. Measured in the figure's width (cqw): the
+   screen is 76.7 wide from 11.7 and sits from 26.7 to 74.6 down; the page is
+   a little wider and rises well above it. */
 .window {
   position: absolute;
-  inset: 5.2% 0 0;
-  border-top: 1px solid rgb(0 0 0 / 0.06);
-  animation: appear var(--intro) linear var(--intro-delay) both;
+  z-index: 2;
+  left: 9.4cqw;
+  width: 81.2cqw;
+  top: 6.6cqw;
+  height: 66.6cqw;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow:
+    0 24px 40px -18px rgb(67 48 46 / 0.45),
+    0 0 0 1px rgb(67 48 46 / 0.08);
+  animation:
+    appear var(--intro) linear var(--intro-delay) both,
+    float 5s ease-in-out calc(var(--intro) + var(--intro-delay)) infinite;
+}
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
 }
 .screen::before {
   content: "";
@@ -117,23 +135,18 @@
   border-radius: 16px 16px 6px 6px;
   background: var(--alu-back);
   box-shadow: inset 0 0 0 1px var(--alu-edge);
-  transform: rotateX(180deg);
+  /* Sits a hair behind the face, so it shows only from behind (closed) and
+     the face covers it once open. No backface-visibility on the face: in
+     Chrome that would clip the floating page to the lid. */
+  transform: rotateX(180deg) translateZ(1px);
   backface-visibility: hidden;
 }
+/* Manel's logo, softly engraved on the back of the lid */
 .mark {
-  display: grid;
-  place-items: center;
-  width: 14%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #f7f8f9, #d3d6da);
-  box-shadow:
-    inset 0 1px 2px rgb(255 255 255 / 0.9),
-    0 1px 3px rgb(0 0 0 / 0.18);
-  color: var(--burgundy);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1rem, 2.4vw, 1.625rem);
+  width: 46%;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.55));
 }
 
 /* ---------- Deck: black keyboard, wide trackpad, slim front edge ---------- */
@@ -142,7 +155,7 @@
   top: 100%;
   left: -3%;
   width: 106%;
-  aspect-ratio: 16 / 10.4;
+  aspect-ratio: 16 / 9.8; /* no deeper than the lid, so it hides when closed */
   border-radius: 6px 6px 14px 14px;
   background: var(--alu);
   box-shadow: inset 0 0 0 1px var(--alu-edge);
@@ -158,10 +171,10 @@
   height: 44%;
   border-radius: 5px;
   background:
-    repeating-linear-gradient(90deg, transparent 0 6.2%, #c9ccd0 6.2% 6.9%),
-    repeating-linear-gradient(transparent 0 15.4%, #c9ccd0 15.4% 16.7%),
-    #1b1b1d;
-  box-shadow: inset 0 0 0 2px #c9ccd0;
+    repeating-linear-gradient(90deg, transparent 0 6.2%, #b3d2e3 6.2% 6.9%),
+    repeating-linear-gradient(transparent 0 15.4%, #b3d2e3 15.4% 16.7%),
+    var(--burgundy);
+  box-shadow: inset 0 0 0 2px #b3d2e3;
 }
 .pad {
   position: absolute;
@@ -170,8 +183,8 @@
   top: 56%;
   bottom: 7%;
   border-radius: 8px;
-  background: linear-gradient(160deg, #e4e6e9, #ccced2);
-  box-shadow: inset 0 0 0 1px #b5b9be;
+  background: linear-gradient(160deg, #d3e6f0, #b9d6e5);
+  box-shadow: inset 0 0 0 1px #8fb8cf;
 }
 .lip {
   position: absolute;
@@ -180,7 +193,7 @@
   top: 100%;
   height: 9px;
   border-radius: 0 0 12px 12px;
-  background: linear-gradient(#cfd2d6, #a9adb3);
+  background: linear-gradient(#a9cadc, #8fb8cf);
   transform-origin: 50% 0;
   transform: rotateX(-90deg);
 }
@@ -191,7 +204,7 @@
   width: 14%;
   height: 4px;
   border-radius: 0 0 8px 8px;
-  background: #9ea2a8;
+  background: #7fa9c2;
   transform: translateX(-50%);
 }
 
@@ -205,10 +218,10 @@
     transform: rotateX(-1deg) rotateY(7deg);
   }
   86% {
-    transform: rotateX(-4deg) rotateY(-2deg);
+    transform: rotateX(-1.5deg) rotateY(-2deg);
   }
   100% {
-    transform: rotateX(-3deg);
+    transform: none;
   }
 }
 @keyframes open {
