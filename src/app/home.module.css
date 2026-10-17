@@ -359,18 +359,18 @@
   opacity: 0;
 }
 .hand {
-  width: 58px;
+  width: 68px;
   height: auto;
-  transform: rotate(-24deg);
+  transform: rotate(-4deg);
   filter: drop-shadow(2px 6px 6px rgb(67 48 46 / 0.25));
   animation: tap 3s var(--ease) infinite;
 }
 .tap {
   position: absolute;
-  left: -18px;
-  top: -18px;
-  width: 30px;
-  height: 30px;
+  left: 4px;
+  top: 2px;
+  width: 32px;
+  height: 32px;
   border: 2.5px solid var(--burgundy);
   border-radius: 50%;
   opacity: 0;
@@ -387,16 +387,16 @@
 @keyframes tap {
   0%,
   100% {
-    transform: rotate(-24deg) translate(0, 0);
+    transform: rotate(-4deg) translate(0, 0);
   }
   35% {
-    transform: rotate(-24deg) translate(0, -14px);
+    transform: rotate(-4deg) translate(0, -14px);
   }
   45% {
-    transform: rotate(-24deg) translate(0, -6px) scale(0.94);
+    transform: rotate(-4deg) translate(0, -6px) scale(0.95);
   }
   60% {
-    transform: rotate(-24deg) translate(0, -12px);
+    transform: rotate(-4deg) translate(0, -12px);
   }
 }
 @keyframes ripple {
@@ -423,7 +423,11 @@
     animation: tour 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
   .hand {
-    width: 70px;
+    width: 80px;
+  }
+  .tap {
+    left: 8px;
+    top: 6px;
   }
   .folders > :not(.pointer) {
     animation: hop 9s var(--ease) infinite;
