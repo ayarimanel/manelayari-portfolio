@@ -2,25 +2,26 @@
   --cycle: 24s;
   --intro: 3.4s;
   --intro-delay: 0.4s;
-  --metal: linear-gradient(150deg, #6b504c 0%, #4a3532 38%, #3d2b29 70%, #523b38 100%);
-  --metal-light: linear-gradient(150deg, #7a5d58 0%, #573f3b 45%, #46322f 100%);
+  /* Silver aluminium */
+  --alu: linear-gradient(160deg, #f1f2f4 0%, #d9dbdf 40%, #c3c6cb 100%);
+  --alu-back: linear-gradient(160deg, #e9eaed 0%, #cfd2d6 55%, #bcbfc4 100%);
+  --alu-edge: #a9adb3;
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 /* ---------- 3D stage ---------- */
 .stage {
   position: relative;
-  perspective: 1500px;
-  perspective-origin: 50% 15%;
-  /* room for the page rising above the lid, and for the deck below it */
-  padding: 22% 0 10%;
+  perspective: 1600px;
+  perspective-origin: 50% 20%;
+  padding: 4% 0 9%;
 }
 .device {
   position: relative;
-  width: 80%;
+  width: 82%;
   margin-inline: auto;
   transform-style: preserve-3d;
   transform: rotateX(-3deg);
@@ -28,16 +29,16 @@
 }
 .ground {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 4%;
-  height: 12%;
+  left: 6%;
+  right: 6%;
+  bottom: 3%;
+  height: 10%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(67 48 46 / 0.32), transparent);
+  background: radial-gradient(closest-side, rgb(67 48 46 / 0.28), transparent);
   filter: blur(6px);
 }
 
-/* ---------- Lid ---------- */
+/* ---------- Lid: thin aluminium rim, black glass, screen with a notch ---------- */
 .lid {
   position: relative;
   transform-style: preserve-3d;
@@ -45,131 +46,141 @@
   animation: open var(--intro) cubic-bezier(0.3, 0, 0.2, 1) var(--intro-delay) both;
 }
 .face {
-  position: relative;
-  padding: 12px 12px 20px;
-  border-radius: 18px 18px 6px 6px;
-  background: var(--metal);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.18),
-    inset 0 0 0 1px rgb(0 0 0 / 0.25);
+  padding: 0.9%;
+  border-radius: 16px 16px 6px 6px;
+  background: var(--alu);
+  box-shadow: inset 0 0 0 1px var(--alu-edge);
   backface-visibility: hidden;
 }
-.face::before {
+.glass {
+  position: relative;
+  padding: 2.4% 2.4% 3%;
+  border-radius: 13px 13px 4px 4px;
+  background: #0d0d0f;
+}
+.screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #1a1a1d;
+}
+.notch {
+  position: absolute;
+  top: 2.4%;
+  left: 50%;
+  width: 11%;
+  height: 3.2%;
+  border-radius: 0 0 8px 8px;
+  background: #0d0d0f;
+  transform: translateX(-50%);
+}
+.notch::after {
   /* camera */
   content: "";
   position: absolute;
-  top: 4px;
+  top: 25%;
   left: 50%;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #6f8fa3, #1d1513 70%);
+  background: radial-gradient(circle at 35% 35%, #4d6b80, #0d0d0f 70%);
   transform: translateX(-50%);
 }
-.screen {
-  aspect-ratio: 16 / 10;
-  border-radius: 6px;
-  background: #1d1513;
+/* The page sits under a thin menu bar, so the notch never covers it. */
+.window {
+  position: absolute;
+  inset: 5.2% 0 0;
+  border-top: 1px solid rgb(0 0 0 / 0.06);
+  animation: appear var(--intro) linear var(--intro-delay) both;
+}
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5.2%;
+  background: #f4f1ea;
+  animation: appear var(--intro) linear var(--intro-delay) both;
+}
+/* A soft glass reflection */
+.glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgb(255 255 255 / 0.14) 0%, rgb(255 255 255 / 0.04) 30%, transparent 31%);
+  pointer-events: none;
 }
 .shell {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  border-radius: 18px 18px 6px 6px;
-  background: var(--metal-light);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.25);
+  border-radius: 16px 16px 6px 6px;
+  background: var(--alu-back);
+  box-shadow: inset 0 0 0 1px var(--alu-edge);
   transform: rotateX(180deg);
   backface-visibility: hidden;
 }
 .mark {
   display: grid;
   place-items: center;
-  width: 18%;
+  width: 14%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: linear-gradient(145deg, #d6e8f1, var(--pastel-blue));
+  background: linear-gradient(145deg, #f7f8f9, #d3d6da);
+  box-shadow:
+    inset 0 1px 2px rgb(255 255 255 / 0.9),
+    0 1px 3px rgb(0 0 0 / 0.18);
   color: var(--burgundy);
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.25);
+  font-size: clamp(1rem, 2.4vw, 1.625rem);
 }
 
-/* The website: same width as the screen, its bottom on the screen's bottom,
-   and a bit taller, so it rises out of the top of the laptop. */
-.window {
-  position: absolute;
-  z-index: 1;
-  left: 12px;
-  right: 12px;
-  bottom: 20px;
-  height: calc((100% - 32px) * 1.35);
-  overflow: hidden;
-  border-radius: 10px 10px 4px 4px;
-  background: var(--paper);
-  box-shadow: 0 -10px 24px -14px rgb(67 48 46 / 0.35);
-  animation: appear var(--intro) linear var(--intro-delay) both;
-}
-/* A soft glass reflection across the screen */
-.glare {
-  position: absolute;
-  z-index: 2;
-  left: 12px;
-  right: 12px;
-  bottom: 20px;
-  height: calc((100% - 32px));
-  border-radius: 0 0 4px 4px;
-  background: linear-gradient(115deg, rgb(255 255 255 / 0.16) 0%, rgb(255 255 255 / 0.05) 32%, transparent 33%);
-  pointer-events: none;
-  animation: appear var(--intro) linear var(--intro-delay) both;
-}
-
-/* ---------- Deck: keyboard, trackpad and front lip ---------- */
+/* ---------- Deck: black keyboard, wide trackpad, slim front edge ---------- */
 .deck {
   position: absolute;
   top: 100%;
-  left: -6%;
-  width: 112%;
-  aspect-ratio: 16 / 8.2;
-  border-radius: 8px 8px 16px 16px;
-  background: linear-gradient(180deg, #5a4340 0%, #4a3532 60%, #3f2d2b 100%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12);
+  left: -3%;
+  width: 106%;
+  aspect-ratio: 16 / 10.4;
+  border-radius: 6px 6px 14px 14px;
+  background: var(--alu);
+  box-shadow: inset 0 0 0 1px var(--alu-edge);
   transform-origin: 50% 0;
   transform: rotateX(90deg);
   transform-style: preserve-3d;
 }
 .keys {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 9%;
-  height: 46%;
-  border-radius: 4px;
+  left: 9%;
+  right: 9%;
+  top: 7%;
+  height: 44%;
+  border-radius: 5px;
   background:
-    repeating-linear-gradient(90deg, transparent 0 5.6%, #4a3532 5.6% 6.6%),
-    repeating-linear-gradient(transparent 0 16%, #4a3532 16% 20%),
-    #241a19;
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.5);
+    repeating-linear-gradient(90deg, transparent 0 6.2%, #c9ccd0 6.2% 6.9%),
+    repeating-linear-gradient(transparent 0 15.4%, #c9ccd0 15.4% 16.7%),
+    #1b1b1d;
+  box-shadow: inset 0 0 0 2px #c9ccd0;
 }
 .pad {
   position: absolute;
-  left: 35%;
-  right: 35%;
-  top: 62%;
-  bottom: 10%;
-  border-radius: 6px;
-  background: linear-gradient(#55403c, #4a3532);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2);
+  left: 29%;
+  right: 29%;
+  top: 56%;
+  bottom: 7%;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #e4e6e9, #ccced2);
+  box-shadow: inset 0 0 0 1px #b5b9be;
 }
 .lip {
   position: absolute;
   left: 0;
   right: 0;
   top: 100%;
-  height: 14px;
-  border-radius: 0 0 14px 14px;
-  background: linear-gradient(#4a3532, #2f2120);
+  height: 9px;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(#cfd2d6, #a9adb3);
   transform-origin: 50% 0;
   transform: rotateX(-90deg);
 }
@@ -177,10 +188,10 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 16%;
-  height: 5px;
+  width: 14%;
+  height: 4px;
   border-radius: 0 0 8px 8px;
-  background: #241a19;
+  background: #9ea2a8;
   transform: translateX(-50%);
 }
 
@@ -188,13 +199,13 @@
 @keyframes turn {
   0%,
   42% {
-    transform: translateY(-14%) scale(0.82) rotateX(-32deg) rotateY(-34deg);
+    transform: translateY(8%) scale(0.86) rotateX(-34deg) rotateY(-32deg);
   }
   72% {
-    transform: rotateX(-1deg) rotateY(8deg);
+    transform: rotateX(-1deg) rotateY(7deg);
   }
   86% {
-    transform: rotateX(-4deg) rotateY(-2.5deg);
+    transform: rotateX(-4deg) rotateY(-2deg);
   }
   100% {
     transform: rotateX(-3deg);
@@ -203,10 +214,10 @@
 @keyframes open {
   0%,
   14% {
-    transform: rotateX(-88deg);
+    transform: rotateX(-89deg);
   }
   40% {
-    transform: rotateX(7deg);
+    transform: rotateX(6deg);
   }
   48% {
     transform: rotateX(-2deg);
@@ -241,8 +252,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  height: 24px;
-  padding: 0 10px;
+  height: 20px;
+  padding: 0 8px;
   background: var(--paper);
   border-bottom: 1px solid rgb(67 48 46 / 0.12);
 }
@@ -346,7 +357,6 @@
   .device,
   .lid,
   .window,
-  .glare,
   .page,
   .shot {
     animation: none;
