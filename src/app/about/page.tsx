@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { openTo, site, skillGroups } from "@/content/site";
-import { Doodle } from "@/components/Doodle";
 import { ContactBlock } from "@/components/ContactBlock";
+import manelFace from "../../../public/media/about/manel-face.png";
 import styles from "./about.module.css";
 
 const description =
@@ -31,12 +31,7 @@ export default function About() {
               {site.photo ? (
                 <Image src={site.photo} alt={`Portrait of ${site.name}`} sizes="320px" preload />
               ) : (
-                <>
-                  <Doodle name="circle" color="var(--tomato)" className={styles.photoDoodle} />
-                  <span className={styles.initials} aria-hidden="true">
-                    MA
-                  </span>
-                </>
+                <Image src={manelFace} alt="" sizes="200px" className={styles.face} />
               )}
             </div>
             <figcaption className={styles.polaroidCaption}>{site.name}</figcaption>

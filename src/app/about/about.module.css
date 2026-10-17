@@ -57,18 +57,14 @@
   height: 100%;
   object-fit: cover;
 }
-.initials {
+/* The face from the logo, sitting at the bottom of the photo like a portrait */
+.photo .face {
   position: relative;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(4.5rem, 3rem + 6vw, 6.5rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.photoDoodle {
-  position: absolute;
-  width: 82%;
-  transform: rotate(-8deg);
+  align-self: end;
+  width: 62%;
+  height: auto;
+  margin-top: 14%;
+  object-fit: contain;
 }
 .polaroidCaption {
   padding: 14px 0 18px;
