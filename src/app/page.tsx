@@ -6,13 +6,12 @@ import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactBlock } from "@/components/ContactBlock";
 import { Reveal } from "@/components/Reveal";
-import { Laptop } from "@/components/Laptop";
+import { HeroDesk } from "@/components/HeroDesk";
 import { SkillTiles } from "@/components/SkillTiles";
 import { DiaryButton } from "@/components/design-book/DiaryButton";
 import coffee from "../../public/media/home/coffee.png";
 import pointingHand from "../../public/media/home/pointing-hand.png";
 import manelCartoon from "../../public/media/about/manel-cartoon.png";
-import lafricainePage from "../../public/media/home/lafricaine-page.jpg";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -46,7 +45,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* 1. Hero: who I am + a laptop scrolling through my websites */}
+      {/* 1. Hero: who I am + 2D laptop and phone stickers */}
       <section className={styles.heroBand} aria-labelledby="hero-heading">
         <div className={`container ${styles.hero}`}>
           <div className={styles.heroText}>
@@ -72,15 +71,7 @@ export default function Home() {
           </div>
 
           <div className={styles.heroArt}>
-            <Laptop
-              pages={[
-                {
-                  image: lafricainePage,
-                  alt: "L'Africaine de Prod Artistique homepage mockup, scrolling",
-                  domain: "editionapa.tn",
-                },
-              ]}
-            />
+            <HeroDesk />
             <div className={styles.fuel}>
               <Image src={coffee} alt="" sizes="130px" className={styles.coffee} />
               <p className={styles.fuelNote}>

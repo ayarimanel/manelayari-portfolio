@@ -52,17 +52,19 @@
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 640px;
-  padding-bottom: 72px;
+  max-width: 520px;
+  padding-bottom: 28px;
 }
 .fuel {
   position: absolute;
-  left: -120px;
-  bottom: -70px;
+  left: -28px;
+  bottom: -18px;
+  z-index: 3;
   display: flex;
   align-items: flex-end;
   gap: 2px;
   transform: rotate(-8deg);
+  pointer-events: none;
 }
 .coffee {
   width: 84px;
@@ -92,11 +94,11 @@
 }
 @media (max-width: 1023px) {
   .heroArt {
-    padding-bottom: 120px;
+    padding-bottom: 88px;
   }
   .fuel {
-    left: 0;
-    bottom: -10px;
+    left: 4px;
+    bottom: -6px;
   }
 }
 .wave {

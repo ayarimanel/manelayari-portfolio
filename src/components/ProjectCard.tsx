@@ -21,7 +21,11 @@ export function ProjectCard({ project, index, compact = false }: { project: Proj
   const layout = compact ? styles.compact : styles[`layout${index % 3}`];
 
   return (
-    <article className={`theme-${project.theme} ${styles.folder} ${layout}`} aria-labelledby={headingId}>
+    <article
+      id={project.slug}
+      className={`theme-${project.theme} ${styles.folder} ${layout}`}
+      aria-labelledby={headingId}
+    >
       <div className={styles.back} aria-hidden="true">
         <span className={styles.tab}>
           {String(index + 1).padStart(2, "0")} {project.cardTab.title} <small>{project.cardTab.kind}</small>
