@@ -51,7 +51,11 @@ export function CatCompanion() {
     const bed = bedRef.current;
     if (!pet || !flip || !squash || !cat || !look || !said || !bed) return;
 
-    const perches = Array.from(document.querySelectorAll<HTMLElement>("[data-cat-perch]"));
+    // Some spots only suit one screen size (data-cat-only="small" or "large").
+    const size = window.innerWidth < 768 ? "small" : "large";
+    const perches = Array.from(document.querySelectorAll<HTMLElement>("[data-cat-perch]")).filter(
+      (perch) => !perch.dataset.catOnly || perch.dataset.catOnly === size,
+    );
     if (!perches.length) return;
 
     const still = prefersReducedMotionNow();
@@ -69,9 +73,8 @@ export function CatCompanion() {
     };
     const point = (perch: HTMLElement) => {
       const box = perch.getBoundingClientRect();
-      const across = (window.innerWidth < 768 && perch.dataset.catXSmall) || perch.dataset.catX;
       return {
-        x: box.left + window.scrollX + box.width * (Number(across) || 0.5),
+        x: box.left + window.scrollX + box.width * (Number(perch.dataset.catX) || 0.5),
         y: box.top + window.scrollY + 2,
       };
     };

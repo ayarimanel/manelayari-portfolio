@@ -80,7 +80,7 @@ export default function Home() {
                 </a>
               )}
               <div className={styles.fuel} aria-hidden="true">
-                <Image src={coffee} alt="" sizes="58px" className={styles.coffee} data-cat-perch data-cat-x="0.85" data-cat-x-small="1.9" />
+                <Image src={coffee} alt="" sizes="58px" className={styles.coffee} data-cat-perch data-cat-x="0.85" data-cat-only="large" />
                 <p className={styles.fuelNote}>
                   <svg viewBox="0 0 60 30">
                     <path
@@ -97,7 +97,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.heroArt}>
+          <div className={styles.heroArt} data-cat-perch data-cat-only="small">
             <HeroDesk />
           </div>
         </div>
