@@ -1,7 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { prefersReducedMotionNow } from "@/lib/reducedMotion";
 import bookStyles from "./DesignBook.module.css";
 import styles from "./DiaryButton.module.css";
 
@@ -19,22 +20,49 @@ export function DiaryButton() {
   const dialog = useRef<HTMLDialogElement>(null);
   const [opened, setOpened] = useState(false);
 
+  const [flipping, setFlipping] = useState(false);
+  const flipTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => window.clearTimeout(flipTimer.current), []);
+
+  /** The cover swings open like a book, then the diary appears. */
   const open = () => {
+    if (flipping) return;
     setOpened(true);
-    dialog.current?.showModal();
+    if (prefersReducedMotionNow()) {
+      dialog.current?.showModal();
+      return;
+    }
+    setFlipping(true);
+    flipTimer.current = window.setTimeout(() => {
+      dialog.current?.showModal();
+      setFlipping(false);
+    }, 640);
   };
   const close = () => dialog.current?.close();
 
   return (
     <>
-      <button type="button" className={styles.diary} onClick={open} aria-haspopup="dialog">
-        <span className={styles.tape} aria-hidden="true" />
-        <span className={styles.spine} aria-hidden="true" />
-        <span className={styles.text}>
-          <span className={styles.title}>Open my design diary</span>
-          <span className={styles.hint}>how I work, in 6 pages →</span>
+      <span className={styles.book}>
+        <span className={styles.page} data-show={flipping || undefined} aria-hidden="true">
+          <b>The Design Book</b>
+          <span>property of Manel ♡</span>
         </span>
-      </button>
+        <button
+          type="button"
+          className={styles.diary}
+          data-flipping={flipping || undefined}
+          onClick={open}
+          aria-haspopup="dialog"
+        >
+          <span className={styles.tape} aria-hidden="true" />
+          <span className={styles.spine} aria-hidden="true" />
+          <span className={styles.text}>
+            <span className={styles.title}>Open my design diary</span>
+            <span className={styles.hint}>how I work, in 6 pages →</span>
+          </span>
+        </button>
+      </span>
 
       <dialog
         ref={dialog}

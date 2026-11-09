@@ -157,6 +157,7 @@ export function HomeInfo() {
                     <i />
                     <i />
                     <Image src={cvQr} alt="" unoptimized />
+                    <span className={styles.sweep} aria-hidden="true" />
                   </span>
                   <span className={styles.scan}>Scan me to get my CV</span>
                 </a>

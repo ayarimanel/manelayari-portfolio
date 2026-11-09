@@ -1,0 +1,114 @@
+.pin {
+  height: 280svh;
+}
+.sticky {
+  position: sticky;
+  top: calc(var(--header-h) + 8px);
+  height: calc(100svh - var(--header-h) - 16px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-6);
+}
+.copy {
+  display: grid;
+  gap: var(--s-5);
+  min-width: 0;
+}
+.line {
+  max-width: 19ch;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 1.1rem + 1.6vw, 2.75rem);
+  line-height: 1.18;
+}
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  padding: 0;
+  list-style: none;
+}
+.steps li {
+  padding: 5px 14px;
+  border: 1.5px solid rgb(227 217 252 / 0.22);
+  border-radius: var(--r-pill);
+  color: var(--ink-soft);
+  font-weight: 600;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+.pin[data-stage="0"] .steps li:nth-child(1),
+.pin[data-stage="1"] .steps li:nth-child(2),
+.pin[data-stage="2"] .steps li:nth-child(3) {
+  border-color: var(--magenta);
+  background: var(--magenta);
+  color: var(--black);
+}
+.phone {
+  position: relative;
+  height: min(calc(100svh - var(--header-h) - 48px), 680px);
+  aspect-ratio: 1080 / 2184;
+  overflow: hidden;
+  border: 7px solid var(--velvet);
+  border-radius: var(--r-phone);
+  background: #fff;
+}
+.phone img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.figma {
+  clip-path: inset(0 0 calc((1 - var(--a, 1)) * 100%) 0);
+}
+.app {
+  clip-path: inset(0 0 calc((1 - var(--b, 1)) * 100%) 0);
+}
+.wipe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--magenta);
+  box-shadow: 0 0 18px 4px rgb(191 64 250 / 0.7);
+  opacity: 0;
+}
+@media (max-width: 767px) {
+  .sticky {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-content: center;
+    gap: var(--s-3);
+  }
+  .copy {
+    justify-items: center;
+    gap: var(--s-3);
+    text-align: center;
+  }
+  .line {
+    max-width: none;
+  }
+  .steps {
+    justify-content: center;
+  }
+  .phone {
+    height: min(58svh, 560px);
+    border-width: 5px;
+    border-radius: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pin {
+    height: auto;
+  }
+  .sticky {
+    position: static;
+    height: auto;
+  }
+}

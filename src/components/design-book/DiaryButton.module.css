@@ -26,6 +26,71 @@
     inset 10px 0 0 var(--magenta),
     0 16px 26px -10px rgb(191 64 250 / 0.5);
 }
+/* The page revealed behind the cover while it swings open */
+.book {
+  position: relative;
+  display: inline-flex;
+}
+.page {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  padding: 10px 22px;
+  border-radius: 6px 16px 16px 6px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(rgb(73 40 194 / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(73 40 194 / 0.09) 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: var(--velvet);
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  line-height: 1.1;
+  opacity: 0;
+  transform: rotate(-1.5deg);
+}
+.page[data-show] {
+  opacity: 1;
+}
+.page b {
+  color: var(--ultrasonic);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem;
+}
+.diary[data-flipping] {
+  z-index: 2;
+  transform-origin: left center;
+  animation: coverSwing 640ms ease-in-out forwards;
+}
+/* The inside of the cover, showing once it has swung past halfway */
+.diary[data-flipping]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--velvet);
+  animation: coverInside 640ms linear forwards;
+}
+@keyframes coverSwing {
+  from {
+    transform: perspective(900px) rotate(-1.5deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(900px) rotate(-1.5deg) rotateY(-125deg);
+  }
+}
+@keyframes coverInside {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  61%,
+  100% {
+    opacity: 1;
+  }
+}
 /* Stitched spine */
 .spine {
   position: absolute;

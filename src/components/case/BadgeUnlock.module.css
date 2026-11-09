@@ -1,0 +1,39 @@
+.figure {
+  margin: var(--s-6) auto 0;
+  width: min(100%, 300px);
+}
+/* Shows the top of the badges screen, down to the earned row. */
+.screen {
+  position: relative;
+  aspect-ratio: 1080 / 1000;
+  overflow: hidden;
+  border: 5px solid var(--velvet);
+  border-radius: 20px;
+  background: #f4f6f6;
+}
+.shot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.badge {
+  position: absolute;
+  left: 81.67%;
+  top: 68.7%;
+  width: 19.44%;
+  height: auto;
+  translate: -50% -50%;
+}
+.spark {
+  position: absolute;
+  left: 81.67%;
+  top: 68.7%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}

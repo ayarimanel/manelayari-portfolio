@@ -1,7 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { prefersReducedMotionNow } from "@/lib/reducedMotion";
 import styles from "./CopyEmailButton.module.css";
+
+function starBurst(parent: HTMLElement) {
+  const count = 14;
+  for (let i = 0; i < count; i += 1) {
+    const star = document.createElement("span");
+    star.className = styles.star;
+    star.textContent = "✶";
+    parent.appendChild(star);
+    const angle = (i / count) * Math.PI * 2 + Math.random() * 0.4;
+    const reach = 60 + Math.random() * 70;
+    star
+      .animate(
+        [
+          { transform: "translate(-50%, -50%) scale(0.3)", opacity: 1 },
+          {
+            transform: `translate(calc(-50% + ${Math.cos(angle) * reach}px), calc(-50% + ${Math.sin(angle) * reach * 0.75}px)) scale(1.1) rotate(160deg)`,
+            opacity: 0,
+          },
+        ],
+        { duration: 720, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+      )
+      .finished.then(() => star.remove());
+  }
+}
 
 type Props = {
   email: string;
@@ -13,6 +38,7 @@ type Props = {
 export function CopyEmailButton({ email, children }: Props) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<number | undefined>(undefined);
+  const burst = useRef<HTMLSpanElement>(null);
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
@@ -20,6 +46,7 @@ export function CopyEmailButton({ email, children }: Props) {
     try {
       await navigator.clipboard.writeText(email);
       setStatus("copied");
+      if (burst.current && !prefersReducedMotionNow()) starBurst(burst.current);
     } catch {
       setStatus("failed");
     }
@@ -31,9 +58,10 @@ export function CopyEmailButton({ email, children }: Props) {
     <div className={styles.wrap}>
       <button type="button" className={`btn btn-ink ${styles.copy}`} onClick={copy}>
         <span className={styles.email}>{email}</span>
-        <span className={styles.hint} aria-hidden="true">
-          {status === "copied" ? "Copied" : "Copy"}
+        <span className={styles.hint} data-copied={status === "copied" || undefined} aria-hidden="true">
+          {status === "copied" ? "Copied!" : "Copy"}
         </span>
+        <span ref={burst} className={styles.burst} aria-hidden="true" />
         <span className="visually-hidden">— copy email address</span>
       </button>
       {children}

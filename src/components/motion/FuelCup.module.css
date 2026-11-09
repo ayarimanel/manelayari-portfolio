@@ -1,0 +1,57 @@
+.fuel {
+  position: fixed;
+  z-index: 40;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  justify-items: center;
+  width: 62px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+.fuel[data-show="true"] {
+  opacity: 1;
+}
+.cup {
+  position: relative;
+  width: 54px;
+  aspect-ratio: 362 / 520;
+}
+.cup img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.empty {
+  filter: grayscale(1) brightness(1.35) opacity(0.42);
+}
+.full {
+  clip-path: inset(calc(var(--drain, 0) * 100%) 0 0 0);
+}
+.fuel[data-empty="true"] .cup {
+  animation: wobble 500ms var(--ease) 2;
+}
+.note {
+  padding: 0 7px;
+  border-radius: 8px;
+  background: var(--band);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+@keyframes wobble {
+  25% {
+    rotate: -7deg;
+  }
+  75% {
+    rotate: 7deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fuel {
+    display: none;
+  }
+}

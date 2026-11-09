@@ -63,7 +63,9 @@ export type CustomBlockName =
   | "swatches"
   | "siteMap"
   | "sprints"
-  | "adminSwitcher";
+  | "adminSwitcher"
+  | "designToApp"
+  | "badgeUnlock";
 
 export type DecisionNote = {
   number: number;

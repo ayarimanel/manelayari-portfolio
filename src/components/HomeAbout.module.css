@@ -226,6 +226,19 @@
 .cursor[data-press] svg {
   transform: scale(0.76);
 }
+.cursorTag {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  padding: 1px 10px;
+  border-radius: var(--r-pill);
+  background: var(--magenta);
+  color: var(--black);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
 @media (prefers-reduced-motion: reduce) {
   .frame,
   .cursor {

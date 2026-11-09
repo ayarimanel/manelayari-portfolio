@@ -144,6 +144,33 @@ ul.card {
   right: -6px;
   bottom: -6px;
 }
+.sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--magenta);
+  box-shadow: 0 0 14px 5px rgb(191 64 250 / 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+.qrLink:hover .qr i,
+.qrLink:focus-visible .qr i {
+  background: var(--magenta);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .qrLink:hover .sweep,
+  .qrLink:focus-visible .sweep {
+    opacity: 1;
+    animation: qrSweep 1.5s ease-in-out infinite alternate;
+  }
+}
+@keyframes qrSweep {
+  to {
+    top: calc(100% - 3px);
+  }
+}
 .scan {
   margin-left: 10px;
   padding: 7px 16px;

@@ -53,6 +53,39 @@
   text-decoration: underline wavy var(--tomato) 1.5px;
   text-underline-offset: 4px;
 }
+/* The scan line that passes over the label */
+.label {
+  position: relative;
+  overflow: hidden;
+}
+.label mark {
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast),
+    text-decoration-color var(--dur-fast);
+}
+.label[data-scanning] mark:not([data-on]) {
+  background: transparent;
+  color: inherit;
+  text-decoration-color: transparent;
+}
+.label[data-scanning] .labelCount {
+  opacity: 0;
+}
+.scanBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--magenta);
+  box-shadow: 0 0 16px 5px rgb(191 64 250 / 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+.label[data-scanning] .scanBar {
+  opacity: 1;
+}
 .labelTraces {
   margin-top: var(--s-3);
   font-style: italic;

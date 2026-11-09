@@ -116,6 +116,9 @@
   width: max-content;
   animation: ribbon 36s linear infinite;
 }
+.ribbonTrack span {
+  transform: skewX(var(--ribbon-lean, 0deg));
+}
 @keyframes ribbon {
   to {
     transform: translateX(-50%);

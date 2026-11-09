@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Sticker } from "../Sticker";
+import { ScanLabel } from "./ScanLabel";
 import styles from "./Diagrams.module.css";
 
 import glutitanHero from "@media/glutenia/mascot/glutitan-hero.png";
@@ -14,7 +15,7 @@ import celebrating from "@media/glutenia/mascot/glutitan-celebrating.png";
 export function LabelExample() {
   return (
     <figure className={styles.labelFigure}>
-      <div className={styles.label}>
+      <ScanLabel className={styles.label} barClassName={styles.scanBar}>
         <p className={styles.labelHead}>Ingredients</p>
         <p className={styles.labelText}>
           Rice flour, sugar, <mark>wheat starch</mark>, palm oil, <mark>barley malt extract</mark>, salt, emulsifier
@@ -26,7 +27,7 @@ export function LabelExample() {
         <p className={styles.labelCount}>
           <strong>3</strong> hidden gluten sources in one label — plus a “may contain” warning
         </p>
-      </div>
+      </ScanLabel>
       <ul className={styles.painList}>
         <li>
           <strong>Complex labels</strong> Long ingredient lists that are hard to interpret

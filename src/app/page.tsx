@@ -8,6 +8,9 @@ import { Reveal } from "@/components/Reveal";
 import { HeroDesk } from "@/components/HeroDesk";
 import { HomeAbout } from "@/components/HomeAbout";
 import { HomeInfo } from "@/components/HomeInfo";
+import { FuelCup } from "@/components/motion/FuelCup";
+import { RibbonScrollSpeed } from "@/components/motion/RibbonScrollSpeed";
+import { StampLanding } from "@/components/motion/StampLanding";
 import coffee from "../../public/media/home/coffee.png";
 import pointingHand from "../../public/media/home/pointing-hand.png";
 import styles from "./home.module.css";
@@ -39,7 +42,7 @@ const jsonLd = {
 function Ribbon({ text, two = false }: { text: string; two?: boolean }) {
   return (
     <div className={two ? `${styles.ribbon} ${styles.ribbonTwo}` : styles.ribbon} aria-hidden="true">
-      <div className={styles.ribbonTrack}>
+      <div className={styles.ribbonTrack} data-ribbon-track={two ? "-1" : "1"}>
         {[0, 1, 2, 3].map((k) => (
           <span key={k}>{text}&nbsp;</span>
         ))}
@@ -133,6 +136,10 @@ export default function Home() {
       </section>
 
       <ContactBlock />
+
+      <RibbonScrollSpeed />
+      <StampLanding />
+      <FuelCup />
     </>
   );
 }

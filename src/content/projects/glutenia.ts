@@ -155,10 +155,12 @@ export const glutenia: Project = {
             { video: v("07-journey-badges"), label: "Profile journey and badges screens in Glutenia", caption: "Badges" },
           ],
         },
+        { kind: "custom", name: "badgeUnlock" },
       ],
       notes: [
         {
           number: 4,
+          block: 0,
           title: "A map built around needs",
           body: "Filter chips separate stores, bakeries and pharmacies, and every card shows a “Certified gluten-free” badge, distance and price, so people decide before they travel.",
         },
@@ -193,6 +195,7 @@ export const glutenia: Project = {
             },
           ],
         },
+        { kind: "custom", name: "designToApp" },
       ],
     },
   ],

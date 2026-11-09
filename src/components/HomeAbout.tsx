@@ -49,7 +49,84 @@ export function HomeAbout() {
     stage.addEventListener("pointerleave", leave);
 
     const targets = Array.from(stage.querySelectorAll<HTMLElement>("[data-target]"));
+    const canvas = targets[0].parentElement as HTMLElement;
+
+    // Visitors who have not reached this block yet find the frames out of
+    // place, and the cursor drags each one home the first time it is seen.
+    const scattered = canvas.getBoundingClientRect().top > window.innerHeight;
+    const scale = canvas.clientWidth;
+    const offsets = [
+      { x: 0.22 * scale, y: 0.26 * scale, r: -14 },
+      { x: -0.28 * scale, y: 0.3 * scale, r: 12 },
+      { x: 0.2 * scale, y: -0.26 * scale, r: -9 },
+      { x: -0.2 * scale, y: -0.3 * scale, r: 10 },
+    ];
+    let seen = false;
+    const canvasObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        seen = true;
+        canvasObserver.disconnect();
+      },
+      { threshold: 0.45 },
+    );
+    if (scattered) {
+      targets.forEach((target, i) => {
+        target.style.translate = `${offsets[i].x}px ${offsets[i].y}px`;
+        target.style.rotate = `${offsets[i].r}deg`;
+      });
+      canvasObserver.observe(canvas);
+    }
+
+    const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+    const at = (x: number, y: number) => `translate(${x}px, ${y}px)`;
+    const glide = (from: string, to: string, duration: number) => {
+      const move = cursor.animate([{ transform: from }, { transform: to }], { duration, easing, fill: "forwards" });
+      return move.finished.then(() => {
+        cursor.style.transform = to;
+        move.cancel();
+      });
+    };
+    const intro = async () => {
+      cursor.style.transition = "none";
+      cursor.style.opacity = "1";
+      const a = stage.getBoundingClientRect();
+      const box = canvas.getBoundingClientRect();
+      let from = at(box.left - a.left + box.width * 0.5, box.top - a.top + box.height);
+      cursor.style.transform = from;
+      await wait(250);
+      for (let i = 0; i < targets.length && !stopped; i += 1) {
+        const target = targets[i];
+        const b = target.getBoundingClientRect();
+        const x = b.left - a.left + b.width / 2;
+        const y = b.top - a.top + b.height / 2;
+        const grab = at(x, y);
+        await glide(from, grab, 460);
+        target.dataset.on = "true";
+        await wait(120);
+        const drop = at(x - offsets[i].x, y - offsets[i].y);
+        const settle = target.animate(
+          { translate: [target.style.translate, "0px 0px"], rotate: [target.style.rotate, "0deg"] },
+          { duration: 640, easing, fill: "forwards" },
+        );
+        await Promise.all([glide(grab, drop, 640), settle.finished]);
+        target.style.translate = "";
+        target.style.rotate = "";
+        settle.cancel();
+        delete target.dataset.on;
+        from = drop;
+        await wait(100);
+      }
+      void cursor.offsetWidth; // lock in the position before the normal glide returns
+      cursor.style.transition = "";
+    };
+
     const run = async () => {
+      if (scattered) {
+        while (!stopped && !seen) await wait(150);
+        if (stopped) return;
+        await intro();
+      }
       for (let i = 0; !stopped; i = (i + 1) % targets.length) {
         while (!stopped && (!visible || hovering || document.hidden)) await wait(200);
         if (stopped) return;
@@ -74,6 +151,12 @@ export function HomeAbout() {
     return () => {
       stopped = true;
       observer.disconnect();
+      canvasObserver.disconnect();
+      for (const target of targets) {
+        target.style.translate = "";
+        target.style.rotate = "";
+      }
+      cursor.style.transition = "";
       stage.removeEventListener("pointerenter", enter);
       stage.removeEventListener("pointerleave", leave);
     };
@@ -152,6 +235,7 @@ export function HomeAbout() {
         <svg viewBox="0 0 24 24">
           <path fill="#bf40fa" stroke="#040607" strokeWidth="1.5" strokeLinejoin="round" d="M3 2l18 8-7.5 2.5L10 20z" />
         </svg>
+        <span className={styles.cursorTag}>Manel</span>
       </div>
     </section>
   );

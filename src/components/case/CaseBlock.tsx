@@ -20,6 +20,8 @@ import {
 } from "./GluteniaDiagrams";
 import { SiteMap, Swatches } from "./LafricaineDiagrams";
 import { AdminSwitcher } from "./AdminSwitcher";
+import { BadgeUnlock } from "./BadgeUnlock";
+import { DesignToApp } from "./DesignToApp";
 import styles from "./CaseBlock.module.css";
 
 const custom: Record<CustomBlockName, () => React.JSX.Element> = {
@@ -36,6 +38,8 @@ const custom: Record<CustomBlockName, () => React.JSX.Element> = {
   siteMap: SiteMap,
   sprints: Sprints,
   adminSwitcher: AdminSwitcher,
+  designToApp: DesignToApp,
+  badgeUnlock: BadgeUnlock,
 };
 
 /** Kinds that can sit beside their decision notes on desktop. */

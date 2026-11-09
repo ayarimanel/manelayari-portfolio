@@ -71,9 +71,9 @@ export function ProjectCard({ project, index, compact = false }: { project: Proj
         <Image src={visual.mascot.image} alt={visual.mascot.alt} sizes="140px" className={styles.mascot} />
       )}
 
-      <div className={styles.front}>
+      <div className={styles.front} data-stamp-pad>
         <div className={styles.text}>
-          <div className={`stamp-edge ${styles.label}`}>
+          <div className={`stamp-edge ${styles.label}`} data-stamp>
             <div>
               <h3 id={headingId} className={styles.title}>
                 {project.cardTab.title}
