@@ -1,160 +1,301 @@
+/* Everything scales with the width of the hero art. */
 .desk {
-  position: relative;
   width: 100%;
-  aspect-ratio: 1.2 / 1;
-  max-width: 520px;
-  margin-inline: auto;
+  container-type: inline-size;
 }
 
-.ground {
+.stage {
+  position: relative;
+  height: 76cqw;
+}
+
+/* ---------- App and website tracks ---------- */
+.track {
   position: absolute;
-  left: 16%;
-  right: 14%;
-  bottom: 8%;
-  height: 16%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgb(67 48 46 / 0.14), transparent 70%);
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.96);
   pointer-events: none;
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+.track[data-on="true"] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
-.sticker {
+/* ---------- One screen in the carousel ---------- */
+.slide {
+  --x: 0cqw;
+  --s: 1;
+  --dim: 0;
+  --shadow: 1;
+  --show: 1;
+  --layer: 5;
   position: absolute;
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  outline: none;
+  top: 50%;
+  left: 50%;
+  z-index: var(--layer);
+  opacity: var(--show);
+  transform: translate(-50%, -50%) translateX(var(--x)) scale(var(--s));
+  filter: drop-shadow(1.8cqw 1.8cqw 0 rgb(193 219 232 / var(--shadow)));
+  transition:
+    transform 700ms var(--ease),
+    opacity 700ms var(--ease),
+    filter 700ms var(--ease);
+}
+.slide[data-o="1"],
+.slide[data-o="-1"] {
+  --s: 0.76;
+  --dim: 0.4;
+  --shadow: 0;
+  --layer: 4;
+}
+.slide[data-o="2"],
+.slide[data-o="-2"] {
+  --s: 0.58;
+  --dim: 0.66;
+  --shadow: 0;
+  --layer: 3;
+}
+.slide[data-o="3"],
+.slide[data-o="-3"] {
+  --s: 0.45;
+  --dim: 0.8;
+  --shadow: 0;
+  --show: 0;
+  --layer: 1;
+}
+.app .slide[data-o="1"] {
+  --x: 23.5cqw;
+}
+.app .slide[data-o="-1"] {
+  --x: -23.5cqw;
+}
+.app .slide[data-o="2"] {
+  --x: 39cqw;
+}
+.app .slide[data-o="-2"] {
+  --x: -39cqw;
+}
+.app .slide[data-o="3"] {
+  --x: 42cqw;
+}
+.app .slide[data-o="-3"] {
+  --x: -42cqw;
 }
 
-.laptop {
-  left: 0;
-  top: 8%;
-  width: 72%;
-  z-index: 1;
+/* Laptops are wide, so only one sits visibly on each side. */
+.web .slide[data-o="1"] {
+  --x: 27cqw;
+  --s: 0.72;
+}
+.web .slide[data-o="-1"] {
+  --x: -27cqw;
+  --s: 0.72;
+}
+.web .slide[data-o="2"] {
+  --x: 27cqw;
+  --show: 0;
+}
+.web .slide[data-o="-2"] {
+  --x: -27cqw;
+  --show: 0;
+}
+.web .slide[data-o="3"] {
+  --x: 22cqw;
+}
+.web .slide[data-o="-3"] {
+  --x: -22cqw;
+}
+
+/* ---------- Screens, darkened away from the center ---------- */
+.screen {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.screen::after,
+.base::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  opacity: var(--dim);
+  transition: opacity 700ms var(--ease);
 }
 
 .phone {
-  right: 1%;
-  top: 2%;
-  width: 36%;
-  z-index: 2;
+  width: 35cqw;
+  padding: 1.1cqw;
+  background: var(--ink);
+  border-radius: 5cqw;
+}
+.phone .screen {
+  aspect-ratio: 720 / 1456;
+  border-radius: 4cqw;
 }
 
-.bob {
-  display: block;
-  animation: floatLaptop 4s ease-in-out infinite;
+.laptop {
+  width: 72cqw;
 }
-
-.bobPhone {
-  animation: floatPhone 3.5s ease-in-out infinite;
+.lid {
+  width: 92%;
+  margin-inline: auto;
+  padding: 1cqw;
+  background: var(--ink);
+  border-radius: 2cqw 2cqw 0 0;
 }
-
-.face {
-  display: block;
+.laptop .screen {
+  aspect-ratio: 16 / 10;
+  border-radius: 0.5cqw;
+}
+.base {
   position: relative;
-  transform-origin: 50% 70%;
-  transition:
-    transform var(--dur-fast) var(--ease),
-    filter var(--dur-fast) var(--ease);
-  filter: drop-shadow(4px 12px 14px rgb(67 48 46 / 0.22));
+  overflow: hidden;
+  height: 2.6cqw;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 0 0 2cqw 2cqw;
 }
 
-.sticker:hover .face,
-.sticker:focus-visible .face {
-  transform: scale(1.04);
-  filter: drop-shadow(8px 18px 20px rgb(67 48 46 / 0.32));
-}
-
-.sticker:focus-visible {
-  border-radius: 24px;
-}
-
-.art {
-  width: 100%;
-  height: auto;
-}
-
-.sparkles {
+/* The center screen links to its case study. */
+.open {
   position: absolute;
-  inset: -4% -2%;
-  width: 104%;
-  height: 104%;
-  overflow: visible;
-  pointer-events: none;
-  fill: var(--cream);
-  stroke: var(--ink);
-  stroke-width: 0.9;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  border-radius: 5cqw;
+}
+.app .open {
+  width: 35cqw;
+  height: 73cqw;
+}
+.web .open {
+  width: 72cqw;
+  height: 44cqw;
+  border-radius: 2cqw;
 }
 
-.twinkleA,
-.twinkleB,
-.twinkleC,
-.twinkleD {
-  transform-origin: center;
-  transform-box: fill-box;
-  animation: twinkle 2.4s ease-in-out infinite;
+/* ---------- Controls ---------- */
+.controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
 }
 
-.twinkleB {
-  animation-delay: 0.5s;
+.toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 200px;
+  height: 48px;
+  padding: 3px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--paper);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.toggle:active {
+  transform: scale(0.97);
+}
+.knob {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  transition: transform var(--dur-slow) var(--ease-overshoot);
+}
+.toggle[aria-checked="true"] .knob {
+  transform: translateX(100%);
+}
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+  transition: color var(--dur) var(--ease);
+}
+.option[data-on="true"] {
+  color: var(--buttermilk);
+}
+.option svg,
+.pause svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.twinkleC {
-  animation-delay: 1.1s;
+.pause {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
 }
 
-.twinkleD {
-  animation-delay: 1.7s;
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+}
+.hint svg {
+  width: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-@keyframes floatLaptop {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(-1deg);
-  }
-}
-
-@keyframes floatPhone {
-  0%,
-  100% {
-    transform: translateY(0) rotate(6deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(4deg);
-  }
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: scale(0.7);
-  }
-  45% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-}
-
-@media (max-width: 767px) {
-  .desk {
-    max-width: 360px;
-  }
-  .phone {
-    width: 34%;
-    top: 4%;
-  }
+.note {
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  line-height: 1.15;
+  color: var(--ink);
+  transform: rotate(-1deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bob,
-  .bobPhone,
-  .twinkleA,
-  .twinkleB,
-  .twinkleC,
-  .twinkleD {
-    animation: none;
+  .slide,
+  .track,
+  .knob {
+    transition: none;
   }
 }
