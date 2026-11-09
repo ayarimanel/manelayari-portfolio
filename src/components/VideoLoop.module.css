@@ -29,7 +29,7 @@
   transform: scale(1.06);
 }
 .video {
-  cursor: pointer;
+  cursor: var(--cursor-paw), pointer;
 }
 /* Big play button over the poster: the clip waits to be started. */
 .play {

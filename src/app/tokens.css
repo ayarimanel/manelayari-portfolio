@@ -100,6 +100,9 @@
   --dur-slow: 400ms;
 
   --header-h: 64px;
+
+  /* A tiny paw for anything clickable */
+  --cursor-paw: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%23bf40fa' stroke='%23fff' stroke-width='1.6'%3E%3Cellipse cx='16' cy='21' rx='8' ry='6.5'/%3E%3Cellipse cx='6.5' cy='14' rx='3' ry='4'/%3E%3Cellipse cx='12.5' cy='8' rx='3' ry='4.2'/%3E%3Cellipse cx='19.5' cy='8' rx='3' ry='4.2'/%3E%3Cellipse cx='25.5' cy='14' rx='3' ry='4'/%3E%3C/g%3E%3C/svg%3E") 16 4;
 }
 
 @media (min-width: 768px) {

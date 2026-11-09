@@ -217,7 +217,7 @@ export function HomeAbout() {
             </a>
           </div>
 
-          <div className={styles.card}>
+          <div className={styles.card} data-cat-perch data-cat-x="0.85">
             <p>
               As a Computer Science graduate, I bring <b>a designer&rsquo;s eye and a developer&rsquo;s logic</b> to
               every interface. I map users and flows first, then design high-fidelity mockups and prototypes in Figma

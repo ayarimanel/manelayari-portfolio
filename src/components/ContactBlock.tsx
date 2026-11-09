@@ -6,7 +6,7 @@ import styles from "./ContactBlock.module.css";
 export function ContactBlock() {
   return (
     <section id="contact" className={`container ${styles.section}`} aria-labelledby="contact-heading">
-      <div className={styles.panel}>
+      <div className={styles.panel} data-cat-perch data-cat-x="0.72">
         <Doodle name="star" color="var(--buttermilk)" fill="var(--pastel-blue)" className={`doodle-tablet ${styles.star}`} />
         <h2 id="contact-heading" className="display">
           Let&rsquo;s work together.

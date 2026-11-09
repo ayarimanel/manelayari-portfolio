@@ -1123,7 +1123,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  cursor: pointer;
+  cursor: var(--cursor-paw), pointer;
   box-shadow: 2px 3px 4px rgba(36, 70, 94, 0.28);
   transition: transform 0.12s steps(2, end);
 }
@@ -1168,7 +1168,7 @@
   padding: 0;
   border: 0;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-paw), pointer;
 }
 @media (min-width: 768px) {
   .dot {
@@ -1255,7 +1255,7 @@
   color: inherit;
   font: inherit;
   text-align: left;
-  cursor: pointer;
+  cursor: var(--cursor-paw), pointer;
   transform-origin: left center;
   backface-visibility: hidden;
   box-shadow:

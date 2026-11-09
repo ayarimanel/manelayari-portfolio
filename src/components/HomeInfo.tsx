@@ -170,7 +170,7 @@ export function HomeInfo() {
         <div className={styles.right}>
           <div className={styles.block}>
             <h3 className={styles.c2}>Skills</h3>
-            <ul className={styles.card}>
+            <ul className={styles.card} data-cat-perch data-cat-x="0.85">
               {skills.map((s) => (
                 <li key={s}>{s}</li>
               ))}

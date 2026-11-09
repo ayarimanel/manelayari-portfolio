@@ -272,6 +272,14 @@ h3 {
   background: var(--stamp);
 }
 
+/* ---------- Paw cursor on anything clickable ---------- */
+a[href],
+button:not(:disabled),
+summary,
+[role="button"] {
+  cursor: var(--cursor-paw), pointer;
+}
+
 /* ---------- Project themes ---------- */
 .theme-glutenia {
   --project: var(--glutenia-green);

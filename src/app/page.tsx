@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { HeroDesk } from "@/components/HeroDesk";
 import { HomeAbout } from "@/components/HomeAbout";
 import { HomeInfo } from "@/components/HomeInfo";
+import { CatCompanion } from "@/components/motion/CatCompanion";
 import { FuelCup } from "@/components/motion/FuelCup";
 import { RibbonScrollSpeed } from "@/components/motion/RibbonScrollSpeed";
 import { StampLanding } from "@/components/motion/StampLanding";
@@ -79,7 +80,7 @@ export default function Home() {
                 </a>
               )}
               <div className={styles.fuel} aria-hidden="true">
-                <Image src={coffee} alt="" sizes="58px" className={styles.coffee} />
+                <Image src={coffee} alt="" sizes="58px" className={styles.coffee} data-cat-perch data-cat-x="0.85" data-cat-x-small="1.9" />
                 <p className={styles.fuelNote}>
                   <svg viewBox="0 0 60 30">
                     <path
@@ -116,7 +117,7 @@ export default function Home() {
       {/* 3. The three folders, side by side */}
       <section id="work" className={styles.workBand} aria-labelledby="work-heading">
         <div className="container">
-          <h2 id="work-heading" className={styles.workHeading}>
+          <h2 id="work-heading" className={styles.workHeading} data-cat-perch data-cat-x="0.58">
             <span className={styles.script}>My</span> work
           </h2>
           <p className={styles.workHint}>Three projects, three folders.</p>
@@ -140,6 +141,7 @@ export default function Home() {
       <RibbonScrollSpeed />
       <StampLanding />
       <FuelCup />
+      <CatCompanion />
     </>
   );
 }

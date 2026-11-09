@@ -1,0 +1,198 @@
+.pet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  width: 104px;
+  height: 90px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.pet[data-ready="true"] {
+  opacity: 1;
+}
+.fill {
+  width: 100%;
+  height: 100%;
+}
+.squash {
+  transform-origin: 50% 100%;
+}
+.button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: auto;
+}
+.cat {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* "mrrp!" and the hearts */
+.said {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  z-index: 1;
+  padding: 4px 12px;
+  border-radius: 14px;
+  background: var(--stamp);
+  color: var(--black);
+  font-family: var(--font-hand);
+  font-size: 1.14rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.35);
+}
+.heart {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  color: var(--magenta-t);
+  font-size: 19px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Poses */
+.air,
+.loaf,
+.shut,
+.zz {
+  display: none;
+}
+.cat[data-pose="air"] .sit,
+.cat[data-pose="sleep"] .sit,
+.cat[data-pose="sleep"] .eyes {
+  display: none;
+}
+.cat[data-pose="air"] .air,
+.cat[data-pose="sleep"] .loaf,
+.cat[data-pose="sleep"] .shut,
+.cat[data-pose="sleep"] .zz {
+  display: inline;
+}
+.head {
+  transform-origin: 70px 50px;
+  transition: transform 160ms;
+}
+.cat[data-pose="air"] .head {
+  transform: translate(20px, 6px) rotate(-8deg);
+}
+.cat[data-pose="sleep"] .head {
+  transform: translate(-16px, 26px) rotate(-7deg);
+}
+.tail {
+  transform-origin: 96px 100px;
+  animation: sway 2.2s ease-in-out infinite alternate;
+}
+.cat[data-pose="air"] .tail {
+  animation: none;
+  transform: rotate(38deg);
+}
+.cat[data-pose="sleep"] .tail {
+  animation: none;
+  transform: rotate(52deg) translate(-4px, 6px);
+}
+.eyes {
+  transform-origin: 70px 50px;
+  animation: blink 4.6s infinite;
+}
+.earRight {
+  transform-origin: 90px 34px;
+  animation: twitch 6.5s infinite;
+}
+.zz text {
+  fill: var(--buttermilk);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  opacity: 0;
+  animation: snooze 2s ease-out infinite;
+}
+.zz text:nth-child(2) {
+  animation-delay: 0.8s;
+}
+@keyframes sway {
+  from {
+    transform: rotate(-11deg);
+  }
+  to {
+    transform: rotate(13deg);
+  }
+}
+@keyframes blink {
+  0%,
+  92%,
+  98%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+@keyframes twitch {
+  0%,
+  88%,
+  94%,
+  100% {
+    transform: rotate(0);
+  }
+  91% {
+    transform: rotate(13deg);
+  }
+}
+@keyframes snooze {
+  0% {
+    opacity: 0;
+    transform: translate(0, 6px);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(14px, -26px);
+  }
+}
+
+/* The off switch */
+.bed {
+  position: fixed;
+  z-index: 40;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  min-height: 36px;
+  padding: 4px 14px;
+  border: 1.5px solid rgb(227 217 252 / 0.3);
+  border-radius: var(--r-pill);
+  background: var(--band);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-sticker);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.bed[data-ready="true"] {
+  opacity: 1;
+}
+.bed:hover,
+.bed:focus-visible {
+  border-color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .pet {
+    width: 76px;
+    height: 66px;
+  }
+}
