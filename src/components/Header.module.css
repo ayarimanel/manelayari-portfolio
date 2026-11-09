@@ -2,7 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  /* White bar on the dark site: these apply to the links, menu button and mobile menu inside it */
+  --cream: #ffffff;
+  --ink: #1b0e22;
+  --tomato: #7d1fb0;
+  --border: 1.5px solid rgb(73 40 194 / 0.3);
+  --sticker-shadow: 0 6px 14px rgb(73 40 194 / 0.16);
   background: var(--cream);
+  color: var(--ink);
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur) var(--ease);
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
-import logo from "../../public/media/home/logo-dark.png";
+import logo from "../../public/media/home/logo-full.png";
 import styles from "./Header.module.css";
 
 const links = [
