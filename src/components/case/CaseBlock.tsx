@@ -51,7 +51,7 @@ export function isSideBySide(block: Block) {
 }
 
 function ScreenContent({ screen, sizes, preload }: { screen: Screen; sizes: string; preload?: boolean }) {
-  if ("video" in screen) return <VideoLoop video={screen.video} label={screen.label} priority={preload} autoplay={screen.autoplay} />;
+  if ("video" in screen) return <VideoLoop video={screen.video} label={screen.label} priority={preload} />;
   return <Image src={screen.image} alt={screen.alt} sizes={sizes} preload={preload} />;
 }
 

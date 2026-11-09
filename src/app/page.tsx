@@ -10,7 +10,6 @@ import { HomeAbout } from "@/components/HomeAbout";
 import { HomeInfo } from "@/components/HomeInfo";
 import coffee from "../../public/media/home/coffee.png";
 import pointingHand from "../../public/media/home/pointing-hand.png";
-import manelFace from "../../public/media/about/manel-face.png";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -55,18 +54,6 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* 1. Hero */}
-      <div className={styles.winBar} aria-hidden="true">
-        <div className={styles.winDots}>
-          <i />
-          <i />
-          <i />
-        </div>
-        <div className={styles.winTab}>
-          <Image src={manelFace} alt="" sizes="26px" />
-          2026
-          <span>&times;</span>
-        </div>
-      </div>
       <section className={styles.heroBand} aria-labelledby="hero-heading">
         <div className={`container ${styles.hero}`}>
           <div className={styles.heroText}>

@@ -16,19 +16,19 @@ type Props = {
   controlPosition?: "bottom-right" | "bottom-left";
   /** First screen of the page: load the poster right away, at high priority. */
   priority?: boolean;
-  /** Play by itself while at least a quarter of it is on screen (never under reduced motion). */
-  autoplay?: boolean;
 };
 
 /**
- * Silent looping clip. By default it waits to be played (poster + big play
- * button); with `autoplay` it plays while a quarter is on screen. Either way it pauses
- * once it scrolls out of view. The poster loads once the clip is near the screen.
+ * Silent looping clip. It plays by itself while a quarter of it is on screen and
+ * pauses once it scrolls away. The big play button only appears when the clip
+ * cannot start alone: paused by the visitor, reduced motion, or autoplay blocked.
+ * The poster loads once the clip is near the screen.
  */
-export function VideoLoop({ video, label, className, controlPosition = "bottom-right", priority, autoplay }: Props) {
+export function VideoLoop({ video, label, className, controlPosition = "bottom-right", priority }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const userPaused = useRef(false);
   const [playing, setPlaying] = useState(false);
+  const [needsPlay, setNeedsPlay] = useState(false);
   const [showPoster, setShowPoster] = useState(!!priority);
   if (priority) preload(video.poster, { as: "image", fetchPriority: "high" });
 
@@ -41,14 +41,23 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
           el.pause();
           return;
         }
-        if (!autoplay || userPaused.current || prefersReducedMotionNow()) return;
-        afterPageLoad().then(() => el.play().catch(() => {}));
+        if (userPaused.current) return;
+        if (prefersReducedMotionNow()) {
+          setNeedsPlay(true);
+          return;
+        }
+        afterPageLoad().then(() =>
+          el.play().catch((error: Error) => {
+            // AbortError only means it scrolled away before starting.
+            if (error.name !== "AbortError") setNeedsPlay(true);
+          }),
+        );
       },
       { threshold: [0, 0.25] },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [autoplay]);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -68,6 +77,7 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
       el.play().catch(() => {});
     } else {
       userPaused.current = true;
+      setNeedsPlay(true);
       el.pause();
     }
   }
@@ -86,7 +96,10 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
         height={video.height}
         aria-label={label}
         onClick={toggle}
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          setNeedsPlay(false);
+        }}
         onPause={() => setPlaying(false)}
       >
         {video.webm && <source src={video.webm} type="video/webm" />}
@@ -101,12 +114,12 @@ export function VideoLoop({ video, label, className, controlPosition = "bottom-r
         >
           <PauseIcon />
         </button>
-      ) : (
+      ) : needsPlay ? (
         <button type="button" className={styles.play} onClick={toggle} aria-label={`Play video: ${label}`}>
           <PlayIcon />
           <span aria-hidden="true">Play</span>
         </button>
-      )}
+      ) : null}
     </div>
   );
 }

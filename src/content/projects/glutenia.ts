@@ -103,12 +103,11 @@ export const glutenia: Project = {
         {
           kind: "phones",
           items: [
-            { video: v("01-barcode-scan"), label: "Scanning a product barcode in Glutenia", caption: "Barcode scan", autoplay: true },
+            { video: v("01-barcode-scan"), label: "Scanning a product barcode in Glutenia", caption: "Barcode scan" },
             {
               video: v("02-ai-label-scan"),
               label: "Photographing an ingredient label and getting the AI verdict",
               caption: "AI label scan",
-              autoplay: true,
             },
           ],
         },
