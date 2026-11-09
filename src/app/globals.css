@@ -10,7 +10,7 @@
   margin: 0;
 }
 html {
-  color-scheme: light;
+  color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 16px);
@@ -50,6 +50,7 @@ input {
   color: inherit;
 }
 button {
+  background: transparent;
   cursor: pointer;
 }
 a {
@@ -72,7 +73,7 @@ h3 {
 
 /* ---------- Focus ---------- */
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--magenta-t);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--cream);
   border-radius: 4px;
@@ -153,7 +154,7 @@ h3 {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.2C18 3.1 31 6.4 47 4.6s29-2.6 44-.9c10 1.1 18 .6 27.5-.8' fill='none' stroke='%2343302E' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M1.5 5.2C18 3.1 31 6.4 47 4.6s29-2.6 44-.9c10 1.1 18 .6 27.5-.8' fill='none' stroke='%23D98CFF' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 0.4em;
@@ -180,7 +181,7 @@ h3 {
   gap: var(--s-2);
   min-height: 48px;
   padding: 10px 22px;
-  border: var(--border);
+  border: 2px solid var(--ink);
   border-radius: var(--r-pill);
   background: var(--cream);
   color: var(--ink);
@@ -203,8 +204,9 @@ h3 {
   box-shadow: none;
 }
 .btn-ink {
-  background: var(--ink);
-  color: var(--cream);
+  border-color: var(--magenta);
+  background: var(--magenta);
+  color: var(--black);
 }
 
 /* ---------- Scroll reveals ---------- */
@@ -263,27 +265,27 @@ h3 {
    with a solid --paper background so only the edge is perforated. */
 .stamp-edge {
   padding: 9px;
-  background: radial-gradient(circle, transparent 5px, var(--paper) 5.5px) -8px -8px / 16px 16px;
-  filter: drop-shadow(0 10px 18px rgb(60 35 20 / 0.18));
+  background: radial-gradient(circle, transparent 5px, var(--stamp) 5.5px) -8px -8px / 16px 16px;
+  filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.3));
 }
 .stamp-edge > * {
-  background: var(--paper);
+  background: var(--stamp);
 }
 
 /* ---------- Project themes ---------- */
 .theme-glutenia {
   --project: var(--glutenia-green);
-  --project-on: var(--ink);
+  --project-on: var(--black);
   --project-ink: var(--glutenia-ink);
   --project-panel: var(--glutenia-panel);
   --folder: var(--kraft);
   --folder-back: var(--kraft-back);
-  --folder-on: var(--ink);
+  --folder-on: var(--black);
 }
 .theme-lafricaine {
   --project: var(--apa-purple);
-  --project-on: var(--white);
-  --project-ink: var(--apa-purple);
+  --project-on: var(--black);
+  --project-ink: var(--magenta-t);
   --project-panel: var(--apa-panel);
   --folder: var(--terracotta);
   --folder-back: var(--terracotta-back);
@@ -291,7 +293,7 @@ h3 {
 }
 .theme-value {
   --project: var(--value-teal);
-  --project-on: var(--white);
+  --project-on: var(--ink);
   --project-ink: var(--value-ink);
   --project-panel: var(--value-panel);
   --folder: var(--walnut);

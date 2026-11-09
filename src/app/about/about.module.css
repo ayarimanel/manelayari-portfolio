@@ -41,8 +41,8 @@
   width: 96px;
   height: 30px;
   transform: translateX(-50%) rotate(4deg);
-  background: rgb(255 227 199 / 0.92);
-  border: 1px solid rgb(31 27 22 / 0.25);
+  background: rgb(157 135 255 / 0.9);
+  border: 1px solid rgb(227 217 252 / 0.25);
 }
 .photo {
   position: relative;

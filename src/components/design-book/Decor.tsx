@@ -35,7 +35,7 @@ export function Sparkle({ size = 4, color = "#fff", ...pos }: Pos & { size?: num
       <path
         d="M12 1c1 6 4 10 11 11-7 1-10 4-11 11-1-7-4-10-11-11 7-1 10-5 11-11z"
         fill={color}
-        stroke="#43302e"
+        stroke="#040607"
         strokeWidth="1.4"
         strokeLinejoin="round"
       />
@@ -43,7 +43,7 @@ export function Sparkle({ size = 4, color = "#fff", ...pos }: Pos & { size?: num
   );
 }
 
-export function Heart({ size = 4, color = "#2f5a78", className = styles.pop, ...pos }: Pos & {
+export function Heart({ size = 4, color = "#4928c2", className = styles.pop, ...pos }: Pos & {
   size?: number;
   color?: string;
   className?: string;
@@ -58,7 +58,7 @@ export function Heart({ size = 4, color = "#2f5a78", className = styles.pop, ...
       <path
         d="M12 20.5S2 14.3 2 7.6C2 4.5 4.4 2 7.3 2c2 0 3.6 1.1 4.7 2.7C13.1 3.1 14.7 2 16.7 2 19.6 2 22 4.5 22 7.6c0 6.7-10 12.9-10 12.9z"
         fill={color}
-        stroke="#43302e"
+        stroke="#040607"
         strokeWidth="1.6"
         strokeLinejoin="round"
       />
@@ -76,13 +76,13 @@ const FONTS = [
   "'Trebuchet MS', sans-serif",
 ];
 const PAPERS: [string, string][] = [
-  ["#fff", "#43302e"],
-  ["#43302e", "#fff"],
-  ["#c1dbe8", "#43302e"],
-  ["#fff8de", "#2f5a78"],
-  ["#2f5a78", "#fff"],
-  ["#f6d873", "#43302e"],
-  ["#fff", "#2f5a78"],
+  ["#fff", "#040607"],
+  ["#040607", "#fff"],
+  ["#e3d9fc", "#040607"],
+  ["#f6f1ff", "#4928c2"],
+  ["#4928c2", "#fff"],
+  ["#d98cff", "#040607"],
+  ["#fff", "#4928c2"],
 ];
 const TILTS = [-6, 4, -3, 7, -5, 2, 5, -2, 3];
 const STYLES = ["normal", "italic"];

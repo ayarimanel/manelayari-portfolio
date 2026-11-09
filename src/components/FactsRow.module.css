@@ -37,7 +37,7 @@
   padding: 8px 18px 8px 14px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--project) 26%, var(--white));
-  color: var(--project);
+  color: var(--project-ink);
   font-weight: 700;
   font-size: 0.9375rem;
   text-decoration: none;

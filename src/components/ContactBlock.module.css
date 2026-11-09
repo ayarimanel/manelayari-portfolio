@@ -26,6 +26,7 @@
 .panel :global(.btn) {
   border-color: transparent;
   background: var(--buttermilk);
+  color: var(--black);
 }
 .panel :global(.btn-ink) {
   background: var(--pastel-blue);

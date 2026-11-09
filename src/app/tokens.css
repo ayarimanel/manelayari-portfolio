@@ -1,39 +1,48 @@
 :root {
-  /* Colour — "Buttermilk, pastel blue, old burgundy" */
-  --buttermilk: #fff1b5;
-  --pastel-blue: #c1dbe8;
-  --burgundy: #43302e;
-  --cream: #fff8de; /* page background: buttermilk, softened */
-  --cream-deep: #fff1b5; /* buttermilk bands */
-  --ink: #43302e; /* old burgundy: text, borders (11:1 on the page) */
-  --ink-soft: #6e5753; /* secondary text */
-  --tomato: #43302e; /* (legacy name) accent = burgundy */
-  --tomato-ink: #43302e;
-  --blue: #c1dbe8; /* pastel blue fills */
-  --blue-deep: #8fb8cf; /* pastel blue, one step darker (shadows, back flaps) */
-  --blue-sticker: #c1dbe8; /* blue fill, burgundy text on it */
-  --white: #ffffff;
-  --glutenia-green: #8bc34a;
-  --glutenia-ink: #3f6e14;
-  --glutenia-panel: #e7f3d9;
-  --apa-purple: #4b1d7a;
-  --apa-panel: #e9ddf7;
-  --value-teal: #327183;
-  --value-ink: #275b6a;
-  --value-panel: #dcedf1;
-  --sticker-shadow: 0 6px 14px rgb(67 48 46 / 0.14);
-  --sticker-shadow-lift: 0 10px 20px rgb(67 48 46 / 0.18);
+  /* Colour: black, velvet purple, ultrasonic blue, hyper magenta, periwinkle. Older token names are kept so components stay unchanged. */
+  --black: #040607;
+  --velvet: #5b2a62;
+  --band: #2a1533;
+  --night: #1b0e22;
+  --magenta: #bf40fa;
+  --magenta-t: #d98cff;
+  --blue-t: #9d87ff;
+  --ultrasonic: #4928c2;
+  --stamp: #f6f1ff;
+  --buttermilk: #e3d9fc;
+  --pastel-blue: #4928c2;
+  --burgundy: #5b2a62;
+  --cream: #040607;
+  --cream-deep: #1b0e22;
+  --ink: #e3d9fc;
+  --ink-soft: #b7abd0;
+  --tomato: #d98cff;
+  --tomato-ink: #d98cff;
+  --blue: #4928c2;
+  --blue-deep: #36199c;
+  --blue-sticker: #4928c2;
+  --white: #1b0e22;
+  --glutenia-green: #c4b4f0;
+  --glutenia-ink: #c4b4f0;
+  --glutenia-panel: #1b0e22;
+  --apa-purple: #bf40fa;
+  --apa-panel: #1b0e22;
+  --value-teal: #4928c2;
+  --value-ink: #9d87ff;
+  --value-panel: #1b0e22;
+  --sticker-shadow: 0 6px 14px rgb(0 0 0 / 0.4);
+  --sticker-shadow-lift: 0 10px 20px rgb(191 64 250 / 0.3);
   /* Folders, paper and notes */
-  --paper: #fffdf4;
-  --note-yellow: #fff1b5;
-  --grid-line: rgb(67 48 46 / 0.06);
-  --kraft: #cfe2b4; /* Glutenia folder: soft green (burgundy text) */
-  --kraft-back: #b2cc90;
-  --terracotta: #43302e; /* L'Africaine folder: burgundy (buttermilk text) */
-  --terracotta-back: #2f2120;
-  --walnut: #f6e08a; /* Value folder: deep buttermilk (burgundy text) */
-  --walnut-back: #e8cd66;
-  --folder-cream: #fff1b5;
+  --paper: #1b0e22;
+  --note-yellow: #e3d9fc;
+  --grid-line: rgb(227 217 252 / 0.05);
+  --kraft: #e3d9fc;
+  --kraft-back: #c4b4f0;
+  --terracotta: #bf40fa;
+  --terracotta-back: #b35cea;
+  --walnut: #4928c2;
+  --walnut-back: #36199c;
+  --folder-cream: #040607;
 
   /* Project theme (overridden per case study / card) */
   --project: var(--tomato);
@@ -47,6 +56,7 @@
   /* Retro sign lettering: burgundy letters, a cream gap, a pastel-blue offset */
   --sign-shadow: 2px 2px 0 var(--cream), 5px 5px 0 var(--pastel-blue), 6px 6px 0 var(--burgundy);
   --font-body: var(--font-karla), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), Consolas, ui-monospace, monospace;
   --font-hand: var(--font-patrick), "Segoe Print", cursive;
   /* Fluid sizes, 375 → 1440 px */
   --fs-display: clamp(3.5rem, 2.092rem + 6.009vw, 7.5rem);
@@ -79,8 +89,8 @@
   --r-pill: 999px;
   --r-phone: 36px;
   --r-browser: 12px;
-  --border: 1.5px solid var(--ink);
-  --rule: 1px solid var(--ink-soft);
+  --border: 1.5px solid rgb(227 217 252 / 0.3);
+  --rule: 1px solid rgb(227 217 252 / 0.22);
 
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

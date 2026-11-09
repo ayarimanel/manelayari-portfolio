@@ -30,16 +30,16 @@
 .placeholder {
   aspect-ratio: var(--book-ratio);
   border-radius: 2.4%;
-  background: #dcebf3;
+  background: #e9e1fb;
 }
 
 /* ---------- Book frame ---------- */
 .book {
-  --rust: #2f5a78;
-  --ink-b: #43302e;
-  --peach: #c1dbe8;
-  --orange: #6fa3c4;
-  --cream-b: #fff8de;
+  --rust: #4928c2;
+  --ink-b: #040607;
+  --peach: #e3d9fc;
+  --orange: #9d6fe0;
+  --cream-b: #f6f1ff;
   position: relative;
   outline: none;
   font-family: var(--font-caveat), cursive;
@@ -66,7 +66,7 @@
   border-radius: 1.6cqw;
   background: var(--orange);
   box-shadow:
-    0 0.3cqw 0 #386a8d,
+    0 0.3cqw 0 #5b2db8,
     0 2.4cqw 5cqw -2.4cqw rgba(36, 70, 94, 0.45);
   touch-action: pan-y;
 }
@@ -147,11 +147,11 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .2 0 0 0 0 .08 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .tintLight {
-  background: #dcebf3;
+  background: #e9e1fb;
 }
 /* Light peach, not the site's cream, so the book never melts into the page. */
 .tintCream {
-  background: #e8f2f8;
+  background: #f3eefe;
 }
 .tintDeep {
   background: var(--orange);
@@ -317,7 +317,7 @@
   clip-path: polygon(2% 0, 98% 4%, 100% 30%, 97% 60%, 100% 100%, 3% 96%, 0 70%, 3% 40%);
 }
 .tapeGingham {
-  background-color: #dfedf5;
+  background-color: #efe9fd;
   background-image:
     linear-gradient(90deg, rgba(63, 115, 151, 0.45) 50%, transparent 50%),
     linear-gradient(rgba(63, 115, 151, 0.45) 50%, transparent 50%);
@@ -325,8 +325,8 @@
   background-blend-mode: multiply;
 }
 .tapeHearts {
-  background-color: #fff8de;
-  background-image: radial-gradient(circle at 50% 55%, #2f5a78 0.32cqw, transparent 0.36cqw);
+  background-color: #f6f1ff;
+  background-image: radial-gradient(circle at 50% 55%, #4928c2 0.32cqw, transparent 0.36cqw);
   background-size: 1.8cqw 1.8cqw;
 }
 
@@ -336,7 +336,7 @@
   width: 17cqw;
   aspect-ratio: 1;
   padding: 1cqw;
-  background: #f6d873;
+  background: #d98cff;
   color: var(--ink-b);
   font-size: 3cqw;
   text-align: center;
@@ -357,12 +357,12 @@
   gap: 3cqw;
   padding: 6cqw;
   border-radius: 1.6cqw 3cqw 3cqw 1.6cqw;
-  background-color: #4f86ab;
+  background-color: #7a45cf;
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.9) 0.18cqw, transparent 0.24cqw),
     radial-gradient(circle, rgba(246, 216, 115, 0.85) 0.14cqw, transparent 0.2cqw),
     radial-gradient(circle, rgba(255, 255, 255, 0.55) 0.12cqw, transparent 0.18cqw),
-    linear-gradient(135deg, #6fa3c4, #2f5a78);
+    linear-gradient(135deg, #9d6fe0, #4928c2);
   background-size:
     3.2cqw 3.2cqw,
     4.6cqw 4.6cqw,
@@ -696,7 +696,7 @@
   border-radius: 4.2cqw;
   background: #fff;
   box-shadow:
-    inset 0 0 0 0.5cqw #43302e,
+    inset 0 0 0 0.5cqw #040607,
     0.6cqw 0.9cqw 0 rgba(36, 70, 94, 0.28);
 }
 .phone::before {
@@ -707,7 +707,7 @@
   width: 8cqw;
   height: 1.8cqw;
   border-radius: 0 0 1.2cqw 1.2cqw;
-  background: #43302e;
+  background: #040607;
   translate: -50% 0;
 }
 .phoneSlot {
@@ -715,7 +715,7 @@
   left: 2.4cqw;
   width: 20cqw;
   height: 8cqw;
-  border: 0.3cqw dashed #6fa3c4;
+  border: 0.3cqw dashed #9d6fe0;
   border-radius: 1.4cqw;
 }
 .card {
@@ -755,7 +755,7 @@
   width: 6cqw;
   height: 5cqw;
   border-radius: 0.8cqw;
-  background: linear-gradient(135deg, #c1dbe8 50%, #6fa3c4 50%);
+  background: linear-gradient(135deg, #e3d9fc 50%, #9d6fe0 50%);
 }
 .cardLines {
   display: grid;
@@ -978,17 +978,17 @@
   height: 27cqw;
   border: 0.4cqw solid var(--ink-b);
   border-radius: 1.6cqw 1.6cqw 0.5cqw 0.5cqw;
-  background: #6fa3c4;
+  background: #9d6fe0;
   box-shadow:
-    inset 0.35cqw 0.35cqw 0 #cde2ee,
-    inset -0.35cqw -0.35cqw 0 #5b93b8;
+    inset 0.35cqw 0.35cqw 0 #d9cdf8,
+    inset -0.35cqw -0.35cqw 0 #8a55d8;
 }
 .lid::after {
   content: "";
   position: absolute;
   inset: 0.6cqw;
   border-radius: 0.9cqw;
-  background: #43302e;
+  background: #040607;
 }
 .base {
   position: absolute;
@@ -1077,7 +1077,7 @@
   top: 72.6cqw;
   font-family: system-ui, sans-serif;
   font-size: max(9px, 1.7cqw);
-  color: #24465e;
+  color: #36199c;
 }
 .idea {
   right: 8cqw;
@@ -1134,7 +1134,7 @@
   transform: rotate(3deg);
 }
 .replayBtn {
-  background: #c1dbe8;
+  background: #e3d9fc;
   font-size: 1.25rem;
   transform: rotate(-2deg);
 }
@@ -1235,12 +1235,12 @@
   display: grid;
   padding: 0;
   border: 0;
-  background-color: #4f86ab;
+  background-color: #7a45cf;
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.9) 0.18cqw, transparent 0.24cqw),
     radial-gradient(circle, rgba(246, 216, 115, 0.85) 0.14cqw, transparent 0.2cqw),
     radial-gradient(circle, rgba(255, 255, 255, 0.55) 0.12cqw, transparent 0.18cqw),
-    linear-gradient(135deg, #6fa3c4, #2f5a78);
+    linear-gradient(135deg, #9d6fe0, #4928c2);
   background-size:
     3.2cqw 3.2cqw,
     4.6cqw 4.6cqw,
@@ -1260,10 +1260,10 @@
   backface-visibility: hidden;
   box-shadow:
     inset 2.6cqw 0 0 rgba(36, 70, 94, 0.35),
-    0.6cqw 0.5cqw 0 #fffdf4,
-    1.2cqw 1cqw 0 #d6e8f1,
-    1.8cqw 1.5cqw 0 #fffdf4,
-    2.4cqw 2cqw 0 #bdd8e7,
+    0.6cqw 0.5cqw 0 #fffdff,
+    1.2cqw 1cqw 0 #e3d9fc,
+    1.8cqw 1.5cqw 0 #fffdff,
+    2.4cqw 2cqw 0 #cdbff5,
     1cqw 5cqw 7cqw -2cqw rgba(36, 70, 94, 0.4);
   transition:
     transform 0.9s cubic-bezier(0.2, 0.7, 0.3, 1),
@@ -1307,4 +1307,17 @@
 .closed .controls,
 .opening .controls {
   visibility: hidden;
+}
+
+/* The book stays light paper inside the dark site. */
+.slot {
+  --ink: #040607;
+  --ink-soft: #5b2a62;
+  --cream: #f6f1ff;
+  --cream-deep: #e3d9fc;
+  --paper: #fffdff;
+  --white: #ffffff;
+  --buttermilk: #f6f1ff;
+  --pastel-blue: #e3d9fc;
+  --border: 1.5px solid #040607;
 }

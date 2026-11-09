@@ -40,11 +40,10 @@
   z-index: var(--layer);
   opacity: var(--show);
   transform: translate(-50%, -50%) translateX(var(--x)) scale(var(--s));
-  filter: drop-shadow(1.8cqw 1.8cqw 0 rgb(193 219 232 / var(--shadow)));
   transition:
-    transform 700ms var(--ease),
-    opacity 700ms var(--ease),
-    filter 700ms var(--ease);
+    transform 420ms var(--ease),
+    opacity 420ms var(--ease),
+    filter 420ms var(--ease);
 }
 .slide[data-o="1"],
 .slide[data-o="-1"] {
@@ -129,15 +128,15 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--ink);
+  background: var(--black);
   opacity: var(--dim);
-  transition: opacity 700ms var(--ease);
+  transition: opacity 420ms var(--ease);
 }
 
 .phone {
   width: 35cqw;
   padding: 1.1cqw;
-  background: var(--ink);
+  background: var(--velvet);
   border-radius: 5cqw;
 }
 .phone .screen {
@@ -152,7 +151,7 @@
   width: 92%;
   margin-inline: auto;
   padding: 1cqw;
-  background: var(--ink);
+  background: var(--velvet);
   border-radius: 2cqw 2cqw 0 0;
 }
 .laptop .screen {
@@ -163,8 +162,8 @@
   position: relative;
   overflow: hidden;
   height: 2.6cqw;
-  background: var(--paper);
-  border: 2px solid var(--ink);
+  background: var(--ink);
+  border: 0;
   border-radius: 0 0 2cqw 2cqw;
 }
 
@@ -206,7 +205,7 @@
   padding: 3px;
   border: 2px solid var(--ink);
   border-radius: var(--r-pill);
-  background: var(--paper);
+  background: transparent;
   transition: transform var(--dur-fast) var(--ease);
 }
 .toggle:active {
@@ -219,7 +218,7 @@
   left: 3px;
   width: calc(50% - 3px);
   border-radius: var(--r-pill);
-  background: var(--ink);
+  background: var(--magenta);
   transition: transform var(--dur-slow) var(--ease-overshoot);
 }
 .toggle[aria-checked="true"] .knob {
@@ -238,10 +237,9 @@
   transition: color var(--dur) var(--ease);
 }
 .option[data-on="true"] {
-  color: var(--buttermilk);
+  color: var(--black);
 }
-.option svg,
-.pause svg {
+.option svg {
   flex: none;
   width: 18px;
   height: 18px;
@@ -250,17 +248,6 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.pause {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper);
-  color: var(--ink);
 }
 
 .hint {

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2, Karla, Patrick_Hand } from "next/font/google";
+import { Baloo_2, JetBrains_Mono, Karla, Patrick_Hand } from "next/font/google";
 import { keywords, site } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -11,6 +11,9 @@ const baloo = Baloo_2({ variable: "--font-baloo", subsets: ["latin"], weight: ["
 
 /** Body: a quirky, readable grotesque. */
 const karla = Karla({ variable: "--font-karla", subsets: ["latin"], weight: ["400", "500", "600", "700"], display: "swap" });
+
+/** Monospace text in the home About and Info blocks. */
+const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], weight: ["400", "500", "700"], display: "swap" });
 
 /** Handwritten notes and small annotations. */
 const patrick = Patrick_Hand({ variable: "--font-patrick", subsets: ["latin"], weight: "400", display: "swap" });
@@ -40,13 +43,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFF1E2",
-  colorScheme: "light",
+  themeColor: "#040607",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${baloo.variable} ${karla.variable} ${patrick.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${baloo.variable} ${karla.variable} ${jetbrains.variable} ${patrick.variable}`} suppressHydrationWarning>
       <head>
         {/* Lets CSS hide scroll-reveal content only when JS can reveal it again. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

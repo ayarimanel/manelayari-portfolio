@@ -45,7 +45,7 @@
 }
 .label mark {
   /* Light enough for --tomato-ink text to pass 4.5:1. */
-  background: #ffeae3;
+  background: rgb(191 64 250 / 0.22);
   color: var(--tomato-ink);
   font-weight: 700;
   padding: 0 3px;
@@ -161,7 +161,7 @@
 .compTable th,
 .compTable td {
   padding: 10px 12px;
-  border-bottom: 1px solid #e8dccd;
+  border-bottom: 1px solid rgb(227 217 252 / 0.18);
   text-align: center;
   vertical-align: middle;
 }
@@ -191,7 +191,7 @@
   color: var(--ink-soft);
 }
 .mark[data-s="no"] .markIcon {
-  color: #a39889;
+  color: var(--ink-soft);
 }
 .markIcon {
   font-size: 1.5rem;
@@ -287,6 +287,7 @@
 .navPrimary .navTab {
   min-height: 52px;
   background: var(--glutenia-green);
+  color: var(--black);
   box-shadow: 3px 4px 0 rgba(43, 33, 28, 0.18);
 }
 @media (min-width: 480px) {
@@ -488,9 +489,9 @@
   }
 }
 .state {
-  --c: var(--glutenia-green);
-  --c-tint: #eef7e3;
-  --c-on: var(--ink);
+  --c: #8bc34a;
+  --c-tint: color-mix(in srgb, var(--c) 16%, var(--night));
+  --c-on: var(--black);
   position: relative;
   padding: 24px 18px 18px;
   background: var(--c-tint);
@@ -517,19 +518,19 @@
   opacity: 0.5;
 }
 .state[data-state="gluten"] {
-  --c: #c8243a;
-  --c-tint: #fde8ea;
-  --c-on: var(--white);
+  --c: #ff6b81;
+  --c-tint: color-mix(in srgb, var(--c) 16%, var(--night));
+  --c-on: var(--black);
 }
 .state[data-state="caution"] {
   --c: #e0a019;
-  --c-tint: #fdf3dc;
-  --c-on: var(--ink);
+  --c-tint: color-mix(in srgb, var(--c) 16%, var(--night));
+  --c-on: var(--black);
 }
 .state[data-state="unreadable"] {
-  --c: #8a8f98;
-  --c-tint: #eff0f2;
-  --c-on: var(--white);
+  --c: #a7adb7;
+  --c-tint: color-mix(in srgb, var(--c) 16%, var(--night));
+  --c-on: var(--black);
 }
 .stateIcon {
   float: left;
@@ -644,7 +645,7 @@
 .xpTable th,
 .xpTable td {
   padding: 10px 16px;
-  border-bottom: 1px solid #e8dccd;
+  border-bottom: 1px solid rgb(227 217 252 / 0.18);
   text-align: left;
 }
 .xpTable thead th:last-child {
@@ -854,7 +855,7 @@
   font-weight: 700;
   font-size: 2.75rem;
   line-height: 1;
-  color: #9b59b6;
+  color: var(--magenta-t);
 }
 .typeSmall {
   margin-top: var(--s-2);

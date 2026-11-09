@@ -45,7 +45,6 @@
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.875rem;
-  opacity: 0.8;
 }
 @media (min-width: 768px) {
   .tab {
@@ -267,7 +266,7 @@
   display: inline-block;
   margin-bottom: var(--s-5);
   transform: rotate(-1.5deg);
-  color: var(--ink);
+  color: var(--black);
 }
 .label > div {
   padding: 12px 24px 10px;
@@ -290,7 +289,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--velvet);
 }
 .summary {
   max-width: 46ch;
@@ -371,7 +370,7 @@
   border-radius: 14px;
 }
 .cover:focus-visible {
-  outline: 3px solid var(--ink);
+  outline: 3px solid var(--magenta-t);
   outline-offset: 4px;
   box-shadow: none;
 }

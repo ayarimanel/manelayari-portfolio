@@ -43,7 +43,7 @@ export function PageBuild() {
         </span>
       ))}
       <Heart x={88} y={64} r={12} d={2.4} size={5} />
-      <Sparkle x={6} y={68} d={2.5} size={4} color="#f6d873" />
+      <Sparkle x={6} y={68} d={2.5} size={4} color="#d98cff" />
     </div>
   );
 }

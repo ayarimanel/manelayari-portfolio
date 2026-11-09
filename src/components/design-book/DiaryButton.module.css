@@ -8,12 +8,12 @@
   padding: 16px 26px 16px 34px;
   border: 0;
   border-radius: 6px 16px 16px 6px;
-  background: var(--pastel-blue);
-  color: var(--ink);
+  background: var(--buttermilk);
+  color: var(--black);
   text-align: left;
   box-shadow:
-    inset 10px 0 0 #8fb8cf,
-    0 10px 20px -8px rgb(67 48 46 / 0.35);
+    inset 10px 0 0 var(--magenta),
+    0 10px 22px -8px rgb(191 64 250 / 0.45);
   transform: rotate(-1.5deg);
   transition:
     transform var(--dur) var(--ease-overshoot),
@@ -23,8 +23,8 @@
 .diary:focus-visible {
   transform: rotate(0deg) translateY(-3px);
   box-shadow:
-    inset 10px 0 0 #8fb8cf,
-    0 16px 26px -10px rgb(67 48 46 / 0.4);
+    inset 10px 0 0 var(--magenta),
+    0 16px 26px -10px rgb(191 64 250 / 0.5);
 }
 /* Stitched spine */
 .spine {
@@ -41,7 +41,7 @@
   right: 18px;
   width: 64px;
   height: 20px;
-  background: rgb(246 216 115 / 0.85);
+  background: rgb(157 135 255 / 0.9);
   transform: rotate(6deg);
 }
 .text {
@@ -57,7 +57,7 @@
 .hint {
   font-family: var(--font-hand);
   font-size: 1.125rem;
-  color: var(--ink-soft);
+  color: var(--velvet);
 }
 
 /* ---------- The dialog ---------- */
@@ -70,10 +70,10 @@
   border-radius: 24px;
   background: var(--cream);
   color: var(--ink);
-  box-shadow: 0 30px 60px -20px rgb(67 48 46 / 0.5);
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.6);
 }
 .dialog::backdrop {
-  background: rgb(67 48 46 / 0.55);
+  background: rgb(0 0 0 / 0.7);
 }
 .dialog[open] {
   animation: pop var(--dur-slow) var(--ease-overshoot);

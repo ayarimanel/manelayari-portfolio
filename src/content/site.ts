@@ -10,6 +10,7 @@ export type Site = {
   description: string;
   /** Optional — rendered only when filled in. */
   linkedin?: string;
+  github: string;
   /** Optional — a URL or a path under /public, e.g. "/manel-ayari-cv.pdf". */
   cvUrl?: string;
   /** Optional — import a photo (e.g. `import photo from "@media/manel.jpg"`) to replace the initials polaroid. */
@@ -26,6 +27,7 @@ export const site: Site = {
   description:
     "UX/UI Designer & Full-Stack Developer based in Tunis. I design mockups and clickable prototypes in Figma for websites and apps, and because I also code (React Native, Next.js, Node.js), my designs are ready to build. Case studies: Glutenia, L'Africaine de Prod Artistique and Value.",
   linkedin: undefined,
+  github: "https://github.com/ayarimanel",
   cvUrl: "/manel-ayari-cv.pdf",
   photo: undefined,
 };

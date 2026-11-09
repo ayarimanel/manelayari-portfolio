@@ -32,7 +32,7 @@ export function DiaryButton() {
         <span className={styles.spine} aria-hidden="true" />
         <span className={styles.text}>
           <span className={styles.title}>Open my design diary</span>
-          <span className={styles.hint}>how I work, in 5 pages →</span>
+          <span className={styles.hint}>how I work, in 6 pages →</span>
         </span>
       </button>
 

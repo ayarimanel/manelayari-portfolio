@@ -12,12 +12,12 @@ import gluteniaJourney from "@media/glutenia/app/journey.png";
 import gluteniaCatalog from "@media/glutenia/app/catalog.png";
 import gluteniaHome from "@media/glutenia/app/home.png";
 import lafricaineLive from "@media/lafricaine/live-home.png";
-import lafricaineDashboard from "@media/lafricaine/admin/dashboard.png";
+import lafricaineAbout from "@media/lafricaine/pages/about.jpg";
 import lafricaineOrderForm from "@media/lafricaine/video/03-order-form-scroll-poster.jpg";
-import lafricaineOrders from "@media/lafricaine/admin/orders-list.png";
-import lafricaineAddBook from "@media/lafricaine/admin/articles-add.png";
-import lafricaineNews from "@media/lafricaine/admin/news-edit.png";
-import lafricaineDelete from "@media/lafricaine/admin/articles-delete.png";
+import lafricaineContact from "@media/lafricaine/pages/contact.jpg";
+import lafricaineNews from "@media/lafricaine/pages/news.jpg";
+import lafricaineEvent from "@media/lafricaine/pages/event.jpg";
+import lafricaineFigmaHome from "@media/lafricaine/figma-home-top.jpg";
 import styles from "./HeroDesk.module.css";
 
 type Mode = "app" | "web";
@@ -33,15 +33,15 @@ const SCREENS: Record<Mode, StaticImageData[]> = {
     gluteniaCatalog,
     gluteniaHome,
   ],
-  // The live homepage, order form and admin only: the shop mockups contain placeholder book covers.
+  // Public pages only: no admin screens, and the shop mockups contain placeholder book covers.
   web: [
     lafricaineLive,
-    lafricaineDashboard,
-    lafricaineOrderForm,
-    lafricaineOrders,
-    lafricaineAddBook,
+    lafricaineAbout,
     lafricaineNews,
-    lafricaineDelete,
+    lafricaineEvent,
+    lafricaineOrderForm,
+    lafricaineContact,
+    lafricaineFigmaHome,
   ],
 };
 
@@ -58,7 +58,7 @@ const PROJECT = {
   },
 };
 
-const STEP_MS = 2800;
+const STEP_MS = 1500;
 
 /** Position relative to the center, from -3 to 3. A rising step moves every screen left, so new ones enter from the right. */
 function offset(index: number, step: number, length: number) {
@@ -104,12 +104,11 @@ export function HeroDesk() {
   const [mode, setMode] = useState<Mode>("app");
   const [step, setStep] = useState(0);
   const [toggled, setToggled] = useState(false);
-  const [userPaused, setUserPaused] = useState<boolean | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const held = useRef(false);
   const onScreen = useRef(true);
 
-  const playing = userPaused === null ? !reducedMotion : !userPaused;
+  const playing = !reducedMotion;
   const web = mode === "web";
 
   useEffect(() => {
@@ -159,17 +158,6 @@ export function HeroDesk() {
       </div>
 
       <div className={styles.controls}>
-        <button
-          type="button"
-          className={styles.pause}
-          aria-label={playing ? "Pause the sliding screens" : "Play the sliding screens"}
-          onClick={() => setUserPaused(playing)}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            {playing ? <path d="M9 6v12M15 6v12" /> : <path d="M9 6.5v11l9-5.5z" />}
-          </svg>
-        </button>
-
         <button
           type="button"
           role="switch"
