@@ -57,33 +57,6 @@
   width: 100%;
   max-width: 640px;
 }
-/* Below the devices on smaller screens; top-right, above the phone, on wide ones. */
-.fuel {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  margin-left: 4px;
-  transform: rotate(-6deg);
-  pointer-events: none;
-}
-.coffee {
-  width: 58px;
-  height: auto;
-  filter: drop-shadow(2px 6px 8px rgb(0 0 0 / 0.4));
-}
-.fuelNote {
-  display: grid;
-  justify-items: start;
-  gap: 2px;
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  line-height: 1;
-  transform: rotate(8deg);
-}
-.fuelNote svg {
-  width: 40px;
-  transform: scaleX(-1) rotate(180deg);
-}
 .wave {
   position: absolute;
   left: 0;

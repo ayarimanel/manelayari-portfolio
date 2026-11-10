@@ -12,7 +12,6 @@ import { CatCompanion } from "@/components/motion/CatCompanion";
 import { FuelCup } from "@/components/motion/FuelCup";
 import { RibbonScrollSpeed } from "@/components/motion/RibbonScrollSpeed";
 import { StampLanding } from "@/components/motion/StampLanding";
-import coffee from "../../public/media/home/coffee.png";
 import pointingHand from "../../public/media/home/pointing-hand.png";
 import styles from "./home.module.css";
 
@@ -79,25 +78,10 @@ export default function Home() {
                   Download CV <span className="visually-hidden">(PDF)</span>
                 </a>
               )}
-              <div className={styles.fuel} aria-hidden="true">
-                <Image src={coffee} alt="" sizes="58px" className={styles.coffee} data-cat-perch data-cat-x="0.85" data-cat-only="large" />
-                <p className={styles.fuelNote}>
-                  <svg viewBox="0 0 60 30">
-                    <path
-                      d="M56 6C42 8 26 12 10 24m0 0 10 1M10 24l3-9"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  my fuel
-                </p>
-              </div>
             </div>
           </div>
 
-          <div className={styles.heroArt} data-cat-perch data-cat-only="small">
+          <div className={styles.heroArt} data-cat-perch>
             <HeroDesk />
           </div>
         </div>
